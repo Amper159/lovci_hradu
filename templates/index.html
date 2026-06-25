@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🏰 Lovci Hradů - Objevuj památky Česka</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <style>
+        #map { height: 450px; }
+    </style>
+</head>
+<body class="bg-gray-100 text-gray-900 font-sans">
+
+    <header class="bg-gray-950 text-white px-6 py-4 flex justify-between items-center shadow-md">
+        <div class="text-xl font-bold text-amber-400 tracking-wide flex items-center gap-2">
+            <span>🏰</span> LOVCI HRADŮ
+        </div>
+        <nav class="hidden md:flex gap-6 text-sm font-medium">
+            <a href="#" class="text-white border-b-2 border-amber-400 pb-1">Mapa památek</a>
+            <a href="#" class="text-gray-400 hover:text-white transition">Seznam</a>
+            <a href="#" class="text-gray-400 hover:text-white transition">Moje Výzvy</a>
+            <a href="#" class="text-gray-400 hover:text-white transition">Profil</a>
+        </nav>
+    </header>
+
+    <section class="bg-gray-900 text-white text-center py-12 px-4 shadow-inner">
+        <h1 class="text-3xl md:text-4xl font-extrabold mb-3">Objevuj skrytá tajemství českých zřícenin</h1>
+        <p class="text-gray-400 max-w-xl mx-auto mb-6 text-sm md:text-base">Najdi hrady a zámky ve svém okolí, sbírej odznáčky a staň se králem lovců.</p>
+        <div class="max-w-md mx-auto relative">
+            <input type="text" placeholder="🔍 Zadej název hradu, město nebo kraj..." class="w-full bg-white text-gray-900 pl-5 pr-12 py-3 rounded-full shadow-lg outline-none text-sm focus:ring-2 focus:ring-amber-400">
+        </div>
+    </section>
+
+    <div class="max-w-7xl mx-auto px-4 my-6 flex flex-wrap items-center gap-3 text-sm">
+        <span class="font-bold text-gray-700">Rychlé filtry:</span>
+        <button class="bg-blue-600 text-white px-4 py-1.5 rounded-full font-medium">Všechny</button>
+        <button class="bg-white border border-gray-300 hover:border-gray-400 px-4 py-1.5 rounded-full transition">Zříceniny 🌲</button>
+        <button class="bg-white border border-gray-300 hover:border-gray-400 px-4 py-1.5 rounded-full transition">Pro kočárky 👶</button>
+        <button class="bg-white border border-gray-300 hover:border-gray-400 px-4 py-1.5 rounded-full transition">Otevřeno v zimě ❄️</button>
+    </div>
+
+    <main class="max-w-7xl mx-auto px-4 grid grid-cols-1 lg:grid-cols-3 gap-6 mb-12">
+        
+        <div class="lg:col-span-2 bg-white p-4 rounded-xl shadow-sm">
+            <h2 class="text-lg font-bold text-gray-800 mb-3 uppercase tracking-wide text-sm">Interaktivní mapa Česka</h2>
+            <div id="map" class="rounded-lg border border-gray-200"></div>
+        </div>
+
+        <div class="bg-white p-4 rounded-xl shadow-sm flex flex-col gap-4">
+            <h2 class="text-lg font-bold text-gray-800 mb-1 uppercase tracking-wide text-sm">Nejbližší cíle v okolí</h2>
+            
+            <div class="overflow-y-auto max-h-[400px] pr-1 flex flex-col gap-4">
+                {% for hrad in hrady %}
+                <div class="p-4 border border-gray-100 rounded-lg bg-gray-50 hover:shadow-md transition cursor-pointer" onclick="focusOnMap({{ hrad.lat }}, {{ hrad.lng }})">
+                    <h3 class="font-bold text-gray-950 text-base mb-1">{{ hrad.nazev }}</h3>
+                    <p class="text-gray-600 text-xs leading-relaxed mb-3">{{ hrad.popis }}</p>
+                    <div class="flex flex-wrap gap-1.5">
+                        <span class="bg-gray-200 text-gray-800 text-[10px] font-semibold px-2 py-0.5 rounded">{{ hrad.kraj }}</span>
+                        {% for tag in hrad.tagy %}
+                        <span class="bg-amber-100 text-amber-800 text-[10px] font-semibold px-2 py-0.5 rounded">⭐ {{ tag }}</span>
+                        {% endfor %}
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </main>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script>
+        // Inicializace mapy (střed Česka)
+        const map = L.map('map').setView([49.8175, 15.4730], 7);
+
+        // Načtení mapových podkladů (OpenStreetMap)
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '© OpenStreetMap'
+        }).addTo(map);
+
+        // Bezpečné vložení pole hradů vygenerované přímo v šabloně pomocí cyklu do JS
+        const hradyData = [];
+        {% for hrad in hrady %}
+        hradyData.push({
+            id: {{ hrad.id }},
+            nazev: "{{ hrad.nazev }}",
+            kraj: "{{ hrad.kraj }}",
+            lat: {{ hrad.lat }},
+            lng: {{ hrad.lng }}
+        });
+        {% endfor %}
+
+        // Vykreslení špendlíků na mapu
+        hradyData.forEach(hrad => {
+            L.marker([hrad.lat, hrad.lng]).addTo(map)
+                .bindPopup(`<b>${hrad.nazev}</b><br><span class="text-xs">${hrad.kraj} kraj</span>`);
+        });
+
+        // Funkce, která po kliknutí v seznamu přiblíží mapu na daný hrad
+        function focusOnMap(lat, lng) {
+            map.setView([lat, lng], 13);
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,1649 @@
+[
+    {
+        "id": 1,
+        "nazev": "Hrad Šternberk",
+        "typ": "hrad",
+        "kraj": "Česko",
+        "popis": "Historický hrad Hrad Šternberk. Data importována z OpenStreetMap.",
+        "lat": 49.73308,
+        "lng": 17.30186
+    },
+    {
+        "id": 2,
+        "nazev": "Hluboký",
+        "typ": "zricenina",
+        "kraj": "Česko",
+        "popis": "Historický zricenina Hluboký. Data importována z OpenStreetMap.",
+        "lat": 49.66821,
+        "lng": 17.43
+    },
+    {
+        "id": 3,
+        "nazev": "Zámek Úsov",
+        "typ": "zamek",
+        "kraj": "Česko",
+        "popis": "Historický zamek Zámek Úsov. Data importována z OpenStreetMap.",
+        "lat": 49.799,
+        "lng": 17.01445
+    },
+    {
+        "id": 4,
+        "nazev": "Hrad Bouzov",
+        "typ": "zricenina",
+        "kraj": "Česko",
+        "popis": "Historický zricenina Hrad Bouzov. Data importována z OpenStreetMap.",
+        "lat": 49.7051,
+        "lng": 16.88948
+    },
+    {
+        "id": 5,
+        "nazev": "Mírov",
+        "typ": "hrad",
+        "kraj": "Česko",
+        "popis": "Historický hrad Mírov. Data importována z OpenStreetMap.",
+        "lat": 49.79638,
+        "lng": 16.84635
+    },
+    {
+        "id": 6,
+        "nazev": "Jestřebí",
+        "typ": "zricenina",
+        "kraj": "Česko",
+        "popis": "Historický zricenina Jestřebí. Data importována z OpenStreetMap.",
+        "lat": 50.61195,
+        "lng": 14.58077
+    },
+    {
+        "id": 7,
+        "nazev": "Pernštejn",
+        "typ": "hrad",
+        "kraj": "Česko",
+        "popis": "Historický hrad Pernštejn. Data importována z OpenStreetMap.",
+        "lat": 49.45086,
+        "lng": 16.31837
+    },
+    {
+        "id": 8,
+        "nazev": "Žacléř",
+        "typ": "hrad",
+        "kraj": "Česko",
+        "popis": "Historický hrad Žacléř. Data importována z OpenStreetMap.",
+        "lat": 50.64985,
+        "lng": 15.9039
+    },
+    {
+        "id": 9,
+        "nazev": "zámek Bílá Lhota",
+        "typ": "zamek",
+        "kraj": "Česko",
+        "popis": "Historický zamek zámek Bílá Lhota. Data importována z OpenStreetMap.",
+        "lat": 49.70948,
+        "lng": 16.97649
+    },
+    {
+        "id": 10,
+        "nazev": "Středověký hrad Náměšť",
+        "typ": "zricenina",
+        "kraj": "Česko",
+        "popis": "Historický zricenina Středověký hrad Náměšť. Data importována z OpenStreetMap.",
+        "lat": 49.60051,
+        "lng": 17.0623
+    },
+    {
+        "id": 11,
+        "nazev": "Zdechovice",
+        "typ": "hrad",
+        "kraj": "Česko",
+        "popis": "Historický hrad Zdechovice. Data importována z OpenStreetMap.",
+        "lat": 50.01372,
+        "lng": 15.46943
+    },
+    {
+        "id": 12,
+        "nazev": "Zámek Medlešice",
+        "typ": "zamek",
+        "kraj": "Česko",
+        "popis": "Historický zamek Zámek Medlešice. Data importována z OpenStreetMap.",
+        "lat": 49.97866,
+        "lng": 15.76852
+    },
+    {
+        "id": 13,
+        "nazev": "Zámek Skalka",
+        "typ": "zamek",
+        "kraj": "Česko",
+        "popis": "Historický zamek Zámek Skalka. Data importována z OpenStreetMap.",
+        "lat": 50.26341,
+        "lng": 16.21323
+    },
+    {
+        "id": 14,
+        "nazev": "zámek Kvasiny",
+        "typ": "zamek",
+        "kraj": "Česko",
+        "popis": "Historický zamek zámek Kvasiny. Data importována z OpenStreetMap.",
+        "lat": 50.20679,
+        "lng": 16.25071
+    },
+    {
+        "id": 15,
+        "nazev": "Zámek Černíkovice",
+        "typ": "zamek",
+        "kraj": "Česko",
+        "popis": "Historický zamek Zámek Černíkovice. Data importována z OpenStreetMap.",
+        "lat": 50.18831,
+        "lng": 16.2143
+    },
+    {
+        "id": 16,
+        "nazev": "bývalá tvrz Tuklaty",
+        "typ": "zricenina",
+        "kraj": "Česko",
+        "popis": "Historický zricenina bývalá tvrz Tuklaty. Data importována z OpenStreetMap.",
+        "lat": 50.086,
+        "lng": 14.76791
+    },
+    {
+        "id": 17,
+        "nazev": "Zámek Častolovice",
+        "typ": "zamek",
+        "kraj": "Česko",
+        "popis": "Historický zamek Zámek Častolovice. Data importována z OpenStreetMap.",
+        "lat": 50.13077,
+        "lng": 16.18701
+    },
+    {
+        "id": 18,
+        "nazev": "Nový zámek",
+        "typ": "zamek",
+        "kraj": "Česko",
+        "popis": "Historický zamek Nový zámek. Data importována z OpenStreetMap.",
+        "lat": 50.12263,
+        "lng": 16.19975
+    },
+    {
+        "id": 19,
+        "nazev": "Zámek Horní Jelení",
+        "typ": "zamek",
+        "kraj": "Česko",
+        "popis": "Historický zamek Zámek Horní Jelení. Data importována z OpenStreetMap.",
+        "lat": 50.04924,
+        "lng": 16.0876
+    },
+    {
+        "id": 20,
+        "nazev": "Zámek Přestavlky",
+        "typ": "zamek",
+        "kraj": "Česko",
+        "popis": "Historický zamek Zámek Přestavlky. Data importována z OpenStreetMap.",
+        "lat": 50.06941,
+        "lng": 16.23193
+    },
+    {
+        "id": 21,
+        "nazev": "zřícenina Košumberk",
+        "typ": "zricenina",
+        "kraj": "Česko",
+        "popis": "Historický zricenina zřícenina Košumberk. Data importována z OpenStreetMap.",
+        "lat": 49.88414,
+        "lng": 16.0345
+    },
+    {
+        "id": 22,
+        "nazev": "Zámek",
+        "typ": "zamek",
+        "kraj": "Česko",
+        "popis": "Historický zamek Zámek. Data importována z OpenStreetMap.",
+        "lat": 49.36879,
+        "lng": 14.96427
+    },
+    {
+        "id": 23,
+        "nazev": "Újezd",
+        "typ": "zricenina",
+        "kraj": "Česko",
+        "popis": "Historický zricenina Újezd. Data importována z OpenStreetMap.",
+        "lat": 49.36797,
+        "lng": 16.32115
+    },
+    {
+        "id": 24,
+        "nazev": "zámek Staré Hrady",
+        "typ": "zamek",
+        "kraj": "Česko",
+        "popis": "Historický zamek zámek Staré Hrady. Data importována z OpenStreetMap.",
+        "lat": 50.38657,
+        "lng": 15.21382
+    },
+    {
+        "id": 25,
+        "nazev": "zámek Vlčí Pole",
+        "typ": "zamek",
+        "kraj": "Česko",
+        "popis": "Historický zamek zámek Vlčí Pole. Data importována z OpenStreetMap.",
+        "lat": 50.41406,
+        "lng": 15.13835
+    },
+    {
+        "id": 26,
+        "nazev": "Hrad Nové Hrady",
+        "typ": "hrad",
+        "kraj": "Česko",
+        "popis": "Historický hrad Hrad Nové Hrady. Data importována z OpenStreetMap.",
+        "lat": 48.78938,
+        "lng": 14.77471
+    },
+    {
+        "id": 27,
+        "nazev": "Pařez",
+        "typ": "zricenina",
+        "kraj": "Česko",
+        "popis": "Historický zricenina Pařez. Data importována z OpenStreetMap.",
+        "lat": 50.47748,
+        "lng": 15.27585
+    },
+    {
+        "id": 28,
+        "nazev": "Zámek Stárkov",
+        "typ": "zamek",
+        "kraj": "Česko",
+        "popis": "Historický zamek Zámek Stárkov. Data importována z OpenStreetMap.",
+        "lat": 50.53351,
+        "lng": 16.15954
+    },
+    {
+        "id": 29,
+        "nazev": "Zámek Dolní Přím",
+        "typ": "zamek",
+        "kraj": "Česko",
+        "popis": "Historický zamek Zámek Dolní Přím. Data importována z OpenStreetMap.",
+        "lat": 50.23924,
+        "lng": 15.70562
+    },
+    {
+        "id": 30,
+        "nazev": "Zámek Stračov",
+        "typ": "zamek",
+        "kraj": "Česko",
+        "popis": "Historický zamek Zámek Stračov. Data importována z OpenStreetMap.",
+        "lat": 50.3013,
+        "lng": 15.64077
+    },
+    {
+        "id": 31,
+        "nazev": "Kolowrat",
+        "typ": "hrad",
+        "kraj": "Česko",
+        "popis": "Historický hrad Kolowrat. Data importována z OpenStreetMap.",
+        "lat": 50.16647,
+        "lng": 16.27579
+    },
+    {
+        "id": 32,
+        "nazev": "Moravské Budějovice",
+        "typ": "hrad",
+        "kraj": "Česko",
+        "popis": "Historický hrad Moravské Budějovice. Data importována z OpenStreetMap.",
+        "lat": 49.05184,
+        "lng": 15.80882
+    },
+    {
+        "id": 33,
+        "nazev": "Maleš",
+        "typ": "zricenina",
+        "kraj": "Česko",
+        "popis": "Historický zricenina Maleš. Data importována z OpenStreetMap.",
+        "lat": 50.30644,
+        "lng": 13.18912
+    },
+    {
+        "id": 34,
+        "nazev": "Zámek Dobrohošť",
+        "typ": "zamek",
+        "kraj": "Česko",
+        "popis": "Historický zamek Zámek Dobrohošť. Data importována z OpenStreetMap.",
+        "lat": 49.62748,
+        "lng": 14.52435
+    },
+    {
+        "id": 35,
+        "nazev": "Rýzmberk",
+        "typ": "zricenina",
+        "kraj": "Česko",
+        "popis": "Historický zricenina Rýzmberk. Data importována z OpenStreetMap.",
+        "lat": 49.40702,
+        "lng": 13.03103
+    },
+    {
+        "id": 36,
+        "nazev": "Nový Herštjen",
+        "typ": "zricenina",
+        "kraj": "Česko",
+        "popis": "Historický zricenina Nový Herštjen. Data importována z OpenStreetMap.",
+        "lat": 49.41479,
+        "lng": 13.06566
+    },
+    {
+        "id": 37,
+        "nazev": "Zřícenina vodní tvrze",
+        "typ": "zricenina",
+        "kraj": "Česko",
+        "popis": "Historický zricenina Zřícenina vodní tvrze. Data importována z OpenStreetMap.",
+        "lat": 49.61218,
+        "lng": 14.63128
+    },
+    {
+        "id": 38,
+        "nazev": "Dobrš",
+        "typ": "hrad",
+        "kraj": "Česko",
+        "popis": "Historický hrad Dobrš. Data importována z OpenStreetMap.",
+        "lat": 49.1551,
+        "lng": 13.75158
+    },
+    {
+        "id": 39,
+        "nazev": "Janštejn",
+        "typ": "zricenina",
+        "kraj": "Česko",
+        "popis": "Historický zricenina Janštejn. Data importována z OpenStreetMap.",
+        "lat": 49.27245,
+        "lng": 15.34421
+    },
+    {
+        "id": 40,
+        "nazev": "Hrad Rychmburk",
+        "typ": "hrad",
+        "kraj": "Česko",
+        "popis": "Historický hrad Hrad Rychmburk. Data importována z OpenStreetMap.",
+        "lat": 49.83586,
+        "lng": 16.04298
+    },
+    {
+        "id": 41,
+        "nazev": "Zkamenělý zámek",
+        "typ": "zricenina",
+        "kraj": "Česko",
+        "popis": "Historický zricenina Zkamenělý zámek. Data importována z OpenStreetMap.",
+        "lat": 50.48046,
+        "lng": 14.61765
+    },
+    {
+        "id": 42,
+        "nazev": "Zámek Benešov nad Ploučnicí",
+        "typ": "zamek",
+        "kraj": "Česko",
+        "popis": "Historický zamek Zámek Benešov nad Ploučnicí. Data importována z OpenStreetMap.",
+        "lat": 50.74231,
+        "lng": 14.31089
+    },
+    {
+        "id": 43,
+        "nazev": "Zámek Svinaře",
+        "typ": "zamek",
+        "kraj": "Česko",
+        "popis": "Historický zamek Zámek Svinaře. Data importována z OpenStreetMap.",
+        "lat": 49.89385,
+        "lng": 14.18363
+    },
+    {
+        "id": 44,
+        "nazev": "Vildštejn",
+        "typ": "zricenina",
+        "kraj": "Česko",
+        "popis": "Historický zricenina Vildštejn. Data importována z OpenStreetMap.",
+        "lat": 49.83687,
+        "lng": 15.65373
+    },
+    {
+        "id": 45,
+        "nazev": "Oheb",
+        "typ": "zricenina",
+        "kraj": "Česko",
+        "popis": "Historický zricenina Oheb. Data importována z OpenStreetMap.",
+        "lat": 49.83378,
+        "lng": 15.65352
+    },
+    {
+        "id": 46,
+        "nazev": "Schloss Witkowitz",
+        "typ": "hrad",
+        "kraj": "Česko",
+        "popis": "Historický hrad Schloss Witkowitz. Data importována z OpenStreetMap.",
+        "lat": 49.81722,
+        "lng": 18.27222
+    },
+    {
+        "id": 47,
+        "nazev": "Zámek Hradištko",
+        "typ": "zamek",
+        "kraj": "Česko",
+        "popis": "Historický zamek Zámek Hradištko. Data importována z OpenStreetMap.",
+        "lat": 49.86738,
+        "lng": 14.41039
+    },
+    {
+        "id": 48,
+        "nazev": "Starý Plumlov",
+        "typ": "zricenina",
+        "kraj": "Česko",
+        "popis": "Historický zricenina Starý Plumlov. Data importována z OpenStreetMap.",
+        "lat": 49.44265,
+        "lng": 16.92967
+    },
+    {
+        "id": 49,
+        "nazev": "Blansek",
+        "typ": "zricenina",
+        "kraj": "Česko",
+        "popis": "Historický zricenina Blansek. Data importována z OpenStreetMap.",
+        "lat": 49.37116,
+        "lng": 16.72269
+    },
+    {
+        "id": 50,
+        "nazev": "Džbán",
+        "typ": "zricenina",
+        "kraj": "Česko",
+        "popis": "Historický zricenina Džbán. Data importována z OpenStreetMap.",
+        "lat": 49.2931,
+        "lng": 13.58574
+    },
+    {
+        "id": 51,
+        "nazev": "Sedlecký hrad",
+        "typ": "zricenina",
+        "kraj": "Česko",
+        "popis": "Historický zricenina Sedlecký hrad. Data importována z OpenStreetMap.",
+        "lat": 49.16665,
+        "lng": 16.17073
+    },
+    {
+        "id": 52,
+        "nazev": "Rychvald",
+        "typ": "zricenina",
+        "kraj": "Česko",
+        "popis": "Historický zricenina Rychvald. Data importována z OpenStreetMap.",
+        "lat": 49.45817,
+        "lng": 16.51178
+    },
+    {
+        "id": 53,
+        "nazev": "Osiky",
+        "typ": "zricenina",
+        "kraj": "Česko",
+        "popis": "Historický zricenina Osiky. Data importována z OpenStreetMap.",
+        "lat": 49.44359,
+        "lng": 16.42464
+    },
+    {
+        "id": 54,
+        "nazev": "Ježův hrad",
+        "typ": "zricenina",
+        "kraj": "Česko",
+        "popis": "Historický zricenina Ježův hrad. Data importována z OpenStreetMap.",
+        "lat": 49.47897,
+        "lng": 16.94421
+    },
+    {
+        "id": 55,
+        "nazev": "zřícenina hradu Výrov",
+        "typ": "zricenina",
+        "kraj": "Česko",
+        "popis": "Historický zricenina zřícenina hradu Výrov. Data importována z OpenStreetMap.",
+        "lat": 50.3409,
+        "lng": 16.15936
+    },
+    {
+        "id": 56,
+        "nazev": "Zámek Polná",
+        "typ": "zamek",
+        "kraj": "Česko",
+        "popis": "Historický zamek Zámek Polná. Data importována z OpenStreetMap.",
+        "lat": 49.48735,
+        "lng": 15.71418
+    },
+    {
+        "id": 57,
+        "nazev": "Rysov",
+        "typ": "zricenina",
+        "kraj": "Česko",
+        "popis": "Historický zricenina Rysov. Data importována z OpenStreetMap.",
+        "lat": 49.38832,
+        "lng": 16.30775
+    },
+    {
+        "id": 58,
+        "nazev": "zámek Dobřejovice",
+        "typ": "zamek",
+        "kraj": "Česko",
+        "popis": "Historický zamek zámek Dobřejovice. Data importována z OpenStreetMap.",
+        "lat": 49.98251,
+        "lng": 14.5792
+    },
+    {
+        "id": 59,
+        "nazev": "Zámek Žerotínů",
+        "typ": "zamek",
+        "kraj": "Česko",
+        "popis": "Historický zamek Zámek Žerotínů. Data importována z OpenStreetMap.",
+        "lat": 49.47159,
+        "lng": 17.96915
+    },
+    {
+        "id": 60,
+        "nazev": "Luhov",
+        "typ": "hrad",
+        "kraj": "Česko",
+        "popis": "Historický hrad Luhov. Data importována z OpenStreetMap.",
+        "lat": 49.81359,
+        "lng": 13.14426
+    },
+    {
+        "id": 61,
+        "nazev": "Curia Vitkov",
+        "typ": "hrad",
+        "kraj": "Česko",
+        "popis": "Historický hrad Curia Vitkov. Data importována z OpenStreetMap.",
+        "lat": 50.85718,
+        "lng": 14.97903
+    },
+    {
+        "id": 62,
+        "nazev": "Zámek Šumbark",
+        "typ": "zamek",
+        "kraj": "Česko",
+        "popis": "Historický zamek Zámek Šumbark. Data importována z OpenStreetMap.",
+        "lat": 49.78732,
+        "lng": 18.4151
+    },
+    {
+        "id": 63,
+        "nazev": "Zámek ve Frýdku-Místku, Muzeum Beskyd",
+        "typ": "zamek",
+        "kraj": "Česko",
+        "popis": "Historický zamek Zámek ve Frýdku-Místku, Muzeum Beskyd. Data importována z OpenStreetMap.",
+        "lat": 49.68588,
+        "lng": 18.34633
+    },
+    {
+        "id": 64,
+        "nazev": "Zámek Olešovice",
+        "typ": "zamek",
+        "kraj": "Česko",
+        "popis": "Historický zamek Zámek Olešovice. Data importována z OpenStreetMap.",
+        "lat": 49.90527,
+        "lng": 14.58949
+    },
+    {
+        "id": 65,
+        "nazev": "zámek Pohled",
+        "typ": "zamek",
+        "kraj": "Česko",
+        "popis": "Historický zamek zámek Pohled. Data importována z OpenStreetMap.",
+        "lat": 49.60392,
+        "lng": 15.65046
+    },
+    {
+        "id": 66,
+        "nazev": "Zámek Litomyšl",
+        "typ": "zamek",
+        "kraj": "Česko",
+        "popis": "Historický zamek Zámek Litomyšl. Data importována z OpenStreetMap.",
+        "lat": 49.87332,
+        "lng": 16.31275
+    },
+    {
+        "id": 67,
+        "nazev": "Rýzmburk",
+        "typ": "zricenina",
+        "kraj": "Česko",
+        "popis": "Historický zricenina Rýzmburk. Data importována z OpenStreetMap.",
+        "lat": 50.63354,
+        "lng": 13.66492
+    },
+    {
+        "id": 68,
+        "nazev": "Zámek Rychvald",
+        "typ": "zamek",
+        "kraj": "Česko",
+        "popis": "Historický zamek Zámek Rychvald. Data importována z OpenStreetMap.",
+        "lat": 49.86487,
+        "lng": 18.35186
+    },
+    {
+        "id": 69,
+        "nazev": "Krásný Buk",
+        "typ": "zricenina",
+        "kraj": "Česko",
+        "popis": "Historický zricenina Krásný Buk. Data importována z OpenStreetMap.",
+        "lat": 50.92072,
+        "lng": 14.48353
+    },
+    {
+        "id": 70,
+        "nazev": "Chebský hrad",
+        "typ": "hrad",
+        "kraj": "Česko",
+        "popis": "Historický hrad Chebský hrad. Data importována z OpenStreetMap.",
+        "lat": 50.08125,
+        "lng": 12.36609
+    },
+    {
+        "id": 71,
+        "nazev": "Falkenštejn",
+        "typ": "zricenina",
+        "kraj": "Česko",
+        "popis": "Historický zricenina Falkenštejn. Data importována z OpenStreetMap.",
+        "lat": 50.85483,
+        "lng": 14.40544
+    },
+    {
+        "id": 72,
+        "nazev": "Bělá pod Bezdězem",
+        "typ": "hrad",
+        "kraj": "Česko",
+        "popis": "Historický hrad Bělá pod Bezdězem. Data importována z OpenStreetMap.",
+        "lat": 50.50134,
+        "lng": 14.80783
+    },
+    {
+        "id": 73,
+        "nazev": "Jevín",
+        "typ": "zricenina",
+        "kraj": "Česko",
+        "popis": "Historický zricenina Jevín. Data importována z OpenStreetMap.",
+        "lat": 50.34534,
+        "lng": 14.33395
+    },
+    {
+        "id": 74,
+        "nazev": "Prácheň",
+        "typ": "zricenina",
+        "kraj": "Česko",
+        "popis": "Historický zricenina Prácheň. Data importována z OpenStreetMap.",
+        "lat": 49.31589,
+        "lng": 13.6815
+    },
+    {
+        "id": 75,
+        "nazev": "Jaroměřice",
+        "typ": "hrad",
+        "kraj": "Česko",
+        "popis": "Historický hrad Jaroměřice. Data importována z OpenStreetMap.",
+        "lat": 49.62704,
+        "lng": 16.75437
+    },
+    {
+        "id": 76,
+        "nazev": "Zámek Doksy",
+        "typ": "zamek",
+        "kraj": "Česko",
+        "popis": "Historický zamek Zámek Doksy. Data importována z OpenStreetMap.",
+        "lat": 50.5648,
+        "lng": 14.65262
+    },
+    {
+        "id": 77,
+        "nazev": "Bukovina",
+        "typ": "zricenina",
+        "kraj": "Česko",
+        "popis": "Historický zricenina Bukovina. Data importována z OpenStreetMap.",
+        "lat": 49.00212,
+        "lng": 15.93084
+    },
+    {
+        "id": 78,
+        "nazev": "Tvrz Zvíkov",
+        "typ": "hrad",
+        "kraj": "Česko",
+        "popis": "Historický hrad Tvrz Zvíkov. Data importována z OpenStreetMap.",
+        "lat": 48.98054,
+        "lng": 14.61827
+    },
+    {
+        "id": 79,
+        "nazev": "bývalá tvrz Dešenice",
+        "typ": "hrad",
+        "kraj": "Česko",
+        "popis": "Historický hrad bývalá tvrz Dešenice. Data importována z OpenStreetMap.",
+        "lat": 49.27443,
+        "lng": 13.17234
+    },
+    {
+        "id": 80,
+        "nazev": "Husitská bašta",
+        "typ": "hrad",
+        "kraj": "Česko",
+        "popis": "Historický hrad Husitská bašta. Data importována z OpenStreetMap.",
+        "lat": 50.54724,
+        "lng": 13.77269
+    },
+    {
+        "id": 81,
+        "nazev": "Loket",
+        "typ": "hrad",
+        "kraj": "Česko",
+        "popis": "Historický hrad Loket. Data importována z OpenStreetMap.",
+        "lat": 50.18712,
+        "lng": 12.75428
+    },
+    {
+        "id": 82,
+        "nazev": "Zámek Blatná",
+        "typ": "zamek",
+        "kraj": "Česko",
+        "popis": "Historický zamek Zámek Blatná. Data importována z OpenStreetMap.",
+        "lat": 49.42276,
+        "lng": 13.87957
+    },
+    {
+        "id": 83,
+        "nazev": "zámek Nebřenice",
+        "typ": "zamek",
+        "kraj": "Česko",
+        "popis": "Historický zamek zámek Nebřenice. Data importována z OpenStreetMap.",
+        "lat": 49.94428,
+        "lng": 14.60577
+    },
+    {
+        "id": 84,
+        "nazev": "Kyšperk",
+        "typ": "hrad",
+        "kraj": "Česko",
+        "popis": "Historický hrad Kyšperk. Data importována z OpenStreetMap.",
+        "lat": 50.69566,
+        "lng": 13.88952
+    },
+    {
+        "id": 85,
+        "nazev": "tvrz Starý dvůr",
+        "typ": "zricenina",
+        "kraj": "Česko",
+        "popis": "Historický zricenina tvrz Starý dvůr. Data importována z OpenStreetMap.",
+        "lat": 50.68266,
+        "lng": 13.86629
+    },
+    {
+        "id": 86,
+        "nazev": "Chudý hrádek",
+        "typ": "zricenina",
+        "kraj": "Česko",
+        "popis": "Historický zricenina Chudý hrádek. Data importována z OpenStreetMap.",
+        "lat": 50.58949,
+        "lng": 14.50742
+    },
+    {
+        "id": 87,
+        "nazev": "Drštka",
+        "typ": "zricenina",
+        "kraj": "Česko",
+        "popis": "Historický zricenina Drštka. Data importována z OpenStreetMap.",
+        "lat": 49.66813,
+        "lng": 13.70991
+    },
+    {
+        "id": 88,
+        "nazev": "Trvz Radomilice",
+        "typ": "hrad",
+        "kraj": "Česko",
+        "popis": "Historický hrad Trvz Radomilice. Data importována z OpenStreetMap.",
+        "lat": 49.12439,
+        "lng": 14.26012
+    },
+    {
+        "id": 89,
+        "nazev": "zámek Hukovice",
+        "typ": "zamek",
+        "kraj": "Česko",
+        "popis": "Historický zamek zámek Hukovice. Data importována z OpenStreetMap.",
+        "lat": 49.65105,
+        "lng": 18.02158
+    },
+    {
+        "id": 90,
+        "nazev": "Zámek Dolní Lutyně",
+        "typ": "zamek",
+        "kraj": "Česko",
+        "popis": "Historický zamek Zámek Dolní Lutyně. Data importována z OpenStreetMap.",
+        "lat": 49.90119,
+        "lng": 18.43083
+    },
+    {
+        "id": 91,
+        "nazev": "Rozhledna Zámeček",
+        "typ": "hrad",
+        "kraj": "Česko",
+        "popis": "Historický hrad Rozhledna Zámeček. Data importována z OpenStreetMap.",
+        "lat": 50.11976,
+        "lng": 12.36811
+    },
+    {
+        "id": 92,
+        "nazev": "Levnov (zřícenina)",
+        "typ": "zricenina",
+        "kraj": "Česko",
+        "popis": "Historický zricenina Levnov (zřícenina). Data importována z OpenStreetMap.",
+        "lat": 49.13918,
+        "lng": 16.24059
+    },
+    {
+        "id": 93,
+        "nazev": "Zámek Rokytnice",
+        "typ": "zamek",
+        "kraj": "Česko",
+        "popis": "Historický zamek Zámek Rokytnice. Data importována z OpenStreetMap.",
+        "lat": 49.46713,
+        "lng": 17.39252
+    },
+    {
+        "id": 94,
+        "nazev": "Bašta",
+        "typ": "zricenina",
+        "kraj": "Česko",
+        "popis": "Historický zricenina Bašta. Data importována z OpenStreetMap.",
+        "lat": 49.48209,
+        "lng": 16.65777
+    },
+    {
+        "id": 95,
+        "nazev": "Červenice",
+        "typ": "zricenina",
+        "kraj": "Česko",
+        "popis": "Historický zricenina Červenice. Data importována z OpenStreetMap.",
+        "lat": 49.81214,
+        "lng": 15.51196
+    },
+    {
+        "id": 96,
+        "nazev": "Tvrziště Oráčov",
+        "typ": "zricenina",
+        "kraj": "Česko",
+        "popis": "Historický zricenina Tvrziště Oráčov. Data importována z OpenStreetMap.",
+        "lat": 50.10263,
+        "lng": 13.53711
+    },
+    {
+        "id": 97,
+        "nazev": "Durana - hradiště",
+        "typ": "zricenina",
+        "kraj": "Česko",
+        "popis": "Historický zricenina Durana - hradiště. Data importována z OpenStreetMap.",
+        "lat": 49.59116,
+        "lng": 16.78177
+    },
+    {
+        "id": 98,
+        "nazev": "Zámek Budišov",
+        "typ": "zamek",
+        "kraj": "Česko",
+        "popis": "Historický zamek Zámek Budišov. Data importována z OpenStreetMap.",
+        "lat": 49.27546,
+        "lng": 16.01269
+    },
+    {
+        "id": 99,
+        "nazev": "‎Zřícenina hradu Chřenovice",
+        "typ": "zricenina",
+        "kraj": "Česko",
+        "popis": "Historický zricenina ‎Zřícenina hradu Chřenovice. Data importována z OpenStreetMap.",
+        "lat": 49.70837,
+        "lng": 15.23547
+    },
+    {
+        "id": 100,
+        "nazev": "Hrádek Kunzov",
+        "typ": "hrad",
+        "kraj": "Česko",
+        "popis": "Historický hrad Hrádek Kunzov. Data importována z OpenStreetMap.",
+        "lat": 49.58526,
+        "lng": 17.68874
+    },
+    {
+        "id": 101,
+        "nazev": "Ivanovice na Hané",
+        "typ": "hrad",
+        "kraj": "Česko",
+        "popis": "Historický hrad Ivanovice na Hané. Data importována z OpenStreetMap.",
+        "lat": 49.30503,
+        "lng": 17.09525
+    },
+    {
+        "id": 102,
+        "nazev": "Chvalkovice na Hané",
+        "typ": "hrad",
+        "kraj": "Česko",
+        "popis": "Historický hrad Chvalkovice na Hané. Data importována z OpenStreetMap.",
+        "lat": 49.31943,
+        "lng": 17.11556
+    },
+    {
+        "id": 103,
+        "nazev": "Plankenberk",
+        "typ": "zricenina",
+        "kraj": "Česko",
+        "popis": "Historický zricenina Plankenberk. Data importována z OpenStreetMap.",
+        "lat": 49.64753,
+        "lng": 16.78304
+    },
+    {
+        "id": 104,
+        "nazev": "Zámek Dalešice",
+        "typ": "zamek",
+        "kraj": "Česko",
+        "popis": "Historický zamek Zámek Dalešice. Data importována z OpenStreetMap.",
+        "lat": 49.12743,
+        "lng": 16.07873
+    },
+    {
+        "id": 105,
+        "nazev": "Zámek Přerov",
+        "typ": "zamek",
+        "kraj": "Česko",
+        "popis": "Historický zamek Zámek Přerov. Data importována z OpenStreetMap.",
+        "lat": 49.4553,
+        "lng": 17.45097
+    },
+    {
+        "id": 106,
+        "nazev": "Tvrz Vranová Lhota",
+        "typ": "hrad",
+        "kraj": "Česko",
+        "popis": "Historický hrad Tvrz Vranová Lhota. Data importována z OpenStreetMap.",
+        "lat": 49.71107,
+        "lng": 16.82702
+    },
+    {
+        "id": 107,
+        "nazev": "Vraní Hora",
+        "typ": "zricenina",
+        "kraj": "Česko",
+        "popis": "Historický zricenina Vraní Hora. Data importována z OpenStreetMap.",
+        "lat": 49.7161,
+        "lng": 16.8102
+    },
+    {
+        "id": 108,
+        "nazev": "zámek Markvartice",
+        "typ": "zamek",
+        "kraj": "Česko",
+        "popis": "Historický zamek zámek Markvartice. Data importována z OpenStreetMap.",
+        "lat": 50.77136,
+        "lng": 14.35209
+    },
+    {
+        "id": 109,
+        "nazev": "Větrov",
+        "typ": "zricenina",
+        "kraj": "Česko",
+        "popis": "Historický zricenina Větrov. Data importována z OpenStreetMap.",
+        "lat": 50.81418,
+        "lng": 14.79589
+    },
+    {
+        "id": 110,
+        "nazev": "tvrz Mrač",
+        "typ": "hrad",
+        "kraj": "Česko",
+        "popis": "Historický hrad tvrz Mrač. Data importována z OpenStreetMap.",
+        "lat": 49.83258,
+        "lng": 14.70121
+    },
+    {
+        "id": 111,
+        "nazev": "Nový Šaumburk (Zubříč)",
+        "typ": "zricenina",
+        "kraj": "Česko",
+        "popis": "Historický zricenina Nový Šaumburk (Zubříč). Data importována z OpenStreetMap.",
+        "lat": 49.41661,
+        "lng": 17.79854
+    },
+    {
+        "id": 112,
+        "nazev": "Stohánek",
+        "typ": "zricenina",
+        "kraj": "Česko",
+        "popis": "Historický zricenina Stohánek. Data importována z OpenStreetMap.",
+        "lat": 50.67425,
+        "lng": 14.84292
+    },
+    {
+        "id": 113,
+        "nazev": "Branka",
+        "typ": "zricenina",
+        "kraj": "Česko",
+        "popis": "Historický zricenina Branka. Data importována z OpenStreetMap.",
+        "lat": 49.6674,
+        "lng": 16.90371
+    },
+    {
+        "id": 114,
+        "nazev": "Kunžvart",
+        "typ": "hrad",
+        "kraj": "Česko",
+        "popis": "Historický hrad Kunžvart. Data importována z OpenStreetMap.",
+        "lat": 48.92096,
+        "lng": 13.70939
+    },
+    {
+        "id": 115,
+        "nazev": "Smilkovský zámek",
+        "typ": "zamek",
+        "kraj": "Česko",
+        "popis": "Historický zamek Smilkovský zámek. Data importována z OpenStreetMap.",
+        "lat": 49.60302,
+        "lng": 14.62054
+    },
+    {
+        "id": 116,
+        "nazev": "Víckov",
+        "typ": "zricenina",
+        "kraj": "Česko",
+        "popis": "Historický zricenina Víckov. Data importována z OpenStreetMap.",
+        "lat": 49.39729,
+        "lng": 16.27205
+    },
+    {
+        "id": 117,
+        "nazev": "Talmberk - zřícenina/ ruins",
+        "typ": "zricenina",
+        "kraj": "Česko",
+        "popis": "Historický zricenina Talmberk - zřícenina/ ruins. Data importována z OpenStreetMap.",
+        "lat": 49.86724,
+        "lng": 14.95581
+    },
+    {
+        "id": 118,
+        "nazev": "Zámek Komařice",
+        "typ": "zamek",
+        "kraj": "Česko",
+        "popis": "Historický zamek Zámek Komařice. Data importována z OpenStreetMap.",
+        "lat": 48.87785,
+        "lng": 14.54519
+    },
+    {
+        "id": 119,
+        "nazev": "Zámek Římov",
+        "typ": "zamek",
+        "kraj": "Česko",
+        "popis": "Historický zamek Zámek Římov. Data importována z OpenStreetMap.",
+        "lat": 48.85661,
+        "lng": 14.48929
+    },
+    {
+        "id": 120,
+        "nazev": "Zámek Postoloprty",
+        "typ": "zamek",
+        "kraj": "Česko",
+        "popis": "Historický zamek Zámek Postoloprty. Data importována z OpenStreetMap.",
+        "lat": 50.35908,
+        "lng": 13.70143
+    },
+    {
+        "id": 121,
+        "nazev": "Zbyny",
+        "typ": "zricenina",
+        "kraj": "Česko",
+        "popis": "Historický zricenina Zbyny. Data importována z OpenStreetMap.",
+        "lat": 50.6392,
+        "lng": 14.82744
+    },
+    {
+        "id": 122,
+        "nazev": "Zámek Kostomlaty pod Milešovkou",
+        "typ": "zamek",
+        "kraj": "Česko",
+        "popis": "Historický zamek Zámek Kostomlaty pod Milešovkou. Data importována z OpenStreetMap.",
+        "lat": 50.56197,
+        "lng": 13.87179
+    },
+    {
+        "id": 123,
+        "nazev": "zřícenina hradu Rabštejn nad Střelou",
+        "typ": "zricenina",
+        "kraj": "Česko",
+        "popis": "Historický zricenina zřícenina hradu Rabštejn nad Střelou. Data importována z OpenStreetMap.",
+        "lat": 50.04226,
+        "lng": 13.29027
+    },
+    {
+        "id": 124,
+        "nazev": "Zámek Štěkeň",
+        "typ": "zamek",
+        "kraj": "Česko",
+        "popis": "Historický zamek Zámek Štěkeň. Data importována z OpenStreetMap.",
+        "lat": 49.26738,
+        "lng": 14.00314
+    },
+    {
+        "id": 125,
+        "nazev": "Zámek Rudolfov",
+        "typ": "zamek",
+        "kraj": "Česko",
+        "popis": "Historický zamek Zámek Rudolfov. Data importována z OpenStreetMap.",
+        "lat": 48.99264,
+        "lng": 14.53529
+    },
+    {
+        "id": 126,
+        "nazev": "zámek Česká Kamenice",
+        "typ": "zamek",
+        "kraj": "Česko",
+        "popis": "Historický zamek zámek Česká Kamenice. Data importována z OpenStreetMap.",
+        "lat": 50.79854,
+        "lng": 14.41645
+    },
+    {
+        "id": 127,
+        "nazev": "Salhausenovský dům",
+        "typ": "hrad",
+        "kraj": "Česko",
+        "popis": "Historický hrad Salhausenovský dům. Data importována z OpenStreetMap.",
+        "lat": 50.79992,
+        "lng": 14.41276
+    },
+    {
+        "id": 128,
+        "nazev": "Dolní Štěpanice",
+        "typ": "hrad",
+        "kraj": "Česko",
+        "popis": "Historický hrad Dolní Štěpanice. Data importována z OpenStreetMap.",
+        "lat": 50.63972,
+        "lng": 15.53999
+    },
+    {
+        "id": 129,
+        "nazev": "Zámek Doubravice (nepříst.)",
+        "typ": "zamek",
+        "kraj": "Česko",
+        "popis": "Historický zamek Zámek Doubravice (nepříst.). Data importována z OpenStreetMap.",
+        "lat": 48.93539,
+        "lng": 14.50993
+    },
+    {
+        "id": 130,
+        "nazev": "Starý Hrozňatov",
+        "typ": "hrad",
+        "kraj": "Česko",
+        "popis": "Historický hrad Starý Hrozňatov. Data importována z OpenStreetMap.",
+        "lat": 50.02404,
+        "lng": 12.3907
+    },
+    {
+        "id": 131,
+        "nazev": "Zámek Rokytnice v Orlických horách",
+        "typ": "zamek",
+        "kraj": "Česko",
+        "popis": "Historický zamek Zámek Rokytnice v Orlických horách. Data importována z OpenStreetMap.",
+        "lat": 50.1655,
+        "lng": 16.46439
+    },
+    {
+        "id": 132,
+        "nazev": "Strálek",
+        "typ": "zricenina",
+        "kraj": "Česko",
+        "popis": "Historický zricenina Strálek. Data importována z OpenStreetMap.",
+        "lat": 49.90873,
+        "lng": 17.25499
+    },
+    {
+        "id": 133,
+        "nazev": "Vísky",
+        "typ": "hrad",
+        "kraj": "Česko",
+        "popis": "Historický hrad Vísky. Data importována z OpenStreetMap.",
+        "lat": 49.85774,
+        "lng": 13.33536
+    },
+    {
+        "id": 134,
+        "nazev": "Zdíkův palác",
+        "typ": "zricenina",
+        "kraj": "Česko",
+        "popis": "Historický zricenina Zdíkův palác. Data importována z OpenStreetMap.",
+        "lat": 49.59801,
+        "lng": 17.26236
+    },
+    {
+        "id": 135,
+        "nazev": "Červený Újezd",
+        "typ": "hrad",
+        "kraj": "Česko",
+        "popis": "Historický hrad Červený Újezd. Data importována z OpenStreetMap.",
+        "lat": 50.07206,
+        "lng": 14.16534
+    },
+    {
+        "id": 136,
+        "nazev": "Zámek Trmice",
+        "typ": "zamek",
+        "kraj": "Česko",
+        "popis": "Historický zamek Zámek Trmice. Data importována z OpenStreetMap.",
+        "lat": 50.64235,
+        "lng": 13.99181
+    },
+    {
+        "id": 137,
+        "nazev": "Hrad Pěčín",
+        "typ": "hrad",
+        "kraj": "Česko",
+        "popis": "Historický hrad Hrad Pěčín. Data importována z OpenStreetMap.",
+        "lat": 50.16217,
+        "lng": 16.39845
+    },
+    {
+        "id": 138,
+        "nazev": "Zámek Branišovice",
+        "typ": "zamek",
+        "kraj": "Česko",
+        "popis": "Historický zamek Zámek Branišovice. Data importována z OpenStreetMap.",
+        "lat": 48.96039,
+        "lng": 16.42915
+    },
+    {
+        "id": 139,
+        "nazev": "Lísek",
+        "typ": "zricenina",
+        "kraj": "Česko",
+        "popis": "Historický zricenina Lísek. Data importována z OpenStreetMap.",
+        "lat": 49.44343,
+        "lng": 16.23301
+    },
+    {
+        "id": 140,
+        "nazev": "Hus - zřícenina",
+        "typ": "zricenina",
+        "kraj": "Česko",
+        "popis": "Historický zricenina Hus - zřícenina. Data importována z OpenStreetMap.",
+        "lat": 48.95755,
+        "lng": 13.92922
+    },
+    {
+        "id": 141,
+        "nazev": "Hradisko Kněževes",
+        "typ": "zricenina",
+        "kraj": "Česko",
+        "popis": "Historický zricenina Hradisko Kněževes. Data importována z OpenStreetMap.",
+        "lat": 49.59715,
+        "lng": 16.42026
+    },
+    {
+        "id": 142,
+        "nazev": "Hradiště",
+        "typ": "zricenina",
+        "kraj": "Česko",
+        "popis": "Historický zricenina Hradiště. Data importována z OpenStreetMap.",
+        "lat": 49.67221,
+        "lng": 16.78533
+    },
+    {
+        "id": 143,
+        "nazev": "Pražský Hrad",
+        "typ": "hrad",
+        "kraj": "Česko",
+        "popis": "Historický hrad Pražský Hrad. Data importována z OpenStreetMap.",
+        "lat": 50.09124,
+        "lng": 14.40377
+    },
+    {
+        "id": 144,
+        "nazev": "Zámek Horní Chlum",
+        "typ": "zamek",
+        "kraj": "Česko",
+        "popis": "Historický zamek Zámek Horní Chlum. Data importována z OpenStreetMap.",
+        "lat": 49.18955,
+        "lng": 13.44259
+    },
+    {
+        "id": 145,
+        "nazev": "Zámek Dolejší Těšov",
+        "typ": "zamek",
+        "kraj": "Česko",
+        "popis": "Historický zamek Zámek Dolejší Těšov. Data importována z OpenStreetMap.",
+        "lat": 49.18833,
+        "lng": 13.42814
+    },
+    {
+        "id": 146,
+        "nazev": "Tvrz Svojšice",
+        "typ": "zamek",
+        "kraj": "Česko",
+        "popis": "Historický zamek Tvrz Svojšice. Data importována z OpenStreetMap.",
+        "lat": 49.24344,
+        "lng": 13.45192
+    },
+    {
+        "id": 147,
+        "nazev": "Zámek Mokrosuky",
+        "typ": "zamek",
+        "kraj": "Česko",
+        "popis": "Historický zamek Zámek Mokrosuky. Data importována z OpenStreetMap.",
+        "lat": 49.27542,
+        "lng": 13.45534
+    },
+    {
+        "id": 148,
+        "nazev": "Zámek Mačice",
+        "typ": "zamek",
+        "kraj": "Česko",
+        "popis": "Historický zamek Zámek Mačice. Data importována z OpenStreetMap.",
+        "lat": 49.22621,
+        "lng": 13.67797
+    },
+    {
+        "id": 149,
+        "nazev": "Tvrz Hvížďalka",
+        "typ": "zamek",
+        "kraj": "Česko",
+        "popis": "Historický zamek Tvrz Hvížďalka. Data importována z OpenStreetMap.",
+        "lat": 49.27058,
+        "lng": 13.7179
+    },
+    {
+        "id": 150,
+        "nazev": "Zámek Nový Čestín",
+        "typ": "zamek",
+        "kraj": "Česko",
+        "popis": "Historický zamek Zámek Nový Čestín. Data importována z OpenStreetMap.",
+        "lat": 49.3605,
+        "lng": 13.36845
+    },
+    {
+        "id": 151,
+        "nazev": "Zámek Štoky",
+        "typ": "zamek",
+        "kraj": "Česko",
+        "popis": "Historický zamek Zámek Štoky. Data importována z OpenStreetMap.",
+        "lat": 49.50195,
+        "lng": 15.58898
+    },
+    {
+        "id": 152,
+        "nazev": "Rešov",
+        "typ": "zricenina",
+        "kraj": "Česko",
+        "popis": "Historický zricenina Rešov. Data importována z OpenStreetMap.",
+        "lat": 49.88712,
+        "lng": 17.20802
+    },
+    {
+        "id": 153,
+        "nazev": "Starý zámek Týnec",
+        "typ": "zamek",
+        "kraj": "Česko",
+        "popis": "Historický zamek Starý zámek Týnec. Data importována z OpenStreetMap.",
+        "lat": 49.34622,
+        "lng": 13.26439
+    },
+    {
+        "id": 154,
+        "nazev": "Zámek Týnec",
+        "typ": "zamek",
+        "kraj": "Česko",
+        "popis": "Historický zamek Zámek Týnec. Data importována z OpenStreetMap.",
+        "lat": 49.34649,
+        "lng": 13.26345
+    },
+    {
+        "id": 155,
+        "nazev": "Zámek Malonice",
+        "typ": "zamek",
+        "kraj": "Česko",
+        "popis": "Historický zamek Zámek Malonice. Data importována z OpenStreetMap.",
+        "lat": 49.28989,
+        "lng": 13.37806
+    },
+    {
+        "id": 156,
+        "nazev": "Horky nad Jizerou",
+        "typ": "hrad",
+        "kraj": "Česko",
+        "popis": "Historický hrad Horky nad Jizerou. Data importována z OpenStreetMap.",
+        "lat": 50.32722,
+        "lng": 14.85729
+    },
+    {
+        "id": 157,
+        "nazev": "Tvrz Mnich",
+        "typ": "hrad",
+        "kraj": "Česko",
+        "popis": "Historický hrad Tvrz Mnich. Data importována z OpenStreetMap.",
+        "lat": 49.29774,
+        "lng": 14.96814
+    },
+    {
+        "id": 158,
+        "nazev": "Zámek Zlonice",
+        "typ": "zamek",
+        "kraj": "Česko",
+        "popis": "Historický zamek Zámek Zlonice. Data importována z OpenStreetMap.",
+        "lat": 50.2854,
+        "lng": 14.09331
+    },
+    {
+        "id": 159,
+        "nazev": "Zřícenina hradu Stejc",
+        "typ": "zricenina",
+        "kraj": "Česko",
+        "popis": "Historický zricenina Zřícenina hradu Stejc. Data importována z OpenStreetMap.",
+        "lat": 49.7219,
+        "lng": 14.55802
+    },
+    {
+        "id": 160,
+        "nazev": "základy zámečku Pepčín",
+        "typ": "zricenina",
+        "kraj": "Česko",
+        "popis": "Historický zricenina základy zámečku Pepčín. Data importována z OpenStreetMap.",
+        "lat": 49.02686,
+        "lng": 17.58712
+    },
+    {
+        "id": 161,
+        "nazev": "Hajany",
+        "typ": "zamek",
+        "kraj": "Česko",
+        "popis": "Historický zamek Hajany. Data importována z OpenStreetMap.",
+        "lat": 49.11157,
+        "lng": 16.55212
+    },
+    {
+        "id": 162,
+        "nazev": "bývalý zámek a dvůr Slavoňov",
+        "typ": "zamek",
+        "kraj": "Česko",
+        "popis": "Historický zamek bývalý zámek a dvůr Slavoňov. Data importována z OpenStreetMap.",
+        "lat": 49.51629,
+        "lng": 14.25205
+    },
+    {
+        "id": 163,
+        "nazev": "Vespice (zaniklá tvrz)",
+        "typ": "zricenina",
+        "kraj": "Česko",
+        "popis": "Historický zricenina Vespice (zaniklá tvrz). Data importována z OpenStreetMap.",
+        "lat": 49.52355,
+        "lng": 14.30447
+    },
+    {
+        "id": 164,
+        "nazev": "Hrad Kácov",
+        "typ": "zricenina",
+        "kraj": "Česko",
+        "popis": "Historický zricenina Hrad Kácov. Data importována z OpenStreetMap.",
+        "lat": 49.77192,
+        "lng": 15.009
+    },
+    {
+        "id": 165,
+        "nazev": "Kyšperk",
+        "typ": "zricenina",
+        "kraj": "Česko",
+        "popis": "Historický zricenina Kyšperk. Data importována z OpenStreetMap.",
+        "lat": 50.03265,
+        "lng": 16.49368
+    },
+    {
+        "id": 166,
+        "nazev": "zřícenina Kluk",
+        "typ": "zricenina",
+        "kraj": "Česko",
+        "popis": "Historický zricenina zřícenina Kluk. Data importována z OpenStreetMap.",
+        "lat": 50.51115,
+        "lng": 14.5764
+    },
+    {
+        "id": 167,
+        "nazev": "Tvrz Malešov",
+        "typ": "hrad",
+        "kraj": "Česko",
+        "popis": "Historický hrad Tvrz Malešov. Data importována z OpenStreetMap.",
+        "lat": 49.91105,
+        "lng": 15.22132
+    },
+    {
+        "id": 168,
+        "nazev": "Zámek Zboží",
+        "typ": "zamek",
+        "kraj": "Česko",
+        "popis": "Historický zamek Zámek Zboží. Data importována z OpenStreetMap.",
+        "lat": 49.71901,
+        "lng": 15.45699
+    },
+    {
+        "id": 169,
+        "nazev": "Zámek Habry",
+        "typ": "zamek",
+        "kraj": "Česko",
+        "popis": "Historický zamek Zámek Habry. Data importována z OpenStreetMap.",
+        "lat": 49.75561,
+        "lng": 15.48622
+    },
+    {
+        "id": 170,
+        "nazev": "Kalich",
+        "typ": "zricenina",
+        "kraj": "Česko",
+        "popis": "Historický zricenina Kalich. Data importována z OpenStreetMap.",
+        "lat": 50.60497,
+        "lng": 14.20653
+    },
+    {
+        "id": 171,
+        "nazev": "Hasištejn",
+        "typ": "hrad",
+        "kraj": "Česko",
+        "popis": "Historický hrad Hasištejn. Data importována z OpenStreetMap.",
+        "lat": 50.44515,
+        "lng": 13.25759
+    },
+    {
+        "id": 172,
+        "nazev": "Ditrichštejnský palác",
+        "typ": "hrad",
+        "kraj": "Česko",
+        "popis": "Historický hrad Ditrichštejnský palác. Data importována z OpenStreetMap.",
+        "lat": 49.59457,
+        "lng": 17.25166
+    },
+    {
+        "id": 173,
+        "nazev": "Zámek Tažovice",
+        "typ": "zamek",
+        "kraj": "Česko",
+        "popis": "Historický zamek Zámek Tažovice. Data importována z OpenStreetMap.",
+        "lat": 49.23171,
+        "lng": 13.75961
+    },
+    {
+        "id": 174,
+        "nazev": "zámek Stěžery",
+        "typ": "zamek",
+        "kraj": "Česko",
+        "popis": "Historický zamek zámek Stěžery. Data importována z OpenStreetMap.",
+        "lat": 50.21525,
+        "lng": 15.74881
+    },
+    {
+        "id": 175,
+        "nazev": "bývalý zámek Sadová",
+        "typ": "zamek",
+        "kraj": "Česko",
+        "popis": "Historický zamek bývalý zámek Sadová. Data importována z OpenStreetMap.",
+        "lat": 50.29658,
+        "lng": 15.69868
+    },
+    {
+        "id": 176,
+        "nazev": "Zámek Vyškov",
+        "typ": "zamek",
+        "kraj": "Česko",
+        "popis": "Historický zamek Zámek Vyškov. Data importována z OpenStreetMap.",
+        "lat": 49.27664,
+        "lng": 16.99722
+    },
+    {
+        "id": 177,
+        "nazev": "Zamek Letohrad",
+        "typ": "hrad",
+        "kraj": "Česko",
+        "popis": "Historický hrad Zamek Letohrad. Data importována z OpenStreetMap.",
+        "lat": 50.03524,
+        "lng": 16.49972
+    },
+    {
+        "id": 178,
+        "nazev": "bývalý hrad Orlovice",
+        "typ": "zricenina",
+        "kraj": "Česko",
+        "popis": "Historický zricenina bývalý hrad Orlovice. Data importována z OpenStreetMap.",
+        "lat": 49.23713,
+        "lng": 17.08869
+    },
+    {
+        "id": 179,
+        "nazev": "Šumburk",
+        "typ": "zricenina",
+        "kraj": "Česko",
+        "popis": "Historický zricenina Šumburk. Data importována z OpenStreetMap.",
+        "lat": 50.37272,
+        "lng": 13.14693
+    },
+    {
+        "id": 180,
+        "nazev": "Rabštejn",
+        "typ": "zricenina",
+        "kraj": "Česko",
+        "popis": "Historický zricenina Rabštejn. Data importována z OpenStreetMap.",
+        "lat": 49.09703,
+        "lng": 16.1536
+    },
+    {
+        "id": 181,
+        "nazev": "zámeček Klokočov",
+        "typ": "hrad",
+        "kraj": "Česko",
+        "popis": "Historický hrad zámeček Klokočov. Data importována z OpenStreetMap.",
+        "lat": 49.80666,
+        "lng": 15.66824
+    },
+    {
+        "id": 182,
+        "nazev": "Městská spořitelna",
+        "typ": "hrad",
+        "kraj": "Česko",
+        "popis": "Historický hrad Městská spořitelna. Data importována z OpenStreetMap.",
+        "lat": 50.22194,
+        "lng": 12.88307
+    },
+    {
+        "id": 183,
+        "nazev": "Louka",
+        "typ": "zricenina",
+        "kraj": "Česko",
+        "popis": "Historický zricenina Louka. Data importována z OpenStreetMap.",
+        "lat": 49.53209,
+        "lng": 16.4313
+    }
+]
