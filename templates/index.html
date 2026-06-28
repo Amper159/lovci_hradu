@@ -4,101 +4,408 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>🏰 Lovci Hradů - Objevuj památky Česka</title>
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <style>
-        #map { height: 450px; }
+        #map { height: 500px; }
+        /* Plynulé scrollování a schování scrollbaru */
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
     </style>
 </head>
-<body class="bg-gray-100 text-gray-900 font-sans">
+<body class="bg-gray-50 text-gray-900 font-sans antialiased">
 
-    <header class="bg-gray-950 text-white px-6 py-4 flex justify-between items-center shadow-md">
+    <header class="bg-gray-900 text-white px-6 py-4 flex justify-between items-center shadow-md">
         <div class="text-xl font-bold text-amber-400 tracking-wide flex items-center gap-2">
             <span>🏰</span> LOVCI HRADŮ
         </div>
         <nav class="hidden md:flex gap-6 text-sm font-medium">
             <a href="#" class="text-white border-b-2 border-amber-400 pb-1">Mapa památek</a>
-            <a href="#" class="text-gray-400 hover:text-white transition">Seznam</a>
-            <a href="#" class="text-gray-400 hover:text-white transition">Moje Výzvy</a>
-            <a href="#" class="text-gray-400 hover:text-white transition">Profil</a>
+            <a href="#formular" class="text-gray-400 hover:text-white transition">Přidat místo ➕</a>
         </nav>
     </header>
 
-    <section class="bg-gray-900 text-white text-center py-12 px-4 shadow-inner">
-        <h1 class="text-3xl md:text-4xl font-extrabold mb-3">Objevuj skrytá tajemství českých zřícenin</h1>
-        <p class="text-gray-400 max-w-xl mx-auto mb-6 text-sm md:text-base">Najdi hrady a zámky ve svém okolí, sbírej odznáčky a staň se králem lovců.</p>
-        <div class="max-w-md mx-auto relative">
-            <input type="text" placeholder="🔍 Zadej název hradu, město nebo kraj..." class="w-full bg-white text-gray-900 pl-5 pr-12 py-3 rounded-full shadow-lg outline-none text-sm focus:ring-2 focus:ring-amber-400">
+    <section class="bg-gray-950 text-white text-center py-12 px-4 shadow-inner">
+        <h1 class="text-3xl md:text-4xl font-extrabold mb-3 tracking-tight">Objevuj skrytá tajemství českých zřícenin</h1>
+        <p class="text-gray-400 max-w-xl mx-auto text-sm mb-6">Najdi hrady a zámky ve svém okolí, sbírej odznáčky a staň se králem lovců.</p>
+        
+        <div class="max-w-md mx-auto relative z-30">
+            <input type="text" id="search-input" oninput="obsluhujNaseptavac(); aplikujFiltry();" autocomplete="off" placeholder="🔍 Zadej název hradu, město nebo kraj..." class="w-full bg-gray-800 text-white border border-gray-700 rounded-lg px-4 py-2.5 text-sm outline-none focus:ring-2 focus:ring-amber-400 focus:border-transparent placeholder-gray-500 shadow-md">
+            
+            <div id="autocomplete-results" class="absolute left-0 right-0 mt-1 bg-white border border-gray-200 rounded-lg shadow-xl hidden overflow-hidden text-left text-gray-900 text-sm">
+            </div>
         </div>
     </section>
 
-    <div class="max-w-7xl mx-auto px-4 my-6 flex flex-wrap items-center gap-3 text-sm">
-        <span class="font-bold text-gray-700">Rychlé filtry:</span>
-        <button class="bg-blue-600 text-white px-4 py-1.5 rounded-full font-medium">Všechny</button>
-        <button class="bg-white border border-gray-300 hover:border-gray-400 px-4 py-1.5 rounded-full transition">Zříceniny 🌲</button>
-        <button class="bg-white border border-gray-300 hover:border-gray-400 px-4 py-1.5 rounded-full transition">Pro kočárky 👶</button>
-        <button class="bg-white border border-gray-300 hover:border-gray-400 px-4 py-1.5 rounded-full transition">Otevřeno v zimě ❄️</button>
+    <div class="max-w-7xl mx-auto px-6 mt-8 flex flex-wrap gap-2 items-center justify-center lg:justify-start">
+        <span class="text-xs font-bold text-gray-400 uppercase tracking-wide mr-2">Rychlé filtry:</span>
+        <button onclick="zmenTypFiltru('vse')" id="btn-vse" class="bg-amber-500 text-gray-950 text-xs font-bold px-4 py-2 rounded-full shadow transition">Všechny 🌐</button>
+        <button onclick="zmenTypFiltru('hrad')" id="btn-hrad" class="bg-white hover:bg-gray-100 text-gray-700 text-xs font-bold px-4 py-2 rounded-full shadow border border-gray-200 transition">Hrady 🏰</button>
+        <button onclick="zmenTypFiltru('zamek')" id="btn-zamek" class="bg-white hover:bg-gray-100 text-gray-700 text-xs font-bold px-4 py-2 rounded-full shadow border border-gray-200 transition">Zámky 👑</button>
+        <button onclick="zmenTypFiltru('zricenina')" id="btn-zricenina" class="bg-white hover:bg-gray-100 text-gray-700 text-xs font-bold px-4 py-2 rounded-full shadow border border-gray-200 transition">Zříceniny 🌲</button>
     </div>
 
-    <main class="max-w-7xl mx-auto px-4 grid grid-cols-1 lg:grid-cols-3 gap-6 mb-12">
+    <main class="max-w-7xl mx-auto px-4 lg:px-6 grid grid-cols-1 lg:grid-cols-3 gap-6 my-6">
         
-        <div class="lg:col-span-2 bg-white p-4 rounded-xl shadow-sm">
-            <h2 class="text-lg font-bold text-gray-800 mb-3 uppercase tracking-wide text-sm">Interaktivní mapa Česka</h2>
-            <div id="map" class="rounded-lg border border-gray-200"></div>
+        <div class="lg:col-span-2 bg-white p-4 rounded-xl shadow-sm border border-gray-200">
+            <h2 class="text-xs font-bold text-gray-400 uppercase tracking-wide mb-3">Interaktivní mapa Česka</h2>
+            <div id="map" class="rounded-lg border border-gray-200 z-10"></div>
         </div>
 
-        <div class="bg-white p-4 rounded-xl shadow-sm flex flex-col gap-4">
-            <h2 class="text-lg font-bold text-gray-800 mb-1 uppercase tracking-wide text-sm">Nejbližší cíle v okolí</h2>
+        <div class="bg-white p-4 rounded-xl shadow-sm border border-gray-200 flex flex-col min-w-0">
+            <h2 class="text-xs font-bold text-gray-400 uppercase tracking-wide mb-3">Památky v databázi (<span id="stats-counter">0</span>)</h2>
             
-            <div class="overflow-y-auto max-h-[400px] pr-1 flex flex-col gap-4">
+            <div class="overflow-y-auto max-h-[440px] pr-2 space-y-3" id="hrady-list">
                 {% for hrad in hrady %}
-                <div class="p-4 border border-gray-100 rounded-lg bg-gray-50 hover:shadow-md transition cursor-pointer" onclick="focusOnMap({{ hrad.lat }}, {{ hrad.lng }})">
-                    <h3 class="font-bold text-gray-950 text-base mb-1">{{ hrad.nazev }}</h3>
-                    <p class="text-gray-600 text-xs leading-relaxed mb-3">{{ hrad.popis }}</p>
-                    <div class="flex flex-wrap gap-1.5">
-                        <span class="bg-gray-200 text-gray-800 text-[10px] font-semibold px-2 py-0.5 rounded">{{ hrad.kraj }}</span>
-                        {% for tag in hrad.tagy %}
-                        <span class="bg-amber-100 text-amber-800 text-[10px] font-semibold px-2 py-0.5 rounded">⭐ {{ tag }}</span>
-                        {% endfor %}
+                <div class="flex items-center gap-4 p-3 border border-gray-100 rounded-xl bg-gray-50 hover:bg-amber-50/40 hover:border-amber-200 transition duration-200 cursor-pointer hrad-karta shadow-sm" 
+                     data-nazev="{{ hrad.nazev|lower }}" 
+                     data-typ="{{ hrad.typ }}"
+                     onclick="focusOnMap({{ hrad.lat }}, {{ hrad.lng }}, '{{ hrad.nazev }}')">
+                    
+                    <div class="w-14 h-14 rounded-full overflow-hidden flex-shrink-0 border border-gray-200 shadow-inner group relative"
+                         onclick="event.stopPropagation(); otevriGalerii('{{ hrad.nazev|replace('\'', '\\\'') }}', '{{ hrad.foto_url }}', this.closest('.hrad-karta').querySelector('p').innerText)">
+                        <img src="{{ hrad.foto_url if hrad.foto_url else 'https://images.unsplash.com/photo-1500835556837-99ac94a94552?w=150&q=80' }}" 
+                             alt="{{ hrad.nazev }}" 
+                             class="w-full h-full object-cover group-hover:scale-110 transition">
+                        <div class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 flex items-center justify-center text-white text-[10px] font-bold transition">👁️</div>
                     </div>
-                </div>
+                    
+                    <div class="flex-1 min-w-0">
+                        <h3 class="font-bold text-gray-900 text-sm truncate">{{ hrad.nazev }}</h3>
+                        <p class="hidden">{{ hrad.popis }}</p> 
+                        <div class="flex gap-1.5 mt-1">
+                            <span class="bg-gray-200 text-gray-700 text-[9px] font-extrabold px-1.5 py-0.5 rounded uppercase tracking-wider">{{ hrad.typ }}</span>
+                            <span class="bg-amber-100 text-amber-800 text-[9px] font-extrabold px-1.5 py-0.5 rounded truncate">{{ hrad.kraj if hrad.kraj else 'Česko' }}</span>
+                        </div>
+                    </div>
+                </div>  
                 {% endfor %}
             </div>
         </div>
     </main>
 
+    <div id="gallery-modal" class="fixed inset-0 bg-black/80 hidden z-50 flex items-center justify-center p-4 backdrop-blur-sm">
+        <div class="bg-white rounded-2xl max-w-2xl w-full overflow-hidden shadow-2xl relative animate-in fade-in zoom-in duration-200">
+            <button onclick="zavriGalerii()" class="absolute top-4 right-4 bg-black/60 hover:bg-black text-white rounded-full w-8 h-8 flex items-center justify-center text-lg font-bold transition z-10 cursor-pointer">✕</button>
+            
+            <div class="w-full h-64 md:h-80 bg-gray-950 relative">
+                <img id="modal-main-img" src="" class="w-full h-full object-cover" alt="Detail památky">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end p-6">
+                    <h2 id="modal-title" class="text-xl md:text-2xl font-extrabold text-white tracking-tight">Název hradu</h2>
+                </div>
+            </div>
+            
+            <div class="p-6">
+                <p id="modal-desc" class="text-gray-600 text-sm leading-relaxed mb-4">Popis místa...</p>
+                <h4 class="text-xs font-bold text-gray-400 uppercase tracking-wider mb-2">Obrázky z okolí památky</h4>
+                <div id="modal-thumbnails" class="flex gap-2 overflow-x-auto pb-1 no-scrollbar"></div>
+            </div>
+        </div>
+    </div>
+
+    <section id="formular" class="max-w-3xl mx-auto px-4 my-12">
+        <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-200">
+            <h2 class="text-xl font-bold text-gray-900 mb-1">Chybí nám tu vaše oblíbené místo? 🗺️</h2>
+            <p class="text-sm text-gray-500 mb-6">Vyplňte formulář níže a přidejte hrad nebo zámek do mapy.</p>
+            
+            <form action="/pridat" method="post" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                    <label class="block text-xs font-bold text-gray-700 uppercase mb-1">Název památky</label>
+                    <input type="text" name="nazev" required placeholder="Např. Hrad Bouzov" class="w-full bg-gray-50 border border-gray-300 rounded-lg px-3 py-2 text-sm outline-none focus:border-amber-400 focus:bg-white transition">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-gray-700 uppercase mb-1">Kraj</label>
+                    <input type="text" name="kraj" required placeholder="Např. Olomoucký" class="w-full bg-gray-50 border border-gray-300 rounded-lg px-3 py-2 text-sm outline-none focus:border-amber-400 focus:bg-white transition">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-gray-700 uppercase mb-1">URL adresa fotografie (nepovinné)</label>
+                    <input type="url" name="foto_url" placeholder="https://odkaz-na-obrazek.cz/foto.jpg" class="w-full bg-gray-50 border border-gray-300 rounded-lg px-3 py-2 text-sm outline-none focus:border-amber-400 focus:bg-white transition">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-gray-700 uppercase mb-1">Typ</label>
+                    <select name="typ" class="w-full bg-gray-50 border border-gray-300 rounded-lg px-3 py-2 text-sm outline-none focus:border-amber-400 focus:bg-white transition">
+                        <option value="hrad">Hrad</option>
+                        <option value="zamek">Zámek</option>
+                        <option value="zricenina">Zřícenina</option>
+                    </select>
+                </div>
+                <div class="grid grid-cols-2 gap-2">
+                    <div>
+                        <label class="block text-xs font-bold text-gray-700 uppercase mb-1">Zeměpisná šířka (Lat)</label>
+                        <input type="number" step="any" name="lat" required placeholder="49.7049" class="w-full bg-gray-50 border border-gray-300 rounded-lg px-3 py-2 text-sm outline-none focus:border-amber-400 focus:bg-white transition">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-gray-700 uppercase mb-1">Zeměpisná délka (Lng)</label>
+                        <input type="number" step="any" name="lng" required placeholder="16.8893" class="w-full bg-gray-50 border border-gray-300 rounded-lg px-3 py-2 text-sm outline-none focus:border-amber-400 focus:bg-white transition">
+                    </div>
+                </div>
+                <div class="md:col-span-2">
+                    <label class="block text-xs font-bold text-gray-700 uppercase mb-1">Krátký popis</label>
+                    <textarea name="popis" rows="3" required placeholder="Napište pár vět o historii..." class="w-full bg-gray-50 border border-gray-300 rounded-lg px-3 py-2 text-sm outline-none focus:border-amber-400 focus:bg-white transition"></textarea>
+                </div>
+                <div class="md:col-span-2 mt-2">
+                    <button type="submit" class="w-full bg-amber-500 hover:bg-amber-600 text-gray-950 font-bold py-2.5 rounded-lg text-sm shadow-md transition">Odeslat a přidat do mapy 🚀</button>
+                </div>
+            </form>
+        </div>
+    </section>
+
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script>
-        // Inicializace mapy (střed Česka)
         const map = L.map('map').setView([49.8175, 15.4730], 7);
 
-        // Načtení mapových podkladů (OpenStreetMap)
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             attribution: '© OpenStreetMap'
         }).addTo(map);
 
-        // Bezpečné vložení pole hradů vygenerované přímo v šabloně pomocí cyklu do JS
+        let aktivniMarkery = [];
+        let aktualniTypFiltru = 'vse';
+
+        // Seznam upravený přesně podle dat v databázi
+        const ceskeKraje = [
+            "Jihočeský",
+            "Jihomoravský",
+            "Karlovarský",
+            "Královéhradecký",
+            "Liberecký",
+            "Moravskoslezský",
+            "Olomoucký",
+            "Pardubický",
+            "Plzeňský",
+            "Praha",
+            "Středočeský",
+            "Ústecký",
+            "Vysočina",
+            "Zlínský"
+        ];
+
         const hradyData = [];
         {% for hrad in hrady %}
         hradyData.push({
             id: {{ hrad.id }},
             nazev: "{{ hrad.nazev }}",
-            kraj: "{{ hrad.kraj }}",
+            typ: "{{ hrad.typ }}",
+            kraj: "{{ hrad.kraj if hrad.kraj else 'Česko' }}",
+            foto_url: "{{ hrad.foto_url if hrad.foto_url else 'https://images.unsplash.com/photo-1500835556837-99ac94a94552?w=500&q=80' }}",
             lat: {{ hrad.lat }},
             lng: {{ hrad.lng }}
         });
         {% endfor %}
 
-        // Vykreslení špendlíků na mapu
-        hradyData.forEach(hrad => {
-            L.marker([hrad.lat, hrad.lng]).addTo(map)
-                .bindPopup(`<b>${hrad.nazev}</b><br><span class="text-xs">${hrad.kraj} kraj</span>`);
+        function obsluhujNaseptavac() {
+            const input = document.getElementById('search-input');
+            const container = document.getElementById('autocomplete-results');
+            const text = input.value.toLowerCase().trim();
+
+            if (text.length < 1) {
+                container.classList.add('hidden');
+                return;
+            }
+
+            const nalezeneKraje = ceskeKraje.filter(kraj => kraj.toLowerCase().includes(text));
+
+            if (nalezeneKraje.length > 0) {
+                container.innerHTML = '';
+                
+                nalezeneKraje.forEach(kraj => {
+                    const radek = document.createElement('div');
+                    radek.className = "px-4 py-2 hover:bg-amber-100 cursor-pointer transition flex justify-between items-center";
+                    radek.innerHTML = `<span>📍 <b>${kraj}</b></span> <span class="text-[10px] text-gray-400 font-bold uppercase tracking-wider">Kraj</span>`;
+                    
+                    radek.onclick = function() {
+                        input.value = kraj;
+                        container.classList.add('hidden');
+                        aplikujFiltry();
+                    };
+                    
+                    container.appendChild(radek);
+                });
+                
+                container.classList.remove('hidden');
+            } else {
+                container.classList.add('hidden');
+            }
+        }
+
+        document.addEventListener('click', function(e) {
+            const container = document.getElementById('autocomplete-results');
+            const input = document.getElementById('search-input');
+            if (e.target !== container && e.target !== input) {
+                container.classList.add('hidden');
+            }
         });
 
-        // Funkce, která po kliknutí v seznamu přiblíží mapu na daný hrad
-        function focusOnMap(lat, lng) {
-            map.setView([lat, lng], 13);
+        function aplikujFiltry() {
+            let vyhledavanyText = document.getElementById('search-input').value.toLowerCase().trim();
+            vyhledavanyText = vyhledavanyText.replace(" kraj", "").trim();
+            
+            const karty = document.getElementsByClassName('hrad-karta');
+            
+            aktivniMarkery.forEach(marker => map.removeLayer(marker));
+            aktivniMarkery = [];
+
+            let viditelnePamatkyPocet = 0;
+
+            hradyData.forEach((hrad, index) => {
+                const odpovidaTypu = (aktualniTypFiltru === 'vse' || hrad.typ === aktualniTypFiltru);
+                
+                const odpovidaNazvu = hrad.nazev.toLowerCase().includes(vyhledavanyText);
+                const odpovidaKraji = hrad.kraj.toLowerCase().includes(vyhledavanyText);
+                const odpovidaTextu = odpovidaNazvu || odpovidaKraji;
+
+                if (odpovidaTypu && odpovidaTextu) {
+                    karty[index].style.display = "flex";
+                    viditelnePamatkyPocet++;
+
+                    const realnyPopis = karty[index].querySelector('p') ? karty[index].querySelector('p').innerText : '';
+                    const bezpecnyPopis = realnyPopis.replace(/'/g, "\\'").replace(/"/g, '\\"');
+
+                    const popupObsah = `
+                        <div class="p-1 max-w-[200px]">
+                            <b class="text-sm text-gray-900">${hrad.nazev}</b>
+                            <p class="text-gray-500 text-[11px] my-1 uppercase font-bold">${hrad.typ}</p>
+                            <button onclick="otevriGalerii('${hrad.nazev.replace(/'/g, "\\'")}', '${hrad.foto_url}', '${bezpecnyPopis}')" 
+                                    class="mt-1 w-full bg-amber-500 hover:bg-amber-600 text-gray-950 text-[10px] font-bold py-1 px-2 rounded transition cursor-pointer">
+                                🖼️ Otevřít galerii
+                            </button>
+                        </div>
+                    `;
+
+                    const m = L.marker([hrad.lat, hrad.lng]).addTo(map).bindPopup(popupObsah);
+                    aktivniMarkery.push(m);
+                } else {
+                    karty[index].style.display = "none";
+                }
+            });
+
+            document.getElementById('stats-counter').innerText = viditelnePamatkyPocet;
         }
+
+        let docasnyFormMarker = null;
+
+        function zrusVyberNovehoMista() {
+            if (docasnyFormMarker) {
+                map.removeLayer(docasnyFormMarker);
+                docasnyFormMarker = null;
+            }
+            document.querySelector('input[name="lat"]').value = '';
+            document.querySelector('input[name="lng"]').value = '';
+        }
+
+        map.on('click', function(e) {
+            const lat = e.latlng.lat;
+            const lng = e.latlng.lng;
+
+            document.querySelector('input[name="lat"]').value = lat.toFixed(6);
+            document.querySelector('input[name="lng"]').value = lng.toFixed(6);
+
+            if (docasnyFormMarker) {
+                map.removeLayer(docasnyFormMarker);
+            }
+
+            const popupObsah = `
+                <div class="p-1 text-center">
+                    <b class="text-sm text-red-600">Vybrané místo!</b>
+                    <p class="text-gray-500 text-[10px] my-1">Souřadnice jsou ve formuláři.</p>
+                    <button onclick="zrusVyberNovehoMista()" 
+                            class="mt-1 w-full bg-red-500 hover:bg-red-600 text-white text-[10px] font-bold py-1 px-2 rounded transition cursor-pointer">
+                        🗑️ Zrušit špendlík
+                    </button>
+                </div>
+            `;
+
+            docasnyFormMarker = L.marker([lat, lng], {
+                icon: L.icon({
+                    iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-red.png',
+                    shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+                    iconSize: [25, 41],
+                    iconAnchor: [12, 41],
+                    popupAnchor: [1, -34],
+                    shadowSize: [41, 41]
+                })
+            }).addTo(map).bindPopup(popupObsah).openPopup();
+
+            docasnyFormMarker.on('dblclick', function() {
+                zrusVyberNovehoMista();
+            });
+
+            document.getElementById('formular').scrollIntoView({ behavior: 'smooth' });
+        });
+
+        function zmenTypFiltru(novyTyp) {
+            aktualniTypFiltru = novyTyp;
+            ['vse', 'hrad', 'zamek', 'zricenina'].forEach(t => {
+                const btn = document.getElementById(`btn-${t}`);
+                btn.className = t === novyTyp 
+                    ? "bg-amber-500 text-gray-950 text-xs font-bold px-4 py-2 rounded-full shadow transition"
+                    : "bg-white hover:bg-gray-100 text-gray-700 text-xs font-bold px-4 py-2 rounded-full shadow border border-gray-200 transition";
+            });
+            aplikujFiltry();
+        }
+
+        function focusOnMap(lat, lng, nazev) {
+            map.setView([lat, lng], 14);
+            aktivniMarkery.forEach(m => {
+                if (m.getLatLng().lat === lat && m.getLatLng().lng === lng) {
+                    m.openPopup();
+                }
+            });
+        }
+
+        function otevriGalerii(nazev, hlavniFoto, popis) {
+            document.getElementById('modal-title').innerText = nazev;
+            document.getElementById('modal-desc').innerText = popis;
+            
+            const mainImg = document.getElementById('modal-main-img');
+            mainImg.src = hlavniFoto;
+
+            const thumbContainer = document.getElementById('modal-thumbnails');
+            thumbContainer.innerHTML = '<span class="text-xs text-gray-400">Načítám další snímky z okolí...</span>';
+
+            document.getElementById('gallery-modal').classList.remove('hidden');
+
+            const searchUrl = `https://commons.wikimedia.org/w/api.php?action=query&format=json&origin=*&prop=pageimages&generator=search&gsrsearch=${encodeURIComponent(nazev)}&gsrnamespace=6&pithumbsize=400&gsrlimit=6`;
+
+            fetch(searchUrl)
+                .then(res => res.json())
+                .then(data => {
+                    thumbContainer.innerHTML = '';
+                    vytvorNahled(hlavniFoto, mainImg);
+
+                    if (data.query && data.query.pages) {
+                        Object.values(data.query.pages).forEach(page => {
+                            if (page.thumbnail && page.thumbnail.source && page.thumbnail.source !== hlavniFoto) {
+                                vytvorNahled(page.thumbnail.source, mainImg);
+                            }
+                        });
+                    }
+                })
+                .catch(() => {
+                    thumbContainer.innerHTML = '<span class="text-xs text-red-400">Nepodařilo se načíst další snímky.</span>';
+                });
+        }
+
+        function vytvorNahled(src, mainImgTarget) {
+            const thumbContainer = document.getElementById('modal-thumbnails');
+            const imgBtn = document.createElement('img');
+            imgBtn.src = src;
+            imgBtn.className = "w-16 h-16 rounded-lg object-cover border-2 border-transparent hover:border-amber-400 cursor-pointer flex-shrink-0 transition";
+            imgBtn.onclick = () => mainImgTarget.src = src;
+            thumbContainer.appendChild(imgBtn);
+        }
+
+        function zavriGalerii() {
+            document.getElementById('gallery-modal').classList.add('hidden');
+        }
+
+        window.onclick = function(event) {
+            const modal = document.getElementById('gallery-modal');
+            if (event.target === modal) {
+                zavriGalerii();
+            }
+        }
+
+        aplikujFiltry();
     </script>
 </body>
 </html>

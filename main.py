@@ -1,53 +1,60 @@
-from fastapi import FastAPI, Request
-from fastapi.responses import HTMLResponse
-from fastapi.staticfiles import StaticFiles
+import sqlite3
+from fastapi import FastAPI, Request, Form
+from fastapi.responses import HTMLResponse, RedirectResponse
 from fastapi.templating import Jinja2Templates
 
 app = FastAPI(title="Lovci Hradů API")
-
-# Nastavení šablon pro HTML
 templates = Jinja2Templates(directory="templates")
 
-# Testovací databáze hradů a zámků (v budoucnu nahradíš skutečnou SQL databází)
-HRADY_DATA = [
-    {
-        "id": 1,
-        "nazev": "Hrad Karlštejn",
-        "popis": "Monumentální gotický hrad založený Karlem IV. Ideální cíl na víkendový vlakový výlet z Prahy.",
-        "kraj": "Středočeský",
-        "typ": "hrad",
-        "tagy": ["Top místo", "Historie"],
-        "lat": 49.9391,
-        "lng": 14.1883
-    },
-    {
-        "id": 2,
-        "nazev": "Zřícenina hradu Trosky",
-        "popis": "Ikonická dominanta Českého ráje se dvěma věžemi jménem Panna a Baba. Úžasný výhled do okolí.",
-        "kraj": "Liberecký",
-        "typ": "zricenina",
-        "tagy": ["V lese", "Výhled"],
-        "lat": 50.5163,
-        "lng": 15.2307
-    },
-    {
-        "id": 3,
-        "nazev": "Zámek Lednice",
-        "popis": "Pohádkový novogotický zámek obklopený jedním z největších zámeckých parků v Evropě.",
-        "kraj": "Jihomoravský",
-        "typ": "zamek",
-        "tagy": ["Pro kočárky", "Zahrada"],
-        "lat": 48.8001,
-        "lng": 16.8041
-    }
-]
+# Funkce pro připojení k databázi
+def get_db_connection():
+    conn = sqlite3.connect("databaze.db")
+    conn.row_factory = sqlite3.Row
+    return conn
 
-# 1. Hlavní routa pro webový prohlížeč (Zobrazí web)
+# 1. HLAVNÍ STRÁNKA - Načítá data živě z SQL databáze
 @app.get("/", response_class=HTMLResponse)
 async def read_root(request: Request):
-   return templates.TemplateResponse(request, "index.html", {"hrady": HRADY_DATA})
+    conn = get_db_connection()
+    # Vytáhneme všechny památky seřazené podle abecedy
+    hrady_z_db = conn.execute("SELECT * FROM pamatky ORDER BY nazev ASC").fetchall()
+    conn.close()
+    
+    # NOVÝ ZÁPIS PRO MODERNÍ FASTAPI: request jde jako první, pak název šablony, pak data
+    return templates.TemplateResponse(request, "index.html", {"hrady": hrady_z_db})
 
-# 2. API Endpoit pro mobilní aplikaci (Vrací čistá data v JSON)
+# 2. FORMULÁŘ - Ukládá nová místa od lidí TRVALE do databáze
+# 2. FORMULÁŘ - Ukládá nová místa od lidí TRVALE do databáze
+@app.post("/pridat")
+async def pridat_misto(
+    nazev: str = Form(...),
+    kraj: str = Form(...),
+    typ: str = Form(...),
+    popis: str = Form(...),
+    lat: float = Form(...),
+    lng: float = Form(...),
+    foto_url: str = Form(None)  # Nový nepovinný parametr
+):
+    # Pokud uživatel nevyplní fotku, dáme tam výchozí siluetu hradu
+    if not foto_url:
+        foto_url = "https://images.unsplash.com/photo-1500835556837-99ac94a94552?w=500&q=80"
+        
+    conn = get_db_connection()
+    conn.execute("""
+        INSERT INTO pamatky (nazev, typ, kraj, popis, lat, lng, foto_url)
+        VALUES (?, ?, ?, ?, ?, ?, ?)
+    """, (nazev, typ, kraj, popis, lat, lng, foto_url))
+    conn.commit()
+    conn.close()
+    
+    return RedirectResponse(url="/", status_code=303)
+# 3. API - Vrací čistá data z DB
+# 3. API - Vrací čistá data z DB
 @app.get("/api/hrady")
 async def get_hrady_api():
-    return HRADY_DATA
+    conn = get_db_connection()
+    hrady_z_db = conn.execute("SELECT * FROM pamatky").fetchall()
+    conn.close()
+    
+    # BEZPEČNÝ ZÁPIS: Ručně vytáhneme klíče a hodnoty z každého SQL řádku
+    return [{key: row[key] for key in row.keys()} for row in hrady_z_db]
