@@ -37,12 +37,56 @@
         </div>
     </section>
 
-    <div class="max-w-7xl mx-auto px-6 mt-8 flex flex-wrap gap-2 items-center justify-center lg:justify-start">
-        <span class="text-xs font-bold text-gray-400 uppercase tracking-wide mr-2">Rychlé filtry:</span>
-        <button onclick="zmenTypFiltru('vse')" id="btn-vse" class="bg-amber-500 text-gray-950 text-xs font-bold px-4 py-2 rounded-full shadow transition">Všechny 🌐</button>
-        <button onclick="zmenTypFiltru('hrad')" id="btn-hrad" class="bg-white hover:bg-gray-100 text-gray-700 text-xs font-bold px-4 py-2 rounded-full shadow border border-gray-200 transition">Hrady 🏰</button>
-        <button onclick="zmenTypFiltru('zamek')" id="btn-zamek" class="bg-white hover:bg-gray-100 text-gray-700 text-xs font-bold px-4 py-2 rounded-full shadow border border-gray-200 transition">Zámky 👑</button>
-        <button onclick="zmenTypFiltru('zricenina')" id="btn-zricenina" class="bg-white hover:bg-gray-100 text-gray-700 text-xs font-bold px-4 py-2 rounded-full shadow border border-gray-200 transition">Zříceniny 🌲</button>
+    <!-- FILTRY -->
+    <div class="max-w-7xl mx-auto px-6 mt-8">
+        <!-- Rychlé filtry typu -->
+        <div class="flex flex-wrap gap-2 items-center justify-center lg:justify-start mb-4">
+            <span class="text-xs font-bold text-gray-400 uppercase tracking-wide mr-2">Typ:</span>
+            <button onclick="zmenTypFiltru('vse')" id="btn-vse" class="bg-amber-500 text-gray-950 text-xs font-bold px-4 py-2 rounded-full shadow transition">Všechny 🌐</button>
+            <button onclick="zmenTypFiltru('hrad')" id="btn-hrad" class="bg-white hover:bg-gray-100 text-gray-700 text-xs font-bold px-4 py-2 rounded-full shadow border border-gray-200 transition">Hrady 🏰</button>
+            <button onclick="zmenTypFiltru('zamek')" id="btn-zamek" class="bg-white hover:bg-gray-100 text-gray-700 text-xs font-bold px-4 py-2 rounded-full shadow border border-gray-200 transition">Zámky 👑</button>
+            <button onclick="zmenTypFiltru('zricenina')" id="btn-zricenina" class="bg-white hover:bg-gray-100 text-gray-700 text-xs font-bold px-4 py-2 rounded-full shadow border border-gray-200 transition">Zříceniny 🌲</button>
+        </div>
+
+        <!-- Filtry kraj, dostupnost -->
+        <div class="flex flex-wrap gap-4 items-center justify-center lg:justify-start bg-white p-4 rounded-lg border border-gray-200 shadow-sm">
+            <!-- Výběr Kraju -->
+            <div class="flex items-center gap-2">
+                <label class="text-xs font-bold text-gray-600 uppercase">📍 Kraj:</label>
+                <select id="kraj-select" onchange="aplikujFiltry()" class="bg-gray-50 border border-gray-300 rounded-lg px-3 py-2 text-sm outline-none focus:border-amber-400">
+                    <option value="">Všechny kraje</option>
+                    <option value="Jihočeský">Jihočeský</option>
+                    <option value="Jihomoravský">Jihomoravský</option>
+                    <option value="Karlovarský">Karlovarský</option>
+                    <option value="Královéhradecký">Královéhradecký</option>
+                    <option value="Liberecký">Liberecký</option>
+                    <option value="Moravskoslezský">Moravskoslezský</option>
+                    <option value="Olomoucký">Olomoucký</option>
+                    <option value="Pardubický">Pardubický</option>
+                    <option value="Plzeňský">Plzeňský</option>
+                    <option value="Praha">Praha</option>
+                    <option value="Středočeský">Středočeský</option>
+                    <option value="Ústecký">Ústecký</option>
+                    <option value="Vysočina">Vysočina</option>
+                    <option value="Zlínský">Zlínský</option>
+                </select>
+            </div>
+
+            <!-- Dostupnost Autem -->
+            <div class="flex items-center gap-2">
+                <input type="checkbox" id="auto-checkbox" onchange="aplikujFiltry()" class="w-4 h-4 text-amber-500 rounded cursor-pointer">
+                <label for="auto-checkbox" class="text-xs font-bold text-gray-600 uppercase cursor-pointer">🚗 Autem</label>
+            </div>
+
+            <!-- Dostupnost s Kočárkem -->
+            <div class="flex items-center gap-2">
+                <input type="checkbox" id="kocárek-checkbox" onchange="aplikujFiltry()" class="w-4 h-4 text-amber-500 rounded cursor-pointer">
+                <label for="kocárek-checkbox" class="text-xs font-bold text-gray-600 uppercase cursor-pointer">👶 Kočárek</label>
+            </div>
+
+            <!-- Reset Filtrů -->
+            <button onclick="resetFiltry()" class="bg-gray-300 hover:bg-gray-400 text-gray-900 text-xs font-bold px-3 py-2 rounded transition ml-auto">🔄 Resetovat</button>
+        </div>
     </div>
 
     <main class="max-w-7xl mx-auto px-4 lg:px-6 grid grid-cols-1 lg:grid-cols-3 gap-6 my-6">
@@ -57,9 +101,12 @@
             
             <div class="overflow-y-auto max-h-[440px] pr-2 space-y-3" id="hrady-list">
                 {% for hrad in hrady %}
-                <div class="flex items-center gap-4 p-3 border border-gray-100 rounded-xl bg-gray-50 hover:bg-amber-50/40 hover:border-amber-200 transition duration-200 cursor-pointer hrad-karta shadow-sm" 
+                <div class="flex items-center gap-4 p-3 border border-gray-100 rounded-xl bg-gray-50 hover:bg-amber-50/40 hover:border-amber-200 transition duration-200 cursor-pointer hrad-karta"
                      data-nazev="{{ hrad.nazev|lower }}" 
                      data-typ="{{ hrad.typ }}"
+                     data-kraj="{{ hrad.kraj if hrad.kraj else 'Česko' }}"
+                     data-auto="{{ hrad.dostupny_auto }}"
+                     data-kocárek="{{ hrad.dostupny_kocárek }}"
                      onclick="focusOnMap({{ hrad.lat }}, {{ hrad.lng }}, '{{ hrad.nazev }}')">
                     
                     <div class="w-14 h-14 rounded-full overflow-hidden flex-shrink-0 border border-gray-200 shadow-inner group relative"
@@ -73,9 +120,15 @@
                     <div class="flex-1 min-w-0">
                         <h3 class="font-bold text-gray-900 text-sm truncate">{{ hrad.nazev }}</h3>
                         <p class="hidden">{{ hrad.popis }}</p> 
-                        <div class="flex gap-1.5 mt-1">
+                        <div class="flex gap-1.5 mt-1 flex-wrap">
                             <span class="bg-gray-200 text-gray-700 text-[9px] font-extrabold px-1.5 py-0.5 rounded uppercase tracking-wider">{{ hrad.typ }}</span>
                             <span class="bg-amber-100 text-amber-800 text-[9px] font-extrabold px-1.5 py-0.5 rounded truncate">{{ hrad.kraj if hrad.kraj else 'Česko' }}</span>
+                            {% if hrad.dostupny_auto %}
+                            <span class="bg-blue-100 text-blue-800 text-[9px] font-extrabold px-1.5 py-0.5 rounded">🚗</span>
+                            {% endif %}
+                            {% if hrad.dostupny_kocárek %}
+                            <span class="bg-pink-100 text-pink-800 text-[9px] font-extrabold px-1.5 py-0.5 rounded">👶</span>
+                            {% endif %}
                         </div>
                     </div>
                 </div>  
@@ -86,7 +139,7 @@
 
     <div id="gallery-modal" class="fixed inset-0 bg-black/80 hidden z-50 flex items-center justify-center p-4 backdrop-blur-sm">
         <div class="bg-white rounded-2xl max-w-2xl w-full overflow-hidden shadow-2xl relative animate-in fade-in zoom-in duration-200">
-            <button onclick="zavriGalerii()" class="absolute top-4 right-4 bg-black/60 hover:bg-black text-white rounded-full w-8 h-8 flex items-center justify-center text-lg font-bold transition z-10 cursor-pointer">✕</button>
+            <button onclick="zavriGalerii()" class="absolute top-4 right-4 bg-black/60 hover:bg-black text-white rounded-full w-8 h-8 flex items-center justify-center text-lg font-bold transition">✕</button>
             
             <div class="w-full h-64 md:h-80 bg-gray-950 relative">
                 <img id="modal-main-img" src="" class="w-full h-full object-cover" alt="Detail památky">
@@ -119,7 +172,7 @@
                 </div>
                 <div>
                     <label class="block text-xs font-bold text-gray-700 uppercase mb-1">URL adresa fotografie (nepovinné)</label>
-                    <input type="url" name="foto_url" placeholder="https://odkaz-na-obrazek.cz/foto.jpg" class="w-full bg-gray-50 border border-gray-300 rounded-lg px-3 py-2 text-sm outline-none focus:border-amber-400 focus:bg-white transition">
+                    <input type="url" name="foto_url" placeholder="https://odkaz-na-obrazek.cz/foto.jpg" class="w-full bg-gray-50 border border-gray-300 rounded-lg px-3 py-2 text-sm outline-none focus:border-amber-400 focus:bg-white transition md:col-span-2">
                 </div>
                 <div>
                     <label class="block text-xs font-bold text-gray-700 uppercase mb-1">Typ</label>
@@ -141,8 +194,21 @@
                 </div>
                 <div class="md:col-span-2">
                     <label class="block text-xs font-bold text-gray-700 uppercase mb-1">Krátký popis</label>
-                    <textarea name="popis" rows="3" required placeholder="Napište pár vět o historii..." class="w-full bg-gray-50 border border-gray-300 rounded-lg px-3 py-2 text-sm outline-none focus:border-amber-400 focus:bg-white transition"></textarea>
+                    <textarea name="popis" rows="3" required placeholder="Napište pár vět o historii..." class="w-full bg-gray-50 border border-gray-300 rounded-lg px-3 py-2 text-sm outline-none focus:border-amber-400 focus:bg-white transition resize-none"></textarea>
                 </div>
+                
+                <!-- Checkboxy pro dostupnost -->
+                <div class="md:col-span-2 flex gap-6 items-center">
+                    <label class="flex items-center gap-2 cursor-pointer">
+                        <input type="checkbox" name="dostupny_auto" class="w-4 h-4 text-amber-500 rounded cursor-pointer">
+                        <span class="text-sm font-bold text-gray-700 uppercase">🚗 Dostupný autem</span>
+                    </label>
+                    <label class="flex items-center gap-2 cursor-pointer">
+                        <input type="checkbox" name="dostupny_kocárek" class="w-4 h-4 text-amber-500 rounded cursor-pointer">
+                        <span class="text-sm font-bold text-gray-700 uppercase">👶 Dostupný s kočárkem</span>
+                    </label>
+                </div>
+
                 <div class="md:col-span-2 mt-2">
                     <button type="submit" class="w-full bg-amber-500 hover:bg-amber-600 text-gray-950 font-bold py-2.5 rounded-lg text-sm shadow-md transition">Odeslat a přidat do mapy 🚀</button>
                 </div>
@@ -188,7 +254,9 @@
             kraj: "{{ hrad.kraj if hrad.kraj else 'Česko' }}",
             foto_url: "{{ hrad.foto_url if hrad.foto_url else 'https://images.unsplash.com/photo-1500835556837-99ac94a94552?w=500&q=80' }}",
             lat: {{ hrad.lat }},
-            lng: {{ hrad.lng }}
+            lng: {{ hrad.lng }},
+            dostupny_auto: {{ hrad.dostupny_auto|default(0)|int }},
+            dostupny_kocárek: {{ hrad.dostupny_kocárek|default(0)|int }}
         });
         {% endfor %}
 
@@ -239,6 +307,10 @@
             let vyhledavanyText = document.getElementById('search-input').value.toLowerCase().trim();
             vyhledavanyText = vyhledavanyText.replace(" kraj", "").trim();
             
+            const vybranyKraj = document.getElementById('kraj-select').value;
+            const filtrAutoem = document.getElementById('auto-checkbox').checked;
+            const filtrKocárek = document.getElementById('kocárek-checkbox').checked;
+            
             const karty = document.getElementsByClassName('hrad-karta');
             
             aktivniMarkery.forEach(marker => map.removeLayer(marker));
@@ -253,7 +325,14 @@
                 const odpovidaKraji = hrad.kraj.toLowerCase().includes(vyhledavanyText);
                 const odpovidaTextu = odpovidaNazvu || odpovidaKraji;
 
-                if (odpovidaTypu && odpovidaTextu) {
+                // Filtrování podle vybraného kraju
+                const odpovidaVybranyCraj = !vybranyKraj || hrad.kraj === vybranyKraj;
+
+                // Filtrování podle dostupnosti
+                const dostupnyAutoem = !filtrAutoem || hrad.dostupny_auto === 1;
+                const dostupnyKocárek = !filtrKocárek || hrad.dostupny_kocárek === 1;
+
+                if (odpovidaTypu && odpovidaTextu && odpovidaVybranyCraj && dostupnyAutoem && dostupnyKocárek) {
                     karty[index].style.display = "flex";
                     viditelnePamatkyPocet++;
 
@@ -279,6 +358,16 @@
             });
 
             document.getElementById('stats-counter').innerText = viditelnePamatkyPocet;
+        }
+
+        function resetFiltry() {
+            document.getElementById('search-input').value = '';
+            document.getElementById('kraj-select').value = '';
+            document.getElementById('auto-checkbox').checked = false;
+            document.getElementById('kocárek-checkbox').checked = false;
+            aktualniTypFiltru = 'vse';
+            zmenTypFiltru('vse');
+            aplikujFiltry();
         }
 
         let docasnyFormMarker = null;
@@ -364,7 +453,7 @@
 
             document.getElementById('gallery-modal').classList.remove('hidden');
 
-            const searchUrl = `https://commons.wikimedia.org/w/api.php?action=query&format=json&origin=*&prop=pageimages&generator=search&gsrsearch=${encodeURIComponent(nazev)}&gsrnamespace=6&pithumbsize=400&gsrlimit=6`;
+            const searchUrl = `https://commons.wikimedia.org/w/api.php?action=query&format=json&origin=*&prop=pageimages&generator=search&gsrsearch=${encodeURIComponent(nazev)}&gsrnamespace=6&pithumbsize=100`;
 
             fetch(searchUrl)
                 .then(res => res.json())
