@@ -24,7 +24,6 @@ async def read_root(request: Request):
     return templates.TemplateResponse(request, "index.html", {"hrady": hrady_z_db})
 
 # 2. FORMULÁŘ - Ukládá nová místa od lidí TRVALE do databáze
-# 2. FORMULÁŘ - Ukládá nová místa od lidí TRVALE do databáze
 @app.post("/pridat")
 async def pridat_misto(
     nazev: str = Form(...),
@@ -33,7 +32,9 @@ async def pridat_misto(
     popis: str = Form(...),
     lat: float = Form(...),
     lng: float = Form(...),
-    foto_url: str = Form(None)  # Nový nepovinný parametr
+    foto_url: str = Form(None),  # Nový nepovinný parametr
+    dostupny_auto: bool = Form(False),
+    dostupny_kocárek: bool = Form(False)
 ):
     # Pokud uživatel nevyplní fotku, dáme tam výchozí siluetu hradu
     if not foto_url:
@@ -41,19 +42,42 @@ async def pridat_misto(
         
     conn = get_db_connection()
     conn.execute("""
-        INSERT INTO pamatky (nazev, typ, kraj, popis, lat, lng, foto_url)
-        VALUES (?, ?, ?, ?, ?, ?, ?)
-    """, (nazev, typ, kraj, popis, lat, lng, foto_url))
+        INSERT INTO pamatky (nazev, typ, kraj, popis, lat, lng, foto_url, dostupny_auto, dostupny_kocárek)
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
+    """, (nazev, typ, kraj, popis, lat, lng, foto_url, dostupny_auto, dostupny_kocárek))
     conn.commit()
     conn.close()
     
     return RedirectResponse(url="/", status_code=303)
-# 3. API - Vrací čistá data z DB
-# 3. API - Vrací čistá data z DB
+
+# 3. API - Vrací čistá data z DB s filtrováním
 @app.get("/api/hrady")
-async def get_hrady_api():
+async def get_hrady_api(
+    kraj: str = None,
+    dostupny_auto: bool = None,
+    dostupny_kocárek: bool = None
+):
     conn = get_db_connection()
-    hrady_z_db = conn.execute("SELECT * FROM pamatky").fetchall()
+    
+    query = "SELECT * FROM pamatky WHERE 1=1"
+    params = []
+    
+    # Filtrování podle kraju
+    if kraj and kraj != "Česko":
+        query += " AND kraj = ?"
+        params.append(kraj)
+    
+    # Filtrování podle dostupnosti autem
+    if dostupny_auto:
+        query += " AND dostupny_auto = 1"
+    
+    # Filtrování podle dostupnosti s kočárkem
+    if dostupny_kocárek:
+        query += " AND dostupny_kocárek = 1"
+    
+    query += " ORDER BY nazev ASC"
+    
+    hrady_z_db = conn.execute(query, params).fetchall()
     conn.close()
     
     # BEZPEČNÝ ZÁPIS: Ručně vytáhneme klíče a hodnoty z každého SQL řádku
