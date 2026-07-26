@@ -1,1649 +1,1962 @@
 [
     {
-        "id": 1,
-        "nazev": "Hrad Šternberk",
-        "typ": "hrad",
-        "kraj": "Olomoucký",
-        "popis": "Historický hrad Hrad Šternberk. Data importována z OpenStreetMap.",
-        "lat": 49.73308,
-        "lng": 17.30186
-    },
-    {
-        "id": 2,
-        "nazev": "Hluboký",
-        "typ": "zricenina",
-        "kraj": "Olomoucký",
-        "popis": "Historický zricenina Hluboký. Data importována z OpenStreetMap.",
-        "lat": 49.66821,
-        "lng": 17.43
-    },
-    {
-        "id": 3,
-        "nazev": "Zámek Úsov",
-        "typ": "zamek",
-        "kraj": "Olomoucký",
-        "popis": "Historický zamek Zámek Úsov. Data importována z OpenStreetMap.",
-        "lat": 49.799,
-        "lng": 17.01445
-    },
-    {
-        "id": 4,
-        "nazev": "Hrad Bouzov",
-        "typ": "zricenina",
-        "kraj": "Olomoucký",
-        "popis": "Historický zricenina Hrad Bouzov. Data importována z OpenStreetMap.",
-        "lat": 49.7051,
-        "lng": 16.88948
-    },
-    {
-        "id": 5,
-        "nazev": "Mírov",
-        "typ": "hrad",
-        "kraj": "Olomoucký",
-        "popis": "Historický hrad Mírov. Data importována z OpenStreetMap.",
-        "lat": 49.79638,
-        "lng": 16.84635
-    },
-    {
-        "id": 6,
-        "nazev": "Jestřebí",
-        "typ": "zricenina",
-        "kraj": "Ústecký",
-        "popis": "Historický zricenina Jestřebí. Data importována z OpenStreetMap.",
-        "lat": 50.61195,
-        "lng": 14.58077
-    },
-    {
-        "id": 7,
-        "nazev": "Pernštejn",
-        "typ": "hrad",
-        "kraj": "Vysočina",
-        "popis": "Historický hrad Pernštejn. Data importována z OpenStreetMap.",
-        "lat": 49.45086,
-        "lng": 16.31837
-    },
-    {
-        "id": 8,
-        "nazev": "Žacléř",
-        "typ": "hrad",
-        "kraj": "Královéhradecký",
-        "popis": "Historický hrad Žacléř. Data importována z OpenStreetMap.",
-        "lat": 50.64985,
-        "lng": 15.9039
-    },
-    {
-        "id": 9,
-        "nazev": "zámek Bílá Lhota",
-        "typ": "zamek",
-        "kraj": "Olomoucký",
-        "popis": "Historický zamek zámek Bílá Lhota. Data importována z OpenStreetMap.",
-        "lat": 49.70948,
-        "lng": 16.97649
-    },
-    {
-        "id": 10,
-        "nazev": "Středověký hrad Náměšť",
-        "typ": "zricenina",
-        "kraj": "Olomoucký",
-        "popis": "Historický zricenina Středověký hrad Náměšť. Data importována z OpenStreetMap.",
-        "lat": 49.60051,
-        "lng": 17.0623
-    },
-    {
-        "id": 11,
-        "nazev": "Zdechovice",
-        "typ": "hrad",
-        "kraj": "Středočeský",
-        "popis": "Historický hrad Zdechovice. Data importována z OpenStreetMap.",
-        "lat": 50.01372,
-        "lng": 15.46943
-    },
-    {
-        "id": 12,
-        "nazev": "Zámek Medlešice",
-        "typ": "zamek",
-        "kraj": "Středočeský",
-        "popis": "Historický zamek Zámek Medlešice. Data importována z OpenStreetMap.",
-        "lat": 49.97866,
-        "lng": 15.76852
-    },
-    {
-        "id": 13,
-        "nazev": "Zámek Skalka",
-        "typ": "zamek",
-        "kraj": "Královéhradecký",
-        "popis": "Historický zamek Zámek Skalka. Data importována z OpenStreetMap.",
-        "lat": 50.26341,
-        "lng": 16.21323
-    },
-    {
-        "id": 14,
-        "nazev": "zámek Kvasiny",
-        "typ": "zamek",
-        "kraj": "Královéhradecký",
-        "popis": "Historický zamek zámek Kvasiny. Data importována z OpenStreetMap.",
-        "lat": 50.20679,
-        "lng": 16.25071
-    },
-    {
-        "id": 15,
-        "nazev": "Zámek Černíkovice",
-        "typ": "zamek",
-        "kraj": "Královéhradecký",
-        "popis": "Historický zamek Zámek Černíkovice. Data importována z OpenStreetMap.",
-        "lat": 50.18831,
-        "lng": 16.2143
-    },
-    {
-        "id": 16,
-        "nazev": "bývalá tvrz Tuklaty",
-        "typ": "zricenina",
-        "kraj": "Středočeský",
-        "popis": "Historický zricenina bývalá tvrz Tuklaty. Data importována z OpenStreetMap.",
-        "lat": 50.086,
-        "lng": 14.76791
-    },
-    {
-        "id": 17,
-        "nazev": "Zámek Častolovice",
-        "typ": "zamek",
-        "kraj": "Královéhradecký",
-        "popis": "Historický zamek Zámek Častolovice. Data importována z OpenStreetMap.",
-        "lat": 50.13077,
-        "lng": 16.18701
-    },
-    {
-        "id": 18,
-        "nazev": "Nový zámek",
-        "typ": "zamek",
-        "kraj": "Královéhradecký",
-        "popis": "Historický zamek Nový zámek. Data importována z OpenStreetMap.",
-        "lat": 50.12263,
-        "lng": 16.19975
-    },
-    {
-        "id": 19,
-        "nazev": "Zámek Horní Jelení",
-        "typ": "zamek",
-        "kraj": "Královéhradecký",
-        "popis": "Historický zamek Zámek Horní Jelení. Data importována z OpenStreetMap.",
-        "lat": 50.04924,
-        "lng": 16.0876
-    },
-    {
-        "id": 20,
-        "nazev": "Zámek Přestavlky",
-        "typ": "zamek",
-        "kraj": "Královéhradecký",
-        "popis": "Historický zamek Zámek Přestavlky. Data importována z OpenStreetMap.",
-        "lat": 50.06941,
-        "lng": 16.23193
-    },
-    {
-        "id": 21,
-        "nazev": "zřícenina Košumberk",
-        "typ": "zricenina",
-        "kraj": "Pardubický",
-        "popis": "Historický zricenina zřícenina Košumberk. Data importována z OpenStreetMap.",
-        "lat": 49.88414,
-        "lng": 16.0345
-    },
-    {
-        "id": 22,
-        "nazev": "Zámek",
-        "typ": "zamek",
-        "kraj": "Česko",
-        "popis": "Historický zamek Zámek. Data importována z OpenStreetMap.",
-        "lat": 49.36879,
-        "lng": 14.96427
-    },
-    {
-        "id": 23,
-        "nazev": "Újezd",
-        "typ": "zricenina",
-        "kraj": "Vysočina",
-        "popis": "Historický zricenina Újezd. Data importována z OpenStreetMap.",
-        "lat": 49.36797,
-        "lng": 16.32115
-    },
-    {
-        "id": 24,
-        "nazev": "zámek Staré Hrady",
-        "typ": "zamek",
-        "kraj": "Středočeský",
-        "popis": "Historický zamek zámek Staré Hrady. Data importována z OpenStreetMap.",
-        "lat": 50.38657,
-        "lng": 15.21382
-    },
-    {
-        "id": 25,
-        "nazev": "zámek Vlčí Pole",
-        "typ": "zamek",
-        "kraj": "Středočeský",
-        "popis": "Historický zamek zámek Vlčí Pole. Data importována z OpenStreetMap.",
-        "lat": 50.41406,
-        "lng": 15.13835
-    },
-    {
-        "id": 26,
-        "nazev": "Hrad Nové Hrady",
-        "typ": "hrad",
-        "kraj": "Jihočeský",
-        "popis": "Historický hrad Hrad Nové Hrady. Data importována z OpenStreetMap.",
-        "lat": 48.78938,
-        "lng": 14.77471
-    },
-    {
-        "id": 27,
-        "nazev": "Pařez",
-        "typ": "zricenina",
-        "kraj": "Středočeský",
-        "popis": "Historický zricenina Pařez. Data importována z OpenStreetMap.",
-        "lat": 50.47748,
-        "lng": 15.27585
-    },
-    {
-        "id": 28,
-        "nazev": "Zámek Stárkov",
-        "typ": "zamek",
-        "kraj": "Královéhradecký",
-        "popis": "Historický zamek Zámek Stárkov. Data importována z OpenStreetMap.",
-        "lat": 50.53351,
-        "lng": 16.15954
-    },
-    {
-        "id": 29,
-        "nazev": "Zámek Dolní Přím",
-        "typ": "zamek",
-        "kraj": "Středočeský",
-        "popis": "Historický zamek Zámek Dolní Přím. Data importována z OpenStreetMap.",
-        "lat": 50.23924,
-        "lng": 15.70562
-    },
-    {
-        "id": 30,
-        "nazev": "Zámek Stračov",
-        "typ": "zamek",
-        "kraj": "Středočeský",
-        "popis": "Historický zamek Zámek Stračov. Data importována z OpenStreetMap.",
-        "lat": 50.3013,
-        "lng": 15.64077
-    },
-    {
-        "id": 31,
-        "nazev": "Kolowrat",
-        "typ": "hrad",
-        "kraj": "Královéhradecký",
-        "popis": "Historický hrad Kolowrat. Data importována z OpenStreetMap.",
-        "lat": 50.16647,
-        "lng": 16.27579
-    },
-    {
-        "id": 32,
-        "nazev": "Moravské Budějovice",
-        "typ": "hrad",
-        "kraj": "Vysočina",
-        "popis": "Historický hrad Moravské Budějovice. Data importována z OpenStreetMap.",
-        "lat": 49.05184,
-        "lng": 15.80882
-    },
-    {
-        "id": 33,
-        "nazev": "Maleš",
-        "typ": "zricenina",
-        "kraj": "Středočeský",
-        "popis": "Historický zricenina Maleš. Data importována z OpenStreetMap.",
-        "lat": 50.30644,
-        "lng": 13.18912
-    },
-    {
-        "id": 34,
-        "nazev": "Zámek Dobrohošť",
-        "typ": "zamek",
-        "kraj": "Středočeský",
-        "popis": "Historický zamek Zámek Dobrohošť. Data importována z OpenStreetMap.",
-        "lat": 49.62748,
-        "lng": 14.52435
-    },
-    {
-        "id": 35,
-        "nazev": "Rýzmberk",
-        "typ": "zricenina",
-        "kraj": "Plzeňský",
-        "popis": "Historický zricenina Rýzmberk. Data importována z OpenStreetMap.",
-        "lat": 49.40702,
-        "lng": 13.03103
-    },
-    {
-        "id": 36,
-        "nazev": "Nový Herštjen",
-        "typ": "zricenina",
-        "kraj": "Plzeňský",
-        "popis": "Historický zricenina Nový Herštjen. Data importována z OpenStreetMap.",
-        "lat": 49.41479,
-        "lng": 13.06566
-    },
-    {
-        "id": 37,
-        "nazev": "Zřícenina vodní tvrze",
-        "typ": "zricenina",
-        "kraj": "Středočeský",
-        "popis": "Historický zricenina Zřícenina vodní tvrze. Data importována z OpenStreetMap.",
-        "lat": 49.61218,
-        "lng": 14.63128
-    },
-    {
-        "id": 38,
-        "nazev": "Dobrš",
-        "typ": "hrad",
-        "kraj": "Jihočeský",
-        "popis": "Historický hrad Dobrš. Data importována z OpenStreetMap.",
-        "lat": 49.1551,
-        "lng": 13.75158
-    },
-    {
-        "id": 39,
-        "nazev": "Janštejn",
-        "typ": "zricenina",
-        "kraj": "Jihočeský",
-        "popis": "Historický zricenina Janštejn. Data importována z OpenStreetMap.",
-        "lat": 49.27245,
-        "lng": 15.34421
-    },
-    {
-        "id": 40,
-        "nazev": "Hrad Rychmburk",
-        "typ": "hrad",
-        "kraj": "Pardubický",
-        "popis": "Historický hrad Hrad Rychmburk. Data importována z OpenStreetMap.",
-        "lat": 49.83586,
-        "lng": 16.04298
-    },
-    {
-        "id": 41,
-        "nazev": "Zkamenělý zámek",
-        "typ": "zricenina",
-        "kraj": "Středočeský",
-        "popis": "Historický zricenina Zkamenělý zámek. Data importována z OpenStreetMap.",
-        "lat": 50.48046,
-        "lng": 14.61765
-    },
-    {
-        "id": 42,
-        "nazev": "Zámek Benešov nad Ploučnicí",
-        "typ": "zamek",
-        "kraj": "Ústecký",
-        "popis": "Historický zamek Zámek Benešov nad Ploučnicí. Data importována z OpenStreetMap.",
-        "lat": 50.74231,
-        "lng": 14.31089
-    },
-    {
-        "id": 43,
-        "nazev": "Zámek Svinaře",
-        "typ": "zamek",
-        "kraj": "Středočeský",
-        "popis": "Historický zamek Zámek Svinaře. Data importována z OpenStreetMap.",
-        "lat": 49.89385,
-        "lng": 14.18363
-    },
-    {
-        "id": 44,
-        "nazev": "Vildštejn",
-        "typ": "zricenina",
-        "kraj": "Středočeský",
-        "popis": "Historický zricenina Vildštejn. Data importována z OpenStreetMap.",
-        "lat": 49.83687,
-        "lng": 15.65373
-    },
-    {
-        "id": 45,
-        "nazev": "Oheb",
-        "typ": "zricenina",
-        "kraj": "Středočeský",
-        "popis": "Historický zricenina Oheb. Data importována z OpenStreetMap.",
-        "lat": 49.83378,
-        "lng": 15.65352
-    },
-    {
-        "id": 46,
-        "nazev": "Schloss Witkowitz",
-        "typ": "hrad",
-        "kraj": "Olomoucký",
-        "popis": "Historický hrad Schloss Witkowitz. Data importována z OpenStreetMap.",
-        "lat": 49.81722,
-        "lng": 18.27222
-    },
-    {
-        "id": 47,
-        "nazev": "Zámek Hradištko",
-        "typ": "zamek",
-        "kraj": "Středočeský",
-        "popis": "Historický zamek Zámek Hradištko. Data importována z OpenStreetMap.",
-        "lat": 49.86738,
-        "lng": 14.41039
-    },
-    {
-        "id": 48,
-        "nazev": "Starý Plumlov",
-        "typ": "zricenina",
+        "nazev": "Buchlov",
         "kraj": "Jihomoravský",
-        "popis": "Historický zricenina Starý Plumlov. Data importována z OpenStreetMap.",
-        "lat": 49.44265,
-        "lng": 16.92967
+        "lat": 49.1075,
+        "lon": 17.31083333,
+        "foto": "http://commons.wikimedia.org/wiki/Special:FilePath/The%20Buchlov%20Castle.jpg",
+        "auto": 1,
+        "kocarek": 0,
+        "typ": "hrad"
     },
     {
-        "id": 49,
-        "nazev": "Blansek",
-        "typ": "zricenina",
-        "kraj": "Vysočina",
-        "popis": "Historický zricenina Blansek. Data importována z OpenStreetMap.",
-        "lat": 49.37116,
-        "lng": 16.72269
-    },
-    {
-        "id": 50,
-        "nazev": "Džbán",
-        "typ": "zricenina",
-        "kraj": "Jihočeský",
-        "popis": "Historický zricenina Džbán. Data importována z OpenStreetMap.",
-        "lat": 49.2931,
-        "lng": 13.58574
-    },
-    {
-        "id": 51,
-        "nazev": "Sedlecký hrad",
-        "typ": "zricenina",
-        "kraj": "Vysočina",
-        "popis": "Historický zricenina Sedlecký hrad. Data importována z OpenStreetMap.",
-        "lat": 49.16665,
-        "lng": 16.17073
-    },
-    {
-        "id": 52,
-        "nazev": "Rychvald",
-        "typ": "zricenina",
-        "kraj": "Vysočina",
-        "popis": "Historický zricenina Rychvald. Data importována z OpenStreetMap.",
-        "lat": 49.45817,
-        "lng": 16.51178
-    },
-    {
-        "id": 53,
-        "nazev": "Osiky",
-        "typ": "zricenina",
-        "kraj": "Vysočina",
-        "popis": "Historický zricenina Osiky. Data importována z OpenStreetMap.",
-        "lat": 49.44359,
-        "lng": 16.42464
-    },
-    {
-        "id": 54,
-        "nazev": "Ježův hrad",
-        "typ": "zricenina",
-        "kraj": "Jihomoravský",
-        "popis": "Historický zricenina Ježův hrad. Data importována z OpenStreetMap.",
-        "lat": 49.47897,
-        "lng": 16.94421
-    },
-    {
-        "id": 55,
-        "nazev": "zřícenina hradu Výrov",
-        "typ": "zricenina",
-        "kraj": "Královéhradecký",
-        "popis": "Historický zricenina zřícenina hradu Výrov. Data importována z OpenStreetMap.",
-        "lat": 50.3409,
-        "lng": 16.15936
-    },
-    {
-        "id": 56,
-        "nazev": "Zámek Polná",
-        "typ": "zamek",
-        "kraj": "Středočeský",
-        "popis": "Historický zamek Zámek Polná. Data importována z OpenStreetMap.",
-        "lat": 49.48735,
-        "lng": 15.71418
-    },
-    {
-        "id": 57,
-        "nazev": "Rysov",
-        "typ": "zricenina",
-        "kraj": "Vysočina",
-        "popis": "Historický zricenina Rysov. Data importována z OpenStreetMap.",
-        "lat": 49.38832,
-        "lng": 16.30775
-    },
-    {
-        "id": 58,
-        "nazev": "zámek Dobřejovice",
-        "typ": "zamek",
-        "kraj": "Středočeský",
-        "popis": "Historický zamek zámek Dobřejovice. Data importována z OpenStreetMap.",
-        "lat": 49.98251,
-        "lng": 14.5792
-    },
-    {
-        "id": 59,
-        "nazev": "Zámek Žerotínů",
-        "typ": "zamek",
-        "kraj": "Olomoucký",
-        "popis": "Historický zamek Zámek Žerotínů. Data importována z OpenStreetMap.",
-        "lat": 49.47159,
-        "lng": 17.96915
-    },
-    {
-        "id": 60,
-        "nazev": "Luhov",
-        "typ": "hrad",
-        "kraj": "Středočeský",
-        "popis": "Historický hrad Luhov. Data importována z OpenStreetMap.",
-        "lat": 49.81359,
-        "lng": 13.14426
-    },
-    {
-        "id": 61,
-        "nazev": "Curia Vitkov",
-        "typ": "hrad",
-        "kraj": "Česko",
-        "popis": "Historický hrad Curia Vitkov. Data importována z OpenStreetMap.",
-        "lat": 50.85718,
-        "lng": 14.97903
-    },
-    {
-        "id": 62,
-        "nazev": "Zámek Šumbark",
-        "typ": "zamek",
-        "kraj": "Olomoucký",
-        "popis": "Historický zamek Zámek Šumbark. Data importována z OpenStreetMap.",
-        "lat": 49.78732,
-        "lng": 18.4151
-    },
-    {
-        "id": 63,
-        "nazev": "Zámek ve Frýdku-Místku, Muzeum Beskyd",
-        "typ": "zamek",
-        "kraj": "Olomoucký",
-        "popis": "Historický zamek Zámek ve Frýdku-Místku, Muzeum Beskyd. Data importována z OpenStreetMap.",
-        "lat": 49.68588,
-        "lng": 18.34633
-    },
-    {
-        "id": 64,
-        "nazev": "Zámek Olešovice",
-        "typ": "zamek",
-        "kraj": "Středočeský",
-        "popis": "Historický zamek Zámek Olešovice. Data importována z OpenStreetMap.",
-        "lat": 49.90527,
-        "lng": 14.58949
-    },
-    {
-        "id": 65,
-        "nazev": "zámek Pohled",
-        "typ": "zamek",
-        "kraj": "Středočeský",
-        "popis": "Historický zamek zámek Pohled. Data importována z OpenStreetMap.",
-        "lat": 49.60392,
-        "lng": 15.65046
-    },
-    {
-        "id": 66,
-        "nazev": "Zámek Litomyšl",
-        "typ": "zamek",
-        "kraj": "Pardubický",
-        "popis": "Historický zamek Zámek Litomyšl. Data importována z OpenStreetMap.",
-        "lat": 49.87332,
-        "lng": 16.31275
-    },
-    {
-        "id": 67,
-        "nazev": "Rýzmburk",
-        "typ": "zricenina",
-        "kraj": "Ústecký",
-        "popis": "Historický zricenina Rýzmburk. Data importována z OpenStreetMap.",
-        "lat": 50.63354,
-        "lng": 13.66492
-    },
-    {
-        "id": 68,
-        "nazev": "Zámek Rychvald",
-        "typ": "zamek",
-        "kraj": "Olomoucký",
-        "popis": "Historický zamek Zámek Rychvald. Data importována z OpenStreetMap.",
-        "lat": 49.86487,
-        "lng": 18.35186
-    },
-    {
-        "id": 69,
-        "nazev": "Krásný Buk",
-        "typ": "zricenina",
-        "kraj": "Ústecký",
-        "popis": "Historický zricenina Krásný Buk. Data importována z OpenStreetMap.",
-        "lat": 50.92072,
-        "lng": 14.48353
-    },
-    {
-        "id": 70,
-        "nazev": "Chebský hrad",
-        "typ": "hrad",
-        "kraj": "Plzeňský",
-        "popis": "Historický hrad Chebský hrad. Data importována z OpenStreetMap.",
-        "lat": 50.08125,
-        "lng": 12.36609
-    },
-    {
-        "id": 71,
-        "nazev": "Falkenštejn",
-        "typ": "zricenina",
-        "kraj": "Ústecký",
-        "popis": "Historický zricenina Falkenštejn. Data importována z OpenStreetMap.",
-        "lat": 50.85483,
-        "lng": 14.40544
-    },
-    {
-        "id": 72,
-        "nazev": "Bělá pod Bezdězem",
-        "typ": "hrad",
-        "kraj": "Liberecký",
-        "popis": "Historický hrad Bělá pod Bezdězem. Data importována z OpenStreetMap.",
-        "lat": 50.50134,
-        "lng": 14.80783
-    },
-    {
-        "id": 73,
-        "nazev": "Jevín",
-        "typ": "zricenina",
-        "kraj": "Středočeský",
-        "popis": "Historický zricenina Jevín. Data importována z OpenStreetMap.",
-        "lat": 50.34534,
-        "lng": 14.33395
-    },
-    {
-        "id": 74,
-        "nazev": "Prácheň",
-        "typ": "zricenina",
-        "kraj": "Plzeňský",
-        "popis": "Historický zricenina Prácheň. Data importována z OpenStreetMap.",
-        "lat": 49.31589,
-        "lng": 13.6815
-    },
-    {
-        "id": 75,
-        "nazev": "Jaroměřice",
-        "typ": "hrad",
-        "kraj": "Pardubický",
-        "popis": "Historický hrad Jaroměřice. Data importována z OpenStreetMap.",
-        "lat": 49.62704,
-        "lng": 16.75437
-    },
-    {
-        "id": 76,
-        "nazev": "Zámek Doksy",
-        "typ": "zamek",
-        "kraj": "Ústecký",
-        "popis": "Historický zamek Zámek Doksy. Data importována z OpenStreetMap.",
-        "lat": 50.5648,
-        "lng": 14.65262
-    },
-    {
-        "id": 77,
-        "nazev": "Bukovina",
-        "typ": "zricenina",
-        "kraj": "Vysočina",
-        "popis": "Historický zricenina Bukovina. Data importována z OpenStreetMap.",
-        "lat": 49.00212,
-        "lng": 15.93084
-    },
-    {
-        "id": 78,
-        "nazev": "Tvrz Zvíkov",
-        "typ": "hrad",
-        "kraj": "Jihočeský",
-        "popis": "Historický hrad Tvrz Zvíkov. Data importována z OpenStreetMap.",
-        "lat": 48.98054,
-        "lng": 14.61827
-    },
-    {
-        "id": 79,
-        "nazev": "bývalá tvrz Dešenice",
-        "typ": "hrad",
-        "kraj": "Jihočeský",
-        "popis": "Historický hrad bývalá tvrz Dešenice. Data importována z OpenStreetMap.",
-        "lat": 49.27443,
-        "lng": 13.17234
-    },
-    {
-        "id": 80,
-        "nazev": "Husitská bašta",
-        "typ": "hrad",
-        "kraj": "Ústecký",
-        "popis": "Historický hrad Husitská bašta. Data importována z OpenStreetMap.",
-        "lat": 50.54724,
-        "lng": 13.77269
-    },
-    {
-        "id": 81,
-        "nazev": "Loket",
-        "typ": "hrad",
-        "kraj": "Plzeňský",
-        "popis": "Historický hrad Loket. Data importována z OpenStreetMap.",
-        "lat": 50.18712,
-        "lng": 12.75428
-    },
-    {
-        "id": 82,
-        "nazev": "Zámek Blatná",
-        "typ": "zamek",
-        "kraj": "Středočeský",
-        "popis": "Historický zamek Zámek Blatná. Data importována z OpenStreetMap.",
-        "lat": 49.42276,
-        "lng": 13.87957
-    },
-    {
-        "id": 83,
-        "nazev": "zámek Nebřenice",
-        "typ": "zamek",
-        "kraj": "Středočeský",
-        "popis": "Historický zamek zámek Nebřenice. Data importována z OpenStreetMap.",
-        "lat": 49.94428,
-        "lng": 14.60577
-    },
-    {
-        "id": 84,
-        "nazev": "Kyšperk",
-        "typ": "hrad",
-        "kraj": "Ústecký",
-        "popis": "Historický hrad Kyšperk. Data importována z OpenStreetMap.",
-        "lat": 50.69566,
-        "lng": 13.88952
-    },
-    {
-        "id": 85,
-        "nazev": "tvrz Starý dvůr",
-        "typ": "zricenina",
-        "kraj": "Ústecký",
-        "popis": "Historický zricenina tvrz Starý dvůr. Data importována z OpenStreetMap.",
-        "lat": 50.68266,
-        "lng": 13.86629
-    },
-    {
-        "id": 86,
-        "nazev": "Chudý hrádek",
-        "typ": "zricenina",
-        "kraj": "Ústecký",
-        "popis": "Historický zricenina Chudý hrádek. Data importována z OpenStreetMap.",
-        "lat": 50.58949,
-        "lng": 14.50742
-    },
-    {
-        "id": 87,
-        "nazev": "Drštka",
-        "typ": "zricenina",
-        "kraj": "Středočeský",
-        "popis": "Historický zricenina Drštka. Data importována z OpenStreetMap.",
-        "lat": 49.66813,
-        "lng": 13.70991
-    },
-    {
-        "id": 88,
-        "nazev": "Trvz Radomilice",
-        "typ": "hrad",
-        "kraj": "Jihočeský",
-        "popis": "Historický hrad Trvz Radomilice. Data importována z OpenStreetMap.",
-        "lat": 49.12439,
-        "lng": 14.26012
-    },
-    {
-        "id": 89,
-        "nazev": "zámek Hukovice",
-        "typ": "zamek",
-        "kraj": "Olomoucký",
-        "popis": "Historický zamek zámek Hukovice. Data importována z OpenStreetMap.",
-        "lat": 49.65105,
-        "lng": 18.02158
-    },
-    {
-        "id": 90,
-        "nazev": "Zámek Dolní Lutyně",
-        "typ": "zamek",
-        "kraj": "Olomoucký",
-        "popis": "Historický zamek Zámek Dolní Lutyně. Data importována z OpenStreetMap.",
-        "lat": 49.90119,
-        "lng": 18.43083
-    },
-    {
-        "id": 91,
-        "nazev": "Rozhledna Zámeček",
-        "typ": "hrad",
-        "kraj": "Plzeňský",
-        "popis": "Historický hrad Rozhledna Zámeček. Data importována z OpenStreetMap.",
-        "lat": 50.11976,
-        "lng": 12.36811
-    },
-    {
-        "id": 92,
-        "nazev": "Levnov (zřícenina)",
-        "typ": "zricenina",
-        "kraj": "Vysočina",
-        "popis": "Historický zricenina Levnov (zřícenina). Data importována z OpenStreetMap.",
-        "lat": 49.13918,
-        "lng": 16.24059
-    },
-    {
-        "id": 93,
-        "nazev": "Zámek Rokytnice",
-        "typ": "zamek",
-        "kraj": "Jihomoravský",
-        "popis": "Historický zamek Zámek Rokytnice. Data importována z OpenStreetMap.",
-        "lat": 49.46713,
-        "lng": 17.39252
-    },
-    {
-        "id": 94,
-        "nazev": "Bašta",
-        "typ": "zricenina",
-        "kraj": "Vysočina",
-        "popis": "Historický zricenina Bašta. Data importována z OpenStreetMap.",
-        "lat": 49.48209,
-        "lng": 16.65777
-    },
-    {
-        "id": 95,
-        "nazev": "Červenice",
-        "typ": "zricenina",
-        "kraj": "Středočeský",
-        "popis": "Historický zricenina Červenice. Data importována z OpenStreetMap.",
-        "lat": 49.81214,
-        "lng": 15.51196
-    },
-    {
-        "id": 96,
-        "nazev": "Tvrziště Oráčov",
-        "typ": "zricenina",
-        "kraj": "Středočeský",
-        "popis": "Historický zricenina Tvrziště Oráčov. Data importována z OpenStreetMap.",
-        "lat": 50.10263,
-        "lng": 13.53711
-    },
-    {
-        "id": 97,
-        "nazev": "Durana - hradiště",
-        "typ": "zricenina",
-        "kraj": "Pardubický",
-        "popis": "Historický zricenina Durana - hradiště. Data importována z OpenStreetMap.",
-        "lat": 49.59116,
-        "lng": 16.78177
-    },
-    {
-        "id": 98,
-        "nazev": "Zámek Budišov",
-        "typ": "zamek",
-        "kraj": "Vysočina",
-        "popis": "Historický zamek Zámek Budišov. Data importována z OpenStreetMap.",
-        "lat": 49.27546,
-        "lng": 16.01269
-    },
-    {
-        "id": 99,
-        "nazev": "‎Zřícenina hradu Chřenovice",
-        "typ": "zricenina",
-        "kraj": "Středočeský",
-        "popis": "Historický zricenina ‎Zřícenina hradu Chřenovice. Data importována z OpenStreetMap.",
-        "lat": 49.70837,
-        "lng": 15.23547
-    },
-    {
-        "id": 100,
-        "nazev": "Hrádek Kunzov",
-        "typ": "hrad",
-        "kraj": "Olomoucký",
-        "popis": "Historický hrad Hrádek Kunzov. Data importována z OpenStreetMap.",
-        "lat": 49.58526,
-        "lng": 17.68874
-    },
-    {
-        "id": 101,
-        "nazev": "Ivanovice na Hané",
-        "typ": "hrad",
-        "kraj": "Jihomoravský",
-        "popis": "Historický hrad Ivanovice na Hané. Data importována z OpenStreetMap.",
-        "lat": 49.30503,
-        "lng": 17.09525
-    },
-    {
-        "id": 102,
-        "nazev": "Chvalkovice na Hané",
-        "typ": "hrad",
-        "kraj": "Jihomoravský",
-        "popis": "Historický hrad Chvalkovice na Hané. Data importována z OpenStreetMap.",
-        "lat": 49.31943,
-        "lng": 17.11556
-    },
-    {
-        "id": 103,
-        "nazev": "Plankenberk",
-        "typ": "zricenina",
-        "kraj": "Pardubický",
-        "popis": "Historický zricenina Plankenberk. Data importována z OpenStreetMap.",
-        "lat": 49.64753,
-        "lng": 16.78304
-    },
-    {
-        "id": 104,
-        "nazev": "Zámek Dalešice",
-        "typ": "zamek",
-        "kraj": "Vysočina",
-        "popis": "Historický zamek Zámek Dalešice. Data importována z OpenStreetMap.",
-        "lat": 49.12743,
-        "lng": 16.07873
-    },
-    {
-        "id": 105,
-        "nazev": "Zámek Přerov",
-        "typ": "zamek",
-        "kraj": "Jihomoravský",
-        "popis": "Historický zamek Zámek Přerov. Data importována z OpenStreetMap.",
-        "lat": 49.4553,
-        "lng": 17.45097
-    },
-    {
-        "id": 106,
-        "nazev": "Tvrz Vranová Lhota",
-        "typ": "hrad",
-        "kraj": "Olomoucký",
-        "popis": "Historický hrad Tvrz Vranová Lhota. Data importována z OpenStreetMap.",
-        "lat": 49.71107,
-        "lng": 16.82702
-    },
-    {
-        "id": 107,
-        "nazev": "Vraní Hora",
-        "typ": "zricenina",
-        "kraj": "Olomoucký",
-        "popis": "Historický zricenina Vraní Hora. Data importována z OpenStreetMap.",
-        "lat": 49.7161,
-        "lng": 16.8102
-    },
-    {
-        "id": 108,
-        "nazev": "zámek Markvartice",
-        "typ": "zamek",
-        "kraj": "Ústecký",
-        "popis": "Historický zamek zámek Markvartice. Data importována z OpenStreetMap.",
-        "lat": 50.77136,
-        "lng": 14.35209
-    },
-    {
-        "id": 109,
-        "nazev": "Větrov",
-        "typ": "zricenina",
-        "kraj": "Česko",
-        "popis": "Historický zricenina Větrov. Data importována z OpenStreetMap.",
-        "lat": 50.81418,
-        "lng": 14.79589
-    },
-    {
-        "id": 110,
-        "nazev": "tvrz Mrač",
-        "typ": "hrad",
-        "kraj": "Středočeský",
-        "popis": "Historický hrad tvrz Mrač. Data importována z OpenStreetMap.",
-        "lat": 49.83258,
-        "lng": 14.70121
-    },
-    {
-        "id": 111,
-        "nazev": "Nový Šaumburk (Zubříč)",
-        "typ": "zricenina",
-        "kraj": "Olomoucký",
-        "popis": "Historický zricenina Nový Šaumburk (Zubříč). Data importována z OpenStreetMap.",
-        "lat": 49.41661,
-        "lng": 17.79854
-    },
-    {
-        "id": 112,
-        "nazev": "Stohánek",
-        "typ": "zricenina",
-        "kraj": "Liberecký",
-        "popis": "Historický zricenina Stohánek. Data importována z OpenStreetMap.",
-        "lat": 50.67425,
-        "lng": 14.84292
-    },
-    {
-        "id": 113,
-        "nazev": "Branka",
-        "typ": "zricenina",
-        "kraj": "Olomoucký",
-        "popis": "Historický zricenina Branka. Data importována z OpenStreetMap.",
-        "lat": 49.6674,
-        "lng": 16.90371
-    },
-    {
-        "id": 114,
-        "nazev": "Kunžvart",
-        "typ": "hrad",
-        "kraj": "Jihočeský",
-        "popis": "Historický hrad Kunžvart. Data importována z OpenStreetMap.",
-        "lat": 48.92096,
-        "lng": 13.70939
-    },
-    {
-        "id": 115,
-        "nazev": "Smilkovský zámek",
-        "typ": "zamek",
-        "kraj": "Středočeský",
-        "popis": "Historický zamek Smilkovský zámek. Data importována z OpenStreetMap.",
-        "lat": 49.60302,
-        "lng": 14.62054
-    },
-    {
-        "id": 116,
-        "nazev": "Víckov",
-        "typ": "zricenina",
-        "kraj": "Vysočina",
-        "popis": "Historický zricenina Víckov. Data importována z OpenStreetMap.",
-        "lat": 49.39729,
-        "lng": 16.27205
-    },
-    {
-        "id": 117,
-        "nazev": "Talmberk - zřícenina/ ruins",
-        "typ": "zricenina",
-        "kraj": "Středočeský",
-        "popis": "Historický zricenina Talmberk - zřícenina/ ruins. Data importována z OpenStreetMap.",
-        "lat": 49.86724,
-        "lng": 14.95581
-    },
-    {
-        "id": 118,
-        "nazev": "Zámek Komařice",
-        "typ": "zamek",
-        "kraj": "Jihočeský",
-        "popis": "Historický zamek Zámek Komařice. Data importována z OpenStreetMap.",
-        "lat": 48.87785,
-        "lng": 14.54519
-    },
-    {
-        "id": 119,
-        "nazev": "Zámek Římov",
-        "typ": "zamek",
-        "kraj": "Jihočeský",
-        "popis": "Historický zamek Zámek Římov. Data importována z OpenStreetMap.",
-        "lat": 48.85661,
-        "lng": 14.48929
-    },
-    {
-        "id": 120,
-        "nazev": "Zámek Postoloprty",
-        "typ": "zamek",
-        "kraj": "Středočeský",
-        "popis": "Historický zamek Zámek Postoloprty. Data importována z OpenStreetMap.",
-        "lat": 50.35908,
-        "lng": 13.70143
-    },
-    {
-        "id": 121,
-        "nazev": "Zbyny",
-        "typ": "zricenina",
-        "kraj": "Liberecký",
-        "popis": "Historický zricenina Zbyny. Data importována z OpenStreetMap.",
-        "lat": 50.6392,
-        "lng": 14.82744
-    },
-    {
-        "id": 122,
-        "nazev": "Zámek Kostomlaty pod Milešovkou",
-        "typ": "zamek",
-        "kraj": "Ústecký",
-        "popis": "Historický zamek Zámek Kostomlaty pod Milešovkou. Data importována z OpenStreetMap.",
-        "lat": 50.56197,
-        "lng": 13.87179
-    },
-    {
-        "id": 123,
-        "nazev": "zřícenina hradu Rabštejn nad Střelou",
-        "typ": "zricenina",
-        "kraj": "Středočeský",
-        "popis": "Historický zricenina zřícenina hradu Rabštejn nad Střelou. Data importována z OpenStreetMap.",
-        "lat": 50.04226,
-        "lng": 13.29027
-    },
-    {
-        "id": 124,
-        "nazev": "Zámek Štěkeň",
-        "typ": "zamek",
-        "kraj": "Jihočeský",
-        "popis": "Historický zamek Zámek Štěkeň. Data importována z OpenStreetMap.",
-        "lat": 49.26738,
-        "lng": 14.00314
-    },
-    {
-        "id": 125,
-        "nazev": "Zámek Rudolfov",
-        "typ": "zamek",
-        "kraj": "Jihočeský",
-        "popis": "Historický zamek Zámek Rudolfov. Data importována z OpenStreetMap.",
-        "lat": 48.99264,
-        "lng": 14.53529
-    },
-    {
-        "id": 126,
-        "nazev": "zámek Česká Kamenice",
-        "typ": "zamek",
-        "kraj": "Ústecký",
-        "popis": "Historický zamek zámek Česká Kamenice. Data importována z OpenStreetMap.",
-        "lat": 50.79854,
-        "lng": 14.41645
-    },
-    {
-        "id": 127,
-        "nazev": "Salhausenovský dům",
-        "typ": "hrad",
-        "kraj": "Ústecký",
-        "popis": "Historický hrad Salhausenovský dům. Data importována z OpenStreetMap.",
-        "lat": 50.79992,
-        "lng": 14.41276
-    },
-    {
-        "id": 128,
-        "nazev": "Dolní Štěpanice",
-        "typ": "hrad",
-        "kraj": "Liberecký",
-        "popis": "Historický hrad Dolní Štěpanice. Data importována z OpenStreetMap.",
-        "lat": 50.63972,
-        "lng": 15.53999
-    },
-    {
-        "id": 129,
-        "nazev": "Zámek Doubravice (nepříst.)",
-        "typ": "zamek",
-        "kraj": "Jihočeský",
-        "popis": "Historický zamek Zámek Doubravice (nepříst.). Data importována z OpenStreetMap.",
-        "lat": 48.93539,
-        "lng": 14.50993
-    },
-    {
-        "id": 130,
-        "nazev": "Starý Hrozňatov",
-        "typ": "hrad",
-        "kraj": "Plzeňský",
-        "popis": "Historický hrad Starý Hrozňatov. Data importována z OpenStreetMap.",
-        "lat": 50.02404,
-        "lng": 12.3907
-    },
-    {
-        "id": 131,
-        "nazev": "Zámek Rokytnice v Orlických horách",
-        "typ": "zamek",
-        "kraj": "Královéhradecký",
-        "popis": "Historický zamek Zámek Rokytnice v Orlických horách. Data importována z OpenStreetMap.",
-        "lat": 50.1655,
-        "lng": 16.46439
-    },
-    {
-        "id": 132,
-        "nazev": "Strálek",
-        "typ": "zricenina",
-        "kraj": "Olomoucký",
-        "popis": "Historický zricenina Strálek. Data importována z OpenStreetMap.",
-        "lat": 49.90873,
-        "lng": 17.25499
-    },
-    {
-        "id": 133,
-        "nazev": "Vísky",
-        "typ": "hrad",
-        "kraj": "Středočeský",
-        "popis": "Historický hrad Vísky. Data importována z OpenStreetMap.",
-        "lat": 49.85774,
-        "lng": 13.33536
-    },
-    {
-        "id": 134,
-        "nazev": "Zdíkův palác",
-        "typ": "zricenina",
-        "kraj": "Olomoucký",
-        "popis": "Historický zricenina Zdíkův palác. Data importována z OpenStreetMap.",
-        "lat": 49.59801,
-        "lng": 17.26236
-    },
-    {
-        "id": 135,
-        "nazev": "Červený Újezd",
-        "typ": "hrad",
-        "kraj": "Středočeský",
-        "popis": "Historický hrad Červený Újezd. Data importována z OpenStreetMap.",
-        "lat": 50.07206,
-        "lng": 14.16534
-    },
-    {
-        "id": 136,
-        "nazev": "Zámek Trmice",
-        "typ": "zamek",
-        "kraj": "Ústecký",
-        "popis": "Historický zamek Zámek Trmice. Data importována z OpenStreetMap.",
-        "lat": 50.64235,
-        "lng": 13.99181
-    },
-    {
-        "id": 137,
-        "nazev": "Hrad Pěčín",
-        "typ": "hrad",
-        "kraj": "Královéhradecký",
-        "popis": "Historický hrad Hrad Pěčín. Data importována z OpenStreetMap.",
-        "lat": 50.16217,
-        "lng": 16.39845
-    },
-    {
-        "id": 138,
-        "nazev": "Zámek Branišovice",
-        "typ": "zamek",
-        "kraj": "Jihomoravský",
-        "popis": "Historický zamek Zámek Branišovice. Data importována z OpenStreetMap.",
-        "lat": 48.96039,
-        "lng": 16.42915
-    },
-    {
-        "id": 139,
-        "nazev": "Lísek",
-        "typ": "zricenina",
-        "kraj": "Vysočina",
-        "popis": "Historický zricenina Lísek. Data importována z OpenStreetMap.",
-        "lat": 49.44343,
-        "lng": 16.23301
-    },
-    {
-        "id": 140,
-        "nazev": "Hus - zřícenina",
-        "typ": "zricenina",
-        "kraj": "Jihočeský",
-        "popis": "Historický zricenina Hus - zřícenina. Data importována z OpenStreetMap.",
-        "lat": 48.95755,
-        "lng": 13.92922
-    },
-    {
-        "id": 141,
-        "nazev": "Hradisko Kněževes",
-        "typ": "zricenina",
-        "kraj": "Pardubický",
-        "popis": "Historický zricenina Hradisko Kněževes. Data importována z OpenStreetMap.",
-        "lat": 49.59715,
-        "lng": 16.42026
-    },
-    {
-        "id": 142,
-        "nazev": "Hradiště",
-        "typ": "zricenina",
-        "kraj": "Pardubický",
-        "popis": "Historický zricenina Hradiště. Data importována z OpenStreetMap.",
-        "lat": 49.67221,
-        "lng": 16.78533
-    },
-    {
-        "id": 143,
-        "nazev": "Pražský Hrad",
-        "typ": "hrad",
-        "kraj": "Praha",
-        "popis": "Historický hrad Pražský Hrad. Data importována z OpenStreetMap.",
-        "lat": 50.09124,
-        "lng": 14.40377
-    },
-    {
-        "id": 144,
-        "nazev": "Zámek Horní Chlum",
-        "typ": "zamek",
-        "kraj": "Jihočeský",
-        "popis": "Historický zamek Zámek Horní Chlum. Data importována z OpenStreetMap.",
-        "lat": 49.18955,
-        "lng": 13.44259
-    },
-    {
-        "id": 145,
-        "nazev": "Zámek Dolejší Těšov",
-        "typ": "zamek",
-        "kraj": "Jihočeský",
-        "popis": "Historický zamek Zámek Dolejší Těšov. Data importována z OpenStreetMap.",
-        "lat": 49.18833,
-        "lng": 13.42814
-    },
-    {
-        "id": 146,
-        "nazev": "Tvrz Svojšice",
-        "typ": "zamek",
-        "kraj": "Jihočeský",
-        "popis": "Historický zamek Tvrz Svojšice. Data importována z OpenStreetMap.",
-        "lat": 49.24344,
-        "lng": 13.45192
-    },
-    {
-        "id": 147,
-        "nazev": "Zámek Mokrosuky",
-        "typ": "zamek",
-        "kraj": "Jihočeský",
-        "popis": "Historický zamek Zámek Mokrosuky. Data importována z OpenStreetMap.",
-        "lat": 49.27542,
-        "lng": 13.45534
-    },
-    {
-        "id": 148,
-        "nazev": "Zámek Mačice",
-        "typ": "zamek",
-        "kraj": "Jihočeský",
-        "popis": "Historický zamek Zámek Mačice. Data importována z OpenStreetMap.",
-        "lat": 49.22621,
-        "lng": 13.67797
-    },
-    {
-        "id": 149,
-        "nazev": "Tvrz Hvížďalka",
-        "typ": "zamek",
-        "kraj": "Jihočeský",
-        "popis": "Historický zamek Tvrz Hvížďalka. Data importována z OpenStreetMap.",
-        "lat": 49.27058,
-        "lng": 13.7179
-    },
-    {
-        "id": 150,
-        "nazev": "Zámek Nový Čestín",
-        "typ": "zamek",
-        "kraj": "Plzeňský",
-        "popis": "Historický zamek Zámek Nový Čestín. Data importována z OpenStreetMap.",
-        "lat": 49.3605,
-        "lng": 13.36845
-    },
-    {
-        "id": 151,
-        "nazev": "Zámek Štoky",
-        "typ": "zamek",
-        "kraj": "Středočeský",
-        "popis": "Historický zamek Zámek Štoky. Data importována z OpenStreetMap.",
-        "lat": 49.50195,
-        "lng": 15.58898
-    },
-    {
-        "id": 152,
-        "nazev": "Rešov",
-        "typ": "zricenina",
-        "kraj": "Olomoucký",
-        "popis": "Historický zricenina Rešov. Data importována z OpenStreetMap.",
-        "lat": 49.88712,
-        "lng": 17.20802
-    },
-    {
-        "id": 153,
-        "nazev": "Starý zámek Týnec",
-        "typ": "zamek",
-        "kraj": "Plzeňský",
-        "popis": "Historický zamek Starý zámek Týnec. Data importována z OpenStreetMap.",
-        "lat": 49.34622,
-        "lng": 13.26439
-    },
-    {
-        "id": 154,
-        "nazev": "Zámek Týnec",
-        "typ": "zamek",
-        "kraj": "Plzeňský",
-        "popis": "Historický zamek Zámek Týnec. Data importována z OpenStreetMap.",
-        "lat": 49.34649,
-        "lng": 13.26345
-    },
-    {
-        "id": 155,
-        "nazev": "Zámek Malonice",
-        "typ": "zamek",
-        "kraj": "Jihočeský",
-        "popis": "Historický zamek Zámek Malonice. Data importována z OpenStreetMap.",
-        "lat": 49.28989,
-        "lng": 13.37806
-    },
-    {
-        "id": 156,
-        "nazev": "Horky nad Jizerou",
-        "typ": "hrad",
-        "kraj": "Středočeský",
-        "popis": "Historický hrad Horky nad Jizerou. Data importována z OpenStreetMap.",
-        "lat": 50.32722,
-        "lng": 14.85729
-    },
-    {
-        "id": 157,
-        "nazev": "Tvrz Mnich",
-        "typ": "hrad",
-        "kraj": "Jihočeský",
-        "popis": "Historický hrad Tvrz Mnich. Data importována z OpenStreetMap.",
-        "lat": 49.29774,
-        "lng": 14.96814
-    },
-    {
-        "id": 158,
-        "nazev": "Zámek Zlonice",
-        "typ": "zamek",
-        "kraj": "Středočeský",
-        "popis": "Historický zamek Zámek Zlonice. Data importována z OpenStreetMap.",
-        "lat": 50.2854,
-        "lng": 14.09331
-    },
-    {
-        "id": 159,
-        "nazev": "Zřícenina hradu Stejc",
-        "typ": "zricenina",
-        "kraj": "Středočeský",
-        "popis": "Historický zricenina Zřícenina hradu Stejc. Data importována z OpenStreetMap.",
-        "lat": 49.7219,
-        "lng": 14.55802
-    },
-    {
-        "id": 160,
-        "nazev": "základy zámečku Pepčín",
-        "typ": "zricenina",
-        "kraj": "Jihomoravský",
-        "popis": "Historický zricenina základy zámečku Pepčín. Data importována z OpenStreetMap.",
-        "lat": 49.02686,
-        "lng": 17.58712
-    },
-    {
-        "id": 161,
-        "nazev": "Hajany",
-        "typ": "zamek",
-        "kraj": "Vysočina",
-        "popis": "Historický zamek Hajany. Data importována z OpenStreetMap.",
-        "lat": 49.11157,
-        "lng": 16.55212
-    },
-    {
-        "id": 162,
-        "nazev": "bývalý zámek a dvůr Slavoňov",
-        "typ": "zamek",
-        "kraj": "Středočeský",
-        "popis": "Historický zamek bývalý zámek a dvůr Slavoňov. Data importována z OpenStreetMap.",
-        "lat": 49.51629,
-        "lng": 14.25205
-    },
-    {
-        "id": 163,
-        "nazev": "Vespice (zaniklá tvrz)",
-        "typ": "zricenina",
-        "kraj": "Středočeský",
-        "popis": "Historický zricenina Vespice (zaniklá tvrz). Data importována z OpenStreetMap.",
-        "lat": 49.52355,
-        "lng": 14.30447
-    },
-    {
-        "id": 164,
-        "nazev": "Hrad Kácov",
-        "typ": "zricenina",
-        "kraj": "Středočeský",
-        "popis": "Historický zricenina Hrad Kácov. Data importována z OpenStreetMap.",
-        "lat": 49.77192,
-        "lng": 15.009
-    },
-    {
-        "id": 165,
-        "nazev": "Kyšperk",
-        "typ": "zricenina",
-        "kraj": "Královéhradecký",
-        "popis": "Historický zricenina Kyšperk. Data importována z OpenStreetMap.",
-        "lat": 50.03265,
-        "lng": 16.49368
-    },
-    {
-        "id": 166,
-        "nazev": "zřícenina Kluk",
-        "typ": "zricenina",
-        "kraj": "Ústecký",
-        "popis": "Historický zricenina zřícenina Kluk. Data importována z OpenStreetMap.",
-        "lat": 50.51115,
-        "lng": 14.5764
-    },
-    {
-        "id": 167,
-        "nazev": "Tvrz Malešov",
-        "typ": "hrad",
-        "kraj": "Středočeský",
-        "popis": "Historický hrad Tvrz Malešov. Data importována z OpenStreetMap.",
-        "lat": 49.91105,
-        "lng": 15.22132
-    },
-    {
-        "id": 168,
-        "nazev": "Zámek Zboží",
-        "typ": "zamek",
-        "kraj": "Středočeský",
-        "popis": "Historický zamek Zámek Zboží. Data importována z OpenStreetMap.",
-        "lat": 49.71901,
-        "lng": 15.45699
-    },
-    {
-        "id": 169,
-        "nazev": "Zámek Habry",
-        "typ": "zamek",
-        "kraj": "Středočeský",
-        "popis": "Historický zamek Zámek Habry. Data importována z OpenStreetMap.",
-        "lat": 49.75561,
-        "lng": 15.48622
-    },
-    {
-        "id": 170,
-        "nazev": "Kalich",
-        "typ": "zricenina",
-        "kraj": "Ústecký",
-        "popis": "Historický zricenina Kalich. Data importována z OpenStreetMap.",
-        "lat": 50.60497,
-        "lng": 14.20653
-    },
-    {
-        "id": 171,
         "nazev": "Hasištejn",
-        "typ": "hrad",
         "kraj": "Středočeský",
-        "popis": "Historický hrad Hasištejn. Data importována z OpenStreetMap.",
-        "lat": 50.44515,
-        "lng": 13.25759
+        "lat": 50.44513889,
+        "lon": 13.25730556,
+        "foto": "http://commons.wikimedia.org/wiki/Special:FilePath/Hassenstein%20ueberblick.jpg",
+        "auto": 1,
+        "kocarek": 0,
+        "typ": "hrad"
     },
     {
-        "id": 172,
-        "nazev": "Ditrichštejnský palác",
-        "typ": "hrad",
-        "kraj": "Olomoucký",
-        "popis": "Historický hrad Ditrichštejnský palác. Data importována z OpenStreetMap.",
-        "lat": 49.59457,
-        "lng": 17.25166
-    },
-    {
-        "id": 173,
-        "nazev": "Zámek Tažovice",
-        "typ": "zamek",
-        "kraj": "Jihočeský",
-        "popis": "Historický zamek Zámek Tažovice. Data importována z OpenStreetMap.",
-        "lat": 49.23171,
-        "lng": 13.75961
-    },
-    {
-        "id": 174,
-        "nazev": "zámek Stěžery",
-        "typ": "zamek",
-        "kraj": "Středočeský",
-        "popis": "Historický zamek zámek Stěžery. Data importována z OpenStreetMap.",
-        "lat": 50.21525,
-        "lng": 15.74881
-    },
-    {
-        "id": 175,
-        "nazev": "bývalý zámek Sadová",
-        "typ": "zamek",
-        "kraj": "Středočeský",
-        "popis": "Historický zamek bývalý zámek Sadová. Data importována z OpenStreetMap.",
-        "lat": 50.29658,
-        "lng": 15.69868
-    },
-    {
-        "id": 176,
-        "nazev": "Zámek Vyškov",
-        "typ": "zamek",
-        "kraj": "Jihomoravský",
-        "popis": "Historický zamek Zámek Vyškov. Data importována z OpenStreetMap.",
-        "lat": 49.27664,
-        "lng": 16.99722
-    },
-    {
-        "id": 177,
-        "nazev": "Zamek Letohrad",
-        "typ": "hrad",
-        "kraj": "Královéhradecký",
-        "popis": "Historický hrad Zamek Letohrad. Data importována z OpenStreetMap.",
-        "lat": 50.03524,
-        "lng": 16.49972
-    },
-    {
-        "id": 178,
-        "nazev": "bývalý hrad Orlovice",
-        "typ": "zricenina",
-        "kraj": "Jihomoravský",
-        "popis": "Historický zricenina bývalý hrad Orlovice. Data importována z OpenStreetMap.",
-        "lat": 49.23713,
-        "lng": 17.08869
-    },
-    {
-        "id": 179,
-        "nazev": "Šumburk",
-        "typ": "zricenina",
-        "kraj": "Středočeský",
-        "popis": "Historický zricenina Šumburk. Data importována z OpenStreetMap.",
-        "lat": 50.37272,
-        "lng": 13.14693
-    },
-    {
-        "id": 180,
-        "nazev": "Rabštejn",
-        "typ": "zricenina",
+        "nazev": "Špilberk",
         "kraj": "Vysočina",
-        "popis": "Historický zricenina Rabštejn. Data importována z OpenStreetMap.",
-        "lat": 49.09703,
-        "lng": 16.1536
+        "lat": 49.194444,
+        "lon": 16.598889,
+        "foto": "http://commons.wikimedia.org/wiki/Special:FilePath/Hrad%20%C5%A0pilberk%20%28Brno%29%2C%20Brno%20-%20st%C5%99ed%20208%2C%20Brno.JPG",
+        "auto": 1,
+        "kocarek": 0,
+        "typ": "hrad"
     },
     {
-        "id": 181,
-        "nazev": "zámeček Klokočov",
-        "typ": "hrad",
+        "nazev": "zámek Lemberk",
+        "kraj": "Liberecký",
+        "lat": 50.77743611,
+        "lon": 14.78787778,
+        "foto": "http://commons.wikimedia.org/wiki/Special:FilePath/RD%20250928%20Z%C3%A1mek%20Lemberk.jpg",
+        "auto": 1,
+        "kocarek": 1,
+        "typ": "zamek"
+    },
+    {
+        "nazev": "Hradec nad Moravicí",
+        "kraj": "Olomoucký",
+        "lat": 49.863908,
+        "lon": 17.874773,
+        "foto": "http://commons.wikimedia.org/wiki/Special:FilePath/Hradec2%20396388-1382.jpg",
+        "auto": 1,
+        "kocarek": 0,
+        "typ": "hrad"
+    },
+    {
+        "nazev": "Vízmburk",
+        "kraj": "Královéhradecký",
+        "lat": 50.4847,
+        "lon": 16.0488,
+        "foto": "http://commons.wikimedia.org/wiki/Special:FilePath/V%C3%ADzmburk%200.JPG",
+        "auto": 1,
+        "kocarek": 0,
+        "typ": "hrad"
+    },
+    {
+        "nazev": "Veliš",
         "kraj": "Středočeský",
-        "popis": "Historický hrad zámeček Klokočov. Data importována z OpenStreetMap.",
-        "lat": 49.80666,
-        "lng": 15.66824
+        "lat": 50.41705278,
+        "lon": 15.31541389,
+        "foto": "http://commons.wikimedia.org/wiki/Special:FilePath/Veli%C5%A1%20od%20silnice.jpg",
+        "auto": 1,
+        "kocarek": 0,
+        "typ": "hrad"
     },
     {
-        "id": 182,
-        "nazev": "Městská spořitelna",
-        "typ": "hrad",
-        "kraj": "Karlovarský",
-        "popis": "Historický hrad Městská spořitelna. Data importována z OpenStreetMap.",
-        "lat": 50.22194,
-        "lng": 12.88307
+        "nazev": "Pražský hrad",
+        "kraj": "Praha",
+        "lat": 50.09,
+        "lon": 14.4,
+        "foto": "http://commons.wikimedia.org/wiki/Special:FilePath/Castillo%20de%20Praga%2C%20Praga%2C%20Rep%C3%BAblica%20Checa%2C%202022-07-02%2C%20DD%20209.jpg",
+        "auto": 1,
+        "kocarek": 0,
+        "typ": "hrad"
     },
     {
-        "id": 183,
-        "nazev": "Louka",
-        "typ": "zricenina",
+        "nazev": "zámek Kroměříž",
+        "kraj": "Jihomoravský",
+        "lat": 49.300277777,
+        "lon": 17.393055555,
+        "foto": "http://commons.wikimedia.org/wiki/Special:FilePath/Krom%C4%9B%C5%99%C3%AD%C5%BE%20z%C3%A1mek%201.jpg",
+        "auto": 1,
+        "kocarek": 1,
+        "typ": "zamek"
+    },
+    {
+        "nazev": "Libštejn",
+        "kraj": "Středočeský",
+        "lat": 49.90032222,
+        "lon": 13.54763611,
+        "foto": "http://commons.wikimedia.org/wiki/Special:FilePath/Libstejn-1.jpg",
+        "auto": 1,
+        "kocarek": 0,
+        "typ": "hrad"
+    },
+    {
+        "nazev": "Egerberk",
+        "kraj": "Středočeský",
+        "lat": 50.36724167,
+        "lon": 13.18471111,
+        "foto": "http://commons.wikimedia.org/wiki/Special:FilePath/Egerberk%202023-05-01%20Pal%C3%A1c.jpg",
+        "auto": 1,
+        "kocarek": 0,
+        "typ": "hrad"
+    },
+    {
+        "nazev": "Karlštejn",
+        "kraj": "Středočeský",
+        "lat": 49.93955,
+        "lon": 14.187933,
+        "foto": "http://commons.wikimedia.org/wiki/Special:FilePath/Burg%20Karlstein%20-%20Karl%C5%A1tejn%20-%20panoramio.jpg",
+        "auto": 1,
+        "kocarek": 0,
+        "typ": "hrad"
+    },
+    {
+        "nazev": "Křikava",
+        "kraj": "Středočeský",
+        "lat": 49.475,
+        "lon": 13.93833333,
+        "foto": "http://commons.wikimedia.org/wiki/Special:FilePath/K%C5%99ikava%201.jpg",
+        "auto": 1,
+        "kocarek": 0,
+        "typ": "hrad"
+    },
+    {
+        "nazev": "vodní hrad Švihov",
+        "kraj": "Středočeský",
+        "lat": 49.47877222,
+        "lon": 13.2849,
+        "foto": "http://commons.wikimedia.org/wiki/Special:FilePath/Svihov%20v%20zime%20%28cropped%29.JPG",
+        "auto": 1,
+        "kocarek": 0,
+        "typ": "hrad"
+    },
+    {
+        "nazev": "Rabí",
+        "kraj": "Jihočeský",
+        "lat": 49.27877778,
+        "lon": 13.61837222,
+        "foto": "http://commons.wikimedia.org/wiki/Special:FilePath/Rabi%20-%20east%20view%2001.jpg",
+        "auto": 0,
+        "kocarek": 0,
+        "typ": "zricenina"
+    },
+    {
+        "nazev": "Krakovec",
+        "kraj": "Středočeský",
+        "lat": 50.01716667,
+        "lon": 13.63936111,
+        "foto": "http://commons.wikimedia.org/wiki/Special:FilePath/Krakovec%20Castle%201.jpg",
+        "auto": 0,
+        "kocarek": 0,
+        "typ": "zricenina"
+    },
+    {
+        "nazev": "Landštejn",
+        "kraj": "Jihočeský",
+        "lat": 49.024,
+        "lon": 15.23,
+        "foto": "http://commons.wikimedia.org/wiki/Special:FilePath/Land%C5%A1tejn%2C%202013%20%2811%29.jpg",
+        "auto": 1,
+        "kocarek": 0,
+        "typ": "hrad"
+    },
+    {
+        "nazev": "Houska",
+        "kraj": "Středočeský",
+        "lat": 50.49100278,
+        "lon": 14.62421111,
+        "foto": "http://commons.wikimedia.org/wiki/Special:FilePath/Burg%20Houska.jpg",
+        "auto": 1,
+        "kocarek": 0,
+        "typ": "hrad"
+    },
+    {
+        "nazev": "Zámek Mikulov",
+        "kraj": "Jihomoravský",
+        "lat": 48.806818,
+        "lon": 16.636702,
+        "foto": "http://commons.wikimedia.org/wiki/Special:FilePath/Mikulov%20z%C3%A1mek%20od%20zahrad%202.jpg",
+        "auto": 1,
+        "kocarek": 1,
+        "typ": "zamek"
+    },
+    {
+        "nazev": "Hrubý Rohozec",
+        "kraj": "Liberecký",
+        "lat": 50.59777778,
+        "lon": 15.15666667,
+        "foto": "http://commons.wikimedia.org/wiki/Special:FilePath/Z%C3%A1mek%20Hrub%C3%BD%20Rohozec.jpg",
+        "auto": 1,
+        "kocarek": 0,
+        "typ": "hrad"
+    },
+    {
+        "nazev": "zámek Horšovský Týn",
+        "kraj": "Plzeňský",
+        "lat": 49.5293539,
+        "lon": 12.9423572,
+        "foto": "http://commons.wikimedia.org/wiki/Special:FilePath/Hor%C5%A1ovsk%C3%BD%20T%C3%BDn%202012-08-05%20N%C3%A1m%C4%9Bst%C3%AD%20se%20z%C3%A1mkem.jpg",
+        "auto": 1,
+        "kocarek": 1,
+        "typ": "zamek"
+    },
+    {
+        "nazev": "Jindřichův Hradec",
+        "kraj": "Jihočeský",
+        "lat": 49.142019,
+        "lon": 15.001462,
+        "foto": "http://commons.wikimedia.org/wiki/Special:FilePath/Jind%C5%99ich%C5%AFv%20Hradec%2C%202013%20%2814%29.jpg",
+        "auto": 1,
+        "kocarek": 0,
+        "typ": "hrad"
+    },
+    {
+        "nazev": "zámek Pardubice",
+        "kraj": "Středočeský",
+        "lat": 50.04105833,
+        "lon": 15.77766944,
+        "foto": "http://commons.wikimedia.org/wiki/Special:FilePath/Zamek%20pce%202.jpg",
+        "auto": 1,
+        "kocarek": 1,
+        "typ": "zamek"
+    },
+    {
+        "nazev": "zámek Opočno",
+        "kraj": "Královéhradecký",
+        "lat": 50.264861111,
+        "lon": 16.115583333,
+        "foto": "http://commons.wikimedia.org/wiki/Special:FilePath/Opo%C4%8Dno%20z%C3%A1mek.jpg",
+        "auto": 1,
+        "kocarek": 1,
+        "typ": "zamek"
+    },
+    {
+        "nazev": "Hamrštejn",
+        "kraj": "Liberecký",
+        "lat": 50.78583333,
+        "lon": 14.97027778,
+        "foto": "http://commons.wikimedia.org/wiki/Special:FilePath/Hrad%20Hamr%C5%A1tejn3.jpg",
+        "auto": 1,
+        "kocarek": 0,
+        "typ": "hrad"
+    },
+    {
+        "nazev": "Tolštejn",
+        "kraj": "Ústecký",
+        "lat": 50.856944444,
+        "lon": 14.581666666,
+        "foto": "http://commons.wikimedia.org/wiki/Special:FilePath/Tol%C5%A1tejn.jpg",
+        "auto": 1,
+        "kocarek": 0,
+        "typ": "hrad"
+    },
+    {
+        "nazev": "Štědrý hrádek",
+        "kraj": "Středočeský",
+        "lat": 50.06245556,
+        "lon": 13.13351389,
+        "foto": "http://commons.wikimedia.org/wiki/Special:FilePath/%C5%A0t%C4%9Bdr%C3%BD%20hr%C3%A1dek%20-%20hradba.jpg",
+        "auto": 1,
+        "kocarek": 0,
+        "typ": "hrad"
+    },
+    {
+        "nazev": "Bouzov",
+        "kraj": "Olomoucký",
+        "lat": 49.704444444,
+        "lon": 16.889722222,
+        "foto": "http://commons.wikimedia.org/wiki/Special:FilePath/Bouzov%20hrad%20%28Burg%20Busau%29%20-%20by%20Pudelek%20%28cropped%29.jpg",
+        "auto": 1,
+        "kocarek": 0,
+        "typ": "hrad"
+    },
+    {
+        "nazev": "Okoř",
+        "kraj": "Praha",
+        "lat": 50.16413861,
+        "lon": 14.25538778,
+        "foto": "http://commons.wikimedia.org/wiki/Special:FilePath/Okor%2C%20z%C5%99%C3%ADcenina%20hradu.jpg",
+        "auto": 1,
+        "kocarek": 0,
+        "typ": "hrad"
+    },
+    {
+        "nazev": "Adršpach",
+        "kraj": "Královéhradecký",
+        "lat": 50.61736667,
+        "lon": 16.10018333,
+        "foto": "http://commons.wikimedia.org/wiki/Special:FilePath/Old%20Castle%20Adersbach.jpg",
+        "auto": 1,
+        "kocarek": 0,
+        "typ": "hrad"
+    },
+    {
+        "nazev": "Aueršperk",
         "kraj": "Pardubický",
-        "popis": "Historický zricenina Louka. Data importována z OpenStreetMap.",
-        "lat": 49.53209,
-        "lng": 16.4313
+        "lat": 49.537993888,
+        "lon": 16.304634722,
+        "foto": "http://commons.wikimedia.org/wiki/Special:FilePath/Auer%C5%A1perk%2006.jpg",
+        "auto": 1,
+        "kocarek": 0,
+        "typ": "hrad"
+    },
+    {
+        "nazev": "Blansko",
+        "kraj": "Ústecký",
+        "lat": 50.69777778,
+        "lon": 14.09916667,
+        "foto": "http://commons.wikimedia.org/wiki/Special:FilePath/HradBlansko.JPG",
+        "auto": 1,
+        "kocarek": 0,
+        "typ": "hrad"
+    },
+    {
+        "nazev": "Boršegrýn",
+        "kraj": "Plzeňský",
+        "lat": 50.02706389,
+        "lon": 12.56074444,
+        "foto": "http://commons.wikimedia.org/wiki/Special:FilePath/Bor%C5%A1egr%C3%BDn%2001.JPG",
+        "auto": 1,
+        "kocarek": 0,
+        "typ": "hrad"
+    },
+    {
+        "nazev": "Boskovice",
+        "kraj": "Vysočina",
+        "lat": 49.481975,
+        "lon": 16.66154167,
+        "foto": "http://commons.wikimedia.org/wiki/Special:FilePath/Z%C5%99%C3%ADcenina%20hradu%20Boskovice%20-%20pohled%20z%20vrchu%20Zlatn%C3%ADk.JPG",
+        "auto": 1,
+        "kocarek": 0,
+        "typ": "hrad"
+    },
+    {
+        "nazev": "Brníčko",
+        "kraj": "Olomoucký",
+        "lat": 49.89527778,
+        "lon": 16.97222222,
+        "foto": "http://commons.wikimedia.org/wiki/Special:FilePath/Castle%20Brn%C3%AD%C4%8Dko%20in%20Brn%C3%AD%C4%8Dko%2C%20%C5%A0umperk%20District.jpg",
+        "auto": 1,
+        "kocarek": 0,
+        "typ": "hrad"
+    },
+    {
+        "nazev": "Budyně nad Ohří",
+        "kraj": "Středočeský",
+        "lat": 50.40485,
+        "lon": 14.12373889,
+        "foto": "http://commons.wikimedia.org/wiki/Special:FilePath/Budyn%C4%9B%20nad%20Oh%C5%99%C3%AD%202018-05-08%20Hradn%C3%AD%20j%C3%A1dro.jpg",
+        "auto": 1,
+        "kocarek": 0,
+        "typ": "hrad"
+    },
+    {
+        "nazev": "hrad Bítov",
+        "kraj": "Jihočeský",
+        "lat": 48.9436,
+        "lon": 15.7005,
+        "foto": "http://commons.wikimedia.org/wiki/Special:FilePath/Bitov%2C%20Burg%20mit%20Stausee.jpg",
+        "auto": 1,
+        "kocarek": 0,
+        "typ": "hrad"
+    },
+    {
+        "nazev": "Břecštejn",
+        "kraj": "Královéhradecký",
+        "lat": 50.58381833,
+        "lon": 15.82826472,
+        "foto": "http://commons.wikimedia.org/wiki/Special:FilePath/Interier%20hradu%20brecstejn.jpg",
+        "auto": 1,
+        "kocarek": 0,
+        "typ": "hrad"
+    },
+    {
+        "nazev": "Chudý hrádek",
+        "kraj": "Ústecký",
+        "lat": 50.58916667,
+        "lon": 14.50805556,
+        "foto": "http://commons.wikimedia.org/wiki/Special:FilePath/Chud%C3%BD%20hr%C3%A1dek%202.JPG",
+        "auto": 1,
+        "kocarek": 0,
+        "typ": "hrad"
+    },
+    {
+        "nazev": "Choustník",
+        "kraj": "Česko",
+        "lat": 49.331025,
+        "lon": 14.85269444,
+        "foto": "http://commons.wikimedia.org/wiki/Special:FilePath/Hrad%20choustnik%20vez.jpg",
+        "auto": 1,
+        "kocarek": 0,
+        "typ": "hrad"
+    },
+    {
+        "nazev": "Cornštejn",
+        "kraj": "Jihočeský",
+        "lat": 48.93388889,
+        "lon": 15.71555556,
+        "foto": "http://commons.wikimedia.org/wiki/Special:FilePath/Z%C5%99%C3%ADcenina%20hradu%20Corn%C5%A1tejna.jpg",
+        "auto": 1,
+        "kocarek": 0,
+        "typ": "hrad"
+    },
+    {
+        "nazev": "Cuknštejn",
+        "kraj": "Jihočeský",
+        "lat": 48.775357,
+        "lon": 14.750696,
+        "foto": "http://commons.wikimedia.org/wiki/Special:FilePath/Nov%C3%A9%20Hrady%2C%20%C3%9Adol%C3%AD%2C%20Cukn%C5%A1tejn%20%2801%29.jpg",
+        "auto": 1,
+        "kocarek": 0,
+        "typ": "hrad"
+    },
+    {
+        "nazev": "Dobronice",
+        "kraj": "Česko",
+        "lat": 49.33916667,
+        "lon": 14.50055556,
+        "foto": "http://commons.wikimedia.org/wiki/Special:FilePath/Hrad%20Dobronice.jpg",
+        "auto": 1,
+        "kocarek": 0,
+        "typ": "hrad"
+    },
+    {
+        "nazev": "Dražice",
+        "kraj": "Středočeský",
+        "lat": 50.30628056,
+        "lon": 14.84455278,
+        "foto": "http://commons.wikimedia.org/wiki/Special:FilePath/Drazice%20Castle%2004.jpg",
+        "auto": 1,
+        "kocarek": 0,
+        "typ": "hrad"
+    },
+    {
+        "nazev": "Dívčí kámen",
+        "kraj": "Jihočeský",
+        "lat": 48.88924167,
+        "lon": 14.356975,
+        "foto": "http://commons.wikimedia.org/wiki/Special:FilePath/Divci%20kamen.jpg",
+        "auto": 0,
+        "kocarek": 0,
+        "typ": "zricenina"
+    },
+    {
+        "nazev": "Dědice",
+        "kraj": "Jihomoravský",
+        "lat": 49.31093806,
+        "lon": 16.96720444,
+        "foto": "http://commons.wikimedia.org/wiki/Special:FilePath/Val%20se%20z%C5%99%C3%ADceninou%20D%C4%9Bdice%20%28Vy%C5%A1kov-%20czech%20republic%29.JPG",
+        "auto": 1,
+        "kocarek": 0,
+        "typ": "hrad"
+    },
+    {
+        "nazev": "Fredevald",
+        "kraj": "Ústecký",
+        "lat": 50.80416667,
+        "lon": 14.45833333,
+        "foto": "http://commons.wikimedia.org/wiki/Special:FilePath/Fredevald%202015-09-19%201.jpg",
+        "auto": 1,
+        "kocarek": 0,
+        "typ": "hrad"
+    },
+    {
+        "nazev": "Frymburk",
+        "kraj": "Královéhradecký",
+        "lat": 50.357306,
+        "lon": 16.236165,
+        "foto": "http://commons.wikimedia.org/wiki/Special:FilePath/Frymburk%20castle%2009.JPG",
+        "auto": 0,
+        "kocarek": 0,
+        "typ": "zricenina"
+    },
+    {
+        "nazev": "Fürstenwalde",
+        "kraj": "Olomoucký",
+        "lat": 50.12258333,
+        "lon": 17.34616667,
+        "foto": "http://commons.wikimedia.org/wiki/Special:FilePath/Z%C5%99%C3%ADcenina%20hradu%20F%C3%BCrstenwalde%2001.jpg",
+        "auto": 1,
+        "kocarek": 0,
+        "typ": "hrad"
+    },
+    {
+        "nazev": "Chebský hrad",
+        "kraj": "Plzeňský",
+        "lat": 50.08122222,
+        "lon": 12.36605556,
+        "foto": "http://commons.wikimedia.org/wiki/Special:FilePath/Cheb%20sv%20Erhart%20a%20Ur%C5%A1ula%20%281180%29%20DSCN1472.JPG",
+        "auto": 1,
+        "kocarek": 0,
+        "typ": "hrad"
+    },
+    {
+        "nazev": "zámek Teplice",
+        "kraj": "Ústecký",
+        "lat": 50.63722222,
+        "lon": 13.82666667,
+        "foto": "http://commons.wikimedia.org/wiki/Special:FilePath/Teplice%20z%C3%A1mek%202.jpg",
+        "auto": 1,
+        "kocarek": 1,
+        "typ": "zamek"
+    },
+    {
+        "nazev": "Děvín",
+        "kraj": "Liberecký",
+        "lat": 50.6927092,
+        "lon": 14.8544597,
+        "foto": "http://commons.wikimedia.org/wiki/Special:FilePath/Devin1.jpg",
+        "auto": 1,
+        "kocarek": 0,
+        "typ": "hrad"
+    },
+    {
+        "nazev": "Vimperk",
+        "kraj": "Jihočeský",
+        "lat": 49.0545,
+        "lon": 13.771583333,
+        "foto": "http://commons.wikimedia.org/wiki/Special:FilePath/Vimperk11.jpg",
+        "auto": 1,
+        "kocarek": 0,
+        "typ": "hrad"
+    },
+    {
+        "nazev": "Nový Hrad",
+        "kraj": "Středočeský",
+        "lat": 50.31944444,
+        "lon": 13.74888889,
+        "foto": "http://commons.wikimedia.org/wiki/Special:FilePath/Nov%C3%BD%20Hrad%20od%20JV.JPG",
+        "auto": 1,
+        "kocarek": 0,
+        "typ": "hrad"
+    },
+    {
+        "nazev": "Opálka",
+        "kraj": "Plzeňský",
+        "lat": 49.30669444,
+        "lon": 13.23277778,
+        "foto": "http://commons.wikimedia.org/wiki/Special:FilePath/Tvrz%20Op%C3%A1lka%2001.jpg",
+        "auto": 1,
+        "kocarek": 0,
+        "typ": "hrad"
+    },
+    {
+        "nazev": "Kunětická hora",
+        "kraj": "Královéhradecký",
+        "lat": 50.08005833,
+        "lon": 15.81305556,
+        "foto": "http://commons.wikimedia.org/wiki/Special:FilePath/Castle%20Kuneticka%20Hora.jpg",
+        "auto": 1,
+        "kocarek": 0,
+        "typ": "hrad"
+    },
+    {
+        "nazev": "Březnice",
+        "kraj": "Středočeský",
+        "lat": 49.55755,
+        "lon": 13.956059,
+        "foto": "http://commons.wikimedia.org/wiki/Special:FilePath/Schloss%20B%C5%99eznice.jpg",
+        "auto": 1,
+        "kocarek": 0,
+        "typ": "hrad"
+    },
+    {
+        "nazev": "Vrtba",
+        "kraj": "Středočeský",
+        "lat": 49.88205,
+        "lon": 13.24995278,
+        "foto": "http://commons.wikimedia.org/wiki/Special:FilePath/Vrtba%20-%20p%C5%99%C3%ADkop%20a%20valy.JPG",
+        "auto": 1,
+        "kocarek": 0,
+        "typ": "hrad"
+    },
+    {
+        "nazev": "Blatná",
+        "kraj": "Středočeský",
+        "lat": 49.42283889,
+        "lon": 13.87944444,
+        "foto": "http://commons.wikimedia.org/wiki/Special:FilePath/Blatna%20%28CZE%29%20-%20castle%20%28side%29.jpg",
+        "auto": 1,
+        "kocarek": 0,
+        "typ": "hrad"
+    },
+    {
+        "nazev": "hrad Potštejn",
+        "kraj": "Královéhradecký",
+        "lat": 50.0781,
+        "lon": 16.3086,
+        "foto": "http://commons.wikimedia.org/wiki/Special:FilePath/Pot%C5%A1tejn%20rom%20air%20M-3.jpg",
+        "auto": 1,
+        "kocarek": 0,
+        "typ": "hrad"
+    },
+    {
+        "nazev": "skalní hrad Vranov",
+        "kraj": "Liberecký",
+        "lat": 50.64241667,
+        "lon": 15.18783333,
+        "foto": "http://commons.wikimedia.org/wiki/Special:FilePath/Vranov04.jpg",
+        "auto": 1,
+        "kocarek": 0,
+        "typ": "hrad"
+    },
+    {
+        "nazev": "Šauenštejn",
+        "kraj": "Ústecký",
+        "lat": 50.868673,
+        "lon": 14.352056,
+        "foto": "http://commons.wikimedia.org/wiki/Special:FilePath/%C5%A0auen%C5%A1tejn%20-%20celkov%C3%BD%20pohled.JPG",
+        "auto": 1,
+        "kocarek": 0,
+        "typ": "hrad"
+    },
+    {
+        "nazev": "Falkenštejn",
+        "kraj": "Ústecký",
+        "lat": 50.85473611,
+        "lon": 14.40566667,
+        "foto": "http://commons.wikimedia.org/wiki/Special:FilePath/Felsenburg%20Falkenstein%2020171226%201539.jpg",
+        "auto": 1,
+        "kocarek": 0,
+        "typ": "hrad"
+    },
+    {
+        "nazev": "Sloup",
+        "kraj": "Ústecký",
+        "lat": 50.73555556,
+        "lon": 14.58055556,
+        "foto": "http://commons.wikimedia.org/wiki/Special:FilePath/Sloup%2C%20skaln%C3%AD%20hrad%20-%20celek1c.jpg",
+        "auto": 1,
+        "kocarek": 0,
+        "typ": "hrad"
+    },
+    {
+        "nazev": "Frýdštejn",
+        "kraj": "Liberecký",
+        "lat": 50.64861111,
+        "lon": 15.16777778,
+        "foto": "http://commons.wikimedia.org/wiki/Special:FilePath/Friedstein004.jpg",
+        "auto": 1,
+        "kocarek": 0,
+        "typ": "hrad"
+    },
+    {
+        "nazev": "Drábské světničky",
+        "kraj": "Liberecký",
+        "lat": 50.5319,
+        "lon": 15.0319,
+        "foto": "http://commons.wikimedia.org/wiki/Special:FilePath/FelsenburgParadies.jpg",
+        "auto": 1,
+        "kocarek": 0,
+        "typ": "hrad"
+    },
+    {
+        "nazev": "Rotštejn",
+        "kraj": "Liberecký",
+        "lat": 50.59444444,
+        "lon": 15.22416667,
+        "foto": "http://commons.wikimedia.org/wiki/Special:FilePath/Rot%C5%A1tejn.jpg",
+        "auto": 1,
+        "kocarek": 0,
+        "typ": "hrad"
+    },
+    {
+        "nazev": "Hartenštejn",
+        "kraj": "Plzeňský",
+        "lat": 50.1415589,
+        "lon": 13.0363853,
+        "foto": "http://commons.wikimedia.org/wiki/Special:FilePath/Harten%C5%A1tejn%20-%20severn%C3%AD%20bateriov%C3%A1%20v%C4%9B%C5%BE.jpg",
+        "auto": 1,
+        "kocarek": 0,
+        "typ": "hrad"
+    },
+    {
+        "nazev": "Hausberk",
+        "kraj": "Středočeský",
+        "lat": 50.49321667,
+        "lon": 13.35523056,
+        "foto": "http://commons.wikimedia.org/wiki/Special:FilePath/Hausberk%202017-04-14%2010%20Centr%C3%A1ln%C3%AD%20pahorek.jpg",
+        "auto": 1,
+        "kocarek": 0,
+        "typ": "hrad"
+    },
+    {
+        "nazev": "Helfenburk u Úštěka",
+        "kraj": "Ústecký",
+        "lat": 50.57944444,
+        "lon": 14.38388889,
+        "foto": "http://commons.wikimedia.org/wiki/Special:FilePath/Helfenburk%2C%20od%20v%C3%BDchodu%20%2802%29.jpg",
+        "auto": 1,
+        "kocarek": 0,
+        "typ": "hrad"
+    },
+    {
+        "nazev": "Helfenburk",
+        "kraj": "Jihočeský",
+        "lat": 49.13611111,
+        "lon": 14.00638889,
+        "foto": "http://commons.wikimedia.org/wiki/Special:FilePath/Helfenburk%202.jpg",
+        "auto": 1,
+        "kocarek": 0,
+        "typ": "hrad"
+    },
+    {
+        "nazev": "Hluboký",
+        "kraj": "Olomoucký",
+        "lat": 49.66805556,
+        "lon": 17.43,
+        "foto": "http://commons.wikimedia.org/wiki/Special:FilePath/Castle%20Hluboky.JPG",
+        "auto": 1,
+        "kocarek": 0,
+        "typ": "hrad"
+    },
+    {
+        "nazev": "Hněvín",
+        "kraj": "Ústecký",
+        "lat": 50.52027778,
+        "lon": 13.63347222,
+        "foto": "http://commons.wikimedia.org/wiki/Special:FilePath/KLG%204689%20Burg%20Hn%C4%9Bv%C3%ADn%20crop2.jpg",
+        "auto": 1,
+        "kocarek": 0,
+        "typ": "hrad"
+    },
+    {
+        "nazev": "Holštejn",
+        "kraj": "Vysočina",
+        "lat": 49.40172222,
+        "lon": 16.77652778,
+        "foto": "http://commons.wikimedia.org/wiki/Special:FilePath/Hrad%20Hol%C5%A1tejn%203.jpg",
+        "auto": 1,
+        "kocarek": 0,
+        "typ": "hrad"
+    },
+    {
+        "nazev": "Hukvaldy",
+        "kraj": "Olomoucký",
+        "lat": 49.62108333,
+        "lon": 18.22777778,
+        "foto": "http://commons.wikimedia.org/wiki/Special:FilePath/Hukv09.JPG",
+        "auto": 0,
+        "kocarek": 0,
+        "typ": "zricenina"
+    },
+    {
+        "nazev": "Hus",
+        "kraj": "Jihočeský",
+        "lat": 48.95694444,
+        "lon": 13.92888889,
+        "foto": "http://commons.wikimedia.org/wiki/Special:FilePath/Hrad%20Hus.JPG",
+        "auto": 1,
+        "kocarek": 0,
+        "typ": "hrad"
+    },
+    {
+        "nazev": "Kadaň",
+        "kraj": "Středočeský",
+        "lat": 50.37461111,
+        "lon": 13.26963889,
+        "foto": "http://commons.wikimedia.org/wiki/Special:FilePath/Kaa1.jpg",
+        "auto": 1,
+        "kocarek": 0,
+        "typ": "hrad"
+    },
+    {
+        "nazev": "Kaltenštejn",
+        "kraj": "Olomoucký",
+        "lat": 50.29527778,
+        "lon": 17.15211111,
+        "foto": "http://commons.wikimedia.org/wiki/Special:FilePath/Kaltenstejn1.jpg",
+        "auto": 1,
+        "kocarek": 0,
+        "typ": "hrad"
+    },
+    {
+        "nazev": "Kokořín",
+        "kraj": "Středočeský",
+        "lat": 50.44040278,
+        "lon": 14.57679167,
+        "foto": "http://commons.wikimedia.org/wiki/Special:FilePath/Kokorin%20letecky%20pohled.jpg",
+        "auto": 1,
+        "kocarek": 0,
+        "typ": "hrad"
+    },
+    {
+        "nazev": "Kostomlaty pod Milešovkou",
+        "kraj": "Ústecký",
+        "lat": 50.55416667,
+        "lon": 13.87972222,
+        "foto": "http://commons.wikimedia.org/wiki/Special:FilePath/Kostomlaty%2002.JPG",
+        "auto": 1,
+        "kocarek": 0,
+        "typ": "hrad"
+    },
+    {
+        "nazev": "Košumberk",
+        "kraj": "Pardubický",
+        "lat": 49.88411111,
+        "lon": 16.03455556,
+        "foto": "http://commons.wikimedia.org/wiki/Special:FilePath/Z%C5%99%C3%ADcenina%20hradu%20Ko%C5%A1umberk1.jpg",
+        "auto": 1,
+        "kocarek": 0,
+        "typ": "hrad"
+    },
+    {
+        "nazev": "Kozí hrádek",
+        "kraj": "Česko",
+        "lat": 49.3888,
+        "lon": 14.723,
+        "foto": "http://commons.wikimedia.org/wiki/Special:FilePath/Hrad%20-%20hr%C3%A1dek%20Koz%C3%AD%20Hr%C3%A1dek%2C%20z%C5%99%C3%ADcenina%20cropped.jpg",
+        "auto": 1,
+        "kocarek": 0,
+        "typ": "hrad"
+    },
+    {
+        "nazev": "Kost",
+        "kraj": "Středočeský",
+        "lat": 50.490277777,
+        "lon": 15.135,
+        "foto": "http://commons.wikimedia.org/wiki/Special:FilePath/Kost-letecky-pohled.jpg",
+        "auto": 1,
+        "kocarek": 0,
+        "typ": "hrad"
+    },
+    {
+        "nazev": "Krupka",
+        "kraj": "Ústecký",
+        "lat": 50.6852128,
+        "lon": 13.8554617,
+        "foto": "http://commons.wikimedia.org/wiki/Special:FilePath/Krupka%2C%20hrad%20Krupka%20%28Rosenberg%29.jpg",
+        "auto": 1,
+        "kocarek": 0,
+        "typ": "hrad"
+    },
+    {
+        "nazev": "Kuchlov",
+        "kraj": "Jihomoravský",
+        "lat": 49.32919361,
+        "lon": 16.88293861,
+        "foto": "http://commons.wikimedia.org/wiki/Special:FilePath/Kuchlov.JPG",
+        "auto": 1,
+        "kocarek": 0,
+        "typ": "hrad"
+    },
+    {
+        "nazev": "Kumburk",
+        "kraj": "Středočeský",
+        "lat": 50.493453,
+        "lon": 15.445584,
+        "foto": "http://commons.wikimedia.org/wiki/Special:FilePath/Kumburk1.jpg",
+        "auto": 1,
+        "kocarek": 0,
+        "typ": "hrad"
+    },
+    {
+        "nazev": "Kyšperk",
+        "kraj": "Ústecký",
+        "lat": 50.69555556,
+        "lon": 13.88916667,
+        "foto": "http://commons.wikimedia.org/wiki/Special:FilePath/Kysperk1.jpg",
+        "auto": 1,
+        "kocarek": 0,
+        "typ": "hrad"
+    },
+    {
+        "nazev": "Zámek a hrad Kámen",
+        "kraj": "Středočeský",
+        "lat": 49.42429083,
+        "lon": 15.01378944,
+        "foto": "http://commons.wikimedia.org/wiki/Special:FilePath/K%C3%A1men%202020-07-30%20Pal%C3%A1c.jpg",
+        "auto": 1,
+        "kocarek": 1,
+        "typ": "zamek"
+    },
+    {
+        "nazev": "Křivoklát",
+        "kraj": "Středočeský",
+        "lat": 50.037777777,
+        "lon": 13.8725,
+        "foto": "http://commons.wikimedia.org/wiki/Special:FilePath/Coat%20of%20Arms%20Vladislaus%20II%20of%20Bohemia%20K%C5%99ivokl%C3%A1t.jpg",
+        "auto": 1,
+        "kocarek": 0,
+        "typ": "hrad"
+    },
+    {
+        "nazev": "Lanšperk",
+        "kraj": "Pardubický",
+        "lat": 49.99466667,
+        "lon": 16.45408333,
+        "foto": "http://commons.wikimedia.org/wiki/Special:FilePath/Hrad%2C%20z%C5%99%C3%ADcenina%20%28Lan%C5%A1perk%29%20%283%29.jpg",
+        "auto": 1,
+        "kocarek": 0,
+        "typ": "hrad"
+    },
+    {
+        "nazev": "Ledeč nad Sázavou",
+        "kraj": "Středočeský",
+        "lat": 49.6967,
+        "lon": 15.2804,
+        "foto": "http://commons.wikimedia.org/wiki/Special:FilePath/Lede%C4%8D%20nad%20S%C3%A1zavou%2C%20Havl%C3%AD%C4%8Dk%C5%AFv%20Brod%20District%20%2814%29.jpg",
+        "auto": 1,
+        "kocarek": 0,
+        "typ": "hrad"
+    },
+    {
+        "nazev": "Levnov",
+        "kraj": "Vysočina",
+        "lat": 49.13916667,
+        "lon": 16.23972222,
+        "foto": "http://commons.wikimedia.org/wiki/Special:FilePath/Levnov.jpg",
+        "auto": 1,
+        "kocarek": 0,
+        "typ": "hrad"
+    },
+    {
+        "nazev": "hrad Lipnice nad Sázavou",
+        "kraj": "Středočeský",
+        "lat": 49.61402778,
+        "lon": 15.41327778,
+        "foto": "http://commons.wikimedia.org/wiki/Special:FilePath/Lipnice%20nad%20S%C3%A1zavou.jpg",
+        "auto": 1,
+        "kocarek": 0,
+        "typ": "hrad"
+    },
+    {
+        "nazev": "Litice",
+        "kraj": "Královéhradecký",
+        "lat": 50.08583333,
+        "lon": 16.35166667,
+        "foto": "http://commons.wikimedia.org/wiki/Special:FilePath/Litice%20castle.JPG",
+        "auto": 1,
+        "kocarek": 0,
+        "typ": "hrad"
+    },
+    {
+        "nazev": "hrad Lukov",
+        "kraj": "Olomoucký",
+        "lat": 49.30305556,
+        "lon": 17.73944444,
+        "foto": "http://commons.wikimedia.org/wiki/Special:FilePath/Lukov%20zricenina%20-%20vstupni%20most1.JPG",
+        "auto": 0,
+        "kocarek": 0,
+        "typ": "zricenina"
+    },
+    {
+        "nazev": "Loket",
+        "kraj": "Plzeňský",
+        "lat": 50.186971166,
+        "lon": 12.754438,
+        "foto": "http://commons.wikimedia.org/wiki/Special:FilePath/Hrad%20Loket%20kv%C4%9Bten%202020.jpg",
+        "auto": 1,
+        "kocarek": 0,
+        "typ": "hrad"
+    },
+    {
+        "nazev": "hrad Malenovice",
+        "kraj": "Jihomoravský",
+        "lat": 49.20388889,
+        "lon": 17.6,
+        "foto": "http://commons.wikimedia.org/wiki/Special:FilePath/Malenovice%20castle.JPG",
+        "auto": 1,
+        "kocarek": 0,
+        "typ": "hrad"
+    },
+    {
+        "nazev": "tvrz Martinice",
+        "kraj": "Středočeský",
+        "lat": 49.63347626,
+        "lon": 14.57797813,
+        "foto": "http://commons.wikimedia.org/wiki/Special:FilePath/Votice%2C%20Martinice%2C%20redoubt.jpg",
+        "auto": 1,
+        "kocarek": 0,
+        "typ": "hrad"
+    },
+    {
+        "nazev": "Mydlovar",
+        "kraj": "Středočeský",
+        "lat": 50.1685008,
+        "lon": 14.9190586,
+        "foto": "http://commons.wikimedia.org/wiki/Special:FilePath/Hrad%20Mydlovar%202024-12-17%2007.jpg",
+        "auto": 1,
+        "kocarek": 0,
+        "typ": "hrad"
+    },
+    {
+        "nazev": "Najštejn",
+        "kraj": "Ústecký",
+        "lat": 50.5146,
+        "lon": 13.4043,
+        "foto": "http://commons.wikimedia.org/wiki/Special:FilePath/Najstejn1.JPG",
+        "auto": 1,
+        "kocarek": 0,
+        "typ": "hrad"
+    },
+    {
+        "nazev": "hrad Nové Hrady",
+        "kraj": "Jihočeský",
+        "lat": 48.78916667,
+        "lon": 14.775,
+        "foto": "http://commons.wikimedia.org/wiki/Special:FilePath/Hradn%C3%AD%20p%C5%99%C3%ADkop%20se%20Star%C3%BDm%20z%C3%A1mkem.jpg",
+        "auto": 1,
+        "kocarek": 0,
+        "typ": "hrad"
+    },
+    {
+        "nazev": "Návarov",
+        "kraj": "Liberecký",
+        "lat": 50.6822,
+        "lon": 15.3222,
+        "foto": "http://commons.wikimedia.org/wiki/Special:FilePath/N%C3%A1varov%2001.JPG",
+        "auto": 1,
+        "kocarek": 0,
+        "typ": "hrad"
+    },
+    {
+        "nazev": "Oparno",
+        "kraj": "Ústecký",
+        "lat": 50.54222222,
+        "lon": 14.01,
+        "foto": "http://commons.wikimedia.org/wiki/Special:FilePath/Hrad%20Oparno%2C%20ruiny%20uvnit%C5%99.JPG",
+        "auto": 0,
+        "kocarek": 0,
+        "typ": "zricenina"
+    },
+    {
+        "nazev": "Orlík",
+        "kraj": "Středočeský",
+        "lat": 49.513,
+        "lon": 14.170472222,
+        "foto": "http://commons.wikimedia.org/wiki/Special:FilePath/Orl%C3%ADk%207.jpg",
+        "auto": 1,
+        "kocarek": 0,
+        "typ": "hrad"
+    },
+    {
+        "nazev": "Pařez",
+        "kraj": "Středočeský",
+        "lat": 50.477469722,
+        "lon": 15.275909722,
+        "foto": "http://commons.wikimedia.org/wiki/Special:FilePath/Parez004.jpg",
+        "auto": 1,
+        "kocarek": 0,
+        "typ": "hrad"
+    },
+    {
+        "nazev": "Pajrek",
+        "kraj": "Jihočeský",
+        "lat": 49.27691389,
+        "lon": 13.13669444,
+        "foto": "http://commons.wikimedia.org/wiki/Special:FilePath/Pajrek%20hrad.jpg",
+        "auto": 1,
+        "kocarek": 0,
+        "typ": "hrad"
+    },
+    {
+        "nazev": "Pecka",
+        "kraj": "Středočeský",
+        "lat": 50.47888889,
+        "lon": 15.60416667,
+        "foto": "http://commons.wikimedia.org/wiki/Special:FilePath/Leteck%C3%BD%20pohled%20na%20Hrad%20Pecka%20crop.jpg",
+        "auto": 1,
+        "kocarek": 0,
+        "typ": "hrad"
+    },
+    {
+        "nazev": "Perštejn",
+        "kraj": "Středočeský",
+        "lat": 50.385784,
+        "lon": 13.107312,
+        "foto": "http://commons.wikimedia.org/wiki/Special:FilePath/Per%C5%A1tejn%20-%20hradba%20prvn%C3%ADho%20n%C3%A1dvo%C5%99%C3%AD%202.jpg",
+        "auto": 1,
+        "kocarek": 0,
+        "typ": "hrad"
+    },
+    {
+        "nazev": "Pořešín",
+        "kraj": "Jihočeský",
+        "lat": 48.775,
+        "lon": 14.51055556,
+        "foto": "http://commons.wikimedia.org/wiki/Special:FilePath/Poresin%20Castle%20CZ%20overall%20view%20from%20N.jpg",
+        "auto": 1,
+        "kocarek": 0,
+        "typ": "hrad"
+    },
+    {
+        "nazev": "Potštát",
+        "kraj": "Olomoucký",
+        "lat": 49.61027778,
+        "lon": 17.68333333,
+        "foto": "http://commons.wikimedia.org/wiki/Special:FilePath/2023%20Puchart%20%281%29.jpg",
+        "auto": 1,
+        "kocarek": 0,
+        "typ": "hrad"
+    },
+    {
+        "nazev": "Pyšolec",
+        "kraj": "Pardubický",
+        "lat": 49.54472222,
+        "lon": 16.335,
+        "foto": "http://commons.wikimedia.org/wiki/Special:FilePath/V%C3%ADr%20%28okres%20%C5%BD%C4%8F%C3%A1r%20nad%20S%C3%A1zavou%29%20-%20hrad%20Py%C5%A1olec%2C%20obr07.jpg",
+        "auto": 1,
+        "kocarek": 0,
+        "typ": "hrad"
+    },
+    {
+        "nazev": "Přimda",
+        "kraj": "Plzeňský",
+        "lat": 49.68,
+        "lon": 12.66694444,
+        "foto": "http://commons.wikimedia.org/wiki/Special:FilePath/Burg%20Primda%20Gesamtansicht.jpg",
+        "auto": 1,
+        "kocarek": 0,
+        "typ": "hrad"
+    },
+    {
+        "nazev": "Roimund",
+        "kraj": "Liberecký",
+        "lat": 50.79833333,
+        "lon": 14.89111111,
+        "foto": "http://commons.wikimedia.org/wiki/Special:FilePath/Roimund.jpg",
+        "auto": 1,
+        "kocarek": 0,
+        "typ": "hrad"
+    },
+    {
+        "nazev": "Rokštejn",
+        "kraj": "Vysočina",
+        "lat": 49.33361111,
+        "lon": 15.72555556,
+        "foto": "http://commons.wikimedia.org/wiki/Special:FilePath/Rok%C5%A1tejn.jpg",
+        "auto": 1,
+        "kocarek": 0,
+        "typ": "hrad"
+    },
+    {
+        "nazev": "Roštejn",
+        "kraj": "Jihočeský",
+        "lat": 49.25166667,
+        "lon": 15.42638889,
+        "foto": "http://commons.wikimedia.org/wiki/Special:FilePath/Hrad%20Ro%C5%A1tejn%20v%C4%9B%C5%BE%201.jpg",
+        "auto": 1,
+        "kocarek": 0,
+        "typ": "hrad"
+    },
+    {
+        "nazev": "Rychmburk",
+        "kraj": "Pardubický",
+        "lat": 49.8358,
+        "lon": 16.0424,
+        "foto": "http://commons.wikimedia.org/wiki/Special:FilePath/P%C5%99edhrad%C3%AD%20-%20hrad%20Rychmurk.jpg",
+        "auto": 1,
+        "kocarek": 0,
+        "typ": "hrad"
+    },
+    {
+        "nazev": "Rysov",
+        "kraj": "Vysočina",
+        "lat": 49.388625,
+        "lon": 16.30773056,
+        "foto": "http://commons.wikimedia.org/wiki/Special:FilePath/Skryje%20%28okres%20Brno-venkov%29%20-%20hrad%20Rysov%2C%20pohled%20od%20JZ%20obr01.jpg",
+        "auto": 1,
+        "kocarek": 0,
+        "typ": "hrad"
+    },
+    {
+        "nazev": "Rychmberk",
+        "kraj": "Královéhradecký",
+        "lat": 50.1982529,
+        "lon": 16.3397232,
+        "foto": "http://commons.wikimedia.org/wiki/Special:FilePath/Rychmberk.jpg",
+        "auto": 1,
+        "kocarek": 0,
+        "typ": "hrad"
+    },
+    {
+        "nazev": "Osek",
+        "kraj": "Ústecký",
+        "lat": 50.63388889,
+        "lon": 13.66472222,
+        "foto": "http://commons.wikimedia.org/wiki/Special:FilePath/Hrad%20Osek%20-%20donjon%201.jpg",
+        "auto": 1,
+        "kocarek": 0,
+        "typ": "hrad"
+    },
+    {
+        "nazev": "Rýzmburk",
+        "kraj": "Královéhradecký",
+        "lat": 50.4328075,
+        "lon": 16.0456094,
+        "foto": "http://commons.wikimedia.org/wiki/Special:FilePath/R%C3%BDzmburk%20%28u%20%C5%BDernova%29%20-%20poz%C5%AFstatky%20hradu%20%28stav%20listopad%202024%29%20%2821%29.jpg",
+        "auto": 1,
+        "kocarek": 0,
+        "typ": "hrad"
+    },
+    {
+        "nazev": "Skály",
+        "kraj": "Královéhradecký",
+        "lat": 50.57186111,
+        "lon": 16.14169444,
+        "foto": "http://commons.wikimedia.org/wiki/Special:FilePath/Z%C5%99%C3%ADcenina%20hradu%20Sk%C3%A1ly%2005.jpg",
+        "auto": 1,
+        "kocarek": 0,
+        "typ": "hrad"
+    },
+    {
+        "nazev": "Skalka",
+        "kraj": "Středočeský",
+        "lat": 50.49805556,
+        "lon": 13.96083333,
+        "foto": "http://commons.wikimedia.org/wiki/Special:FilePath/Sutom%202.jpg",
+        "auto": 1,
+        "kocarek": 0,
+        "typ": "hrad"
+    },
+    {
+        "nazev": "Skála",
+        "kraj": "Středočeský",
+        "lat": 49.53866667,
+        "lon": 13.36736111,
+        "foto": "http://commons.wikimedia.org/wiki/Special:FilePath/Skala%20southern%20part.jpg",
+        "auto": 1,
+        "kocarek": 0,
+        "typ": "hrad"
+    },
+    {
+        "nazev": "Sovinec",
+        "kraj": "Olomoucký",
+        "lat": 49.837476229,
+        "lon": 17.245744188,
+        "foto": "http://commons.wikimedia.org/wiki/Special:FilePath/Sovinec%201848%20F%20A%20Heber.jpg",
+        "auto": 1,
+        "kocarek": 0,
+        "typ": "hrad"
+    },
+    {
+        "nazev": "Stagnov",
+        "kraj": "Jihomoravský",
+        "lat": 49.32860972,
+        "lon": 16.89605694,
+        "foto": "http://commons.wikimedia.org/wiki/Special:FilePath/Z%C5%99%C3%ADcenina%20Stagnov.JPG",
+        "auto": 1,
+        "kocarek": 0,
+        "typ": "hrad"
+    },
+    {
+        "nazev": "Starý Herštejn",
+        "kraj": "Plzeňský",
+        "lat": 49.47240556,
+        "lon": 12.71288611,
+        "foto": "http://commons.wikimedia.org/wiki/Special:FilePath/Stary%20Herstejn%203.JPG",
+        "auto": 1,
+        "kocarek": 0,
+        "typ": "hrad"
+    },
+    {
+        "nazev": "hrad Strakonice",
+        "kraj": "Jihočeský",
+        "lat": 49.25833333,
+        "lon": 13.9025,
+        "foto": "http://commons.wikimedia.org/wiki/Special:FilePath/Hrad%20Strakonice%201.jpg",
+        "auto": 1,
+        "kocarek": 0,
+        "typ": "hrad"
+    },
+    {
+        "nazev": "Střmen",
+        "kraj": "Královéhradecký",
+        "lat": 50.59419444,
+        "lon": 16.13836111,
+        "foto": "http://commons.wikimedia.org/wiki/Special:FilePath/Teplick%C3%A9%20skaln%C3%AD%20m%C4%9Bsto%20%28Wekelsdorfer%20Felsen%29%20-%20St%C5%99men%201.JPG",
+        "auto": 1,
+        "kocarek": 0,
+        "typ": "hrad"
+    },
+    {
+        "nazev": "Střílky",
+        "kraj": "Jihomoravský",
+        "lat": 49.1332286,
+        "lon": 17.2279417,
+        "foto": "http://commons.wikimedia.org/wiki/Special:FilePath/Ch%C5%99iby%2C%20z%C5%99%C3%ADcenina%20hradu%20St%C5%99%C3%ADlky%20%282%29.JPG",
+        "auto": 1,
+        "kocarek": 0,
+        "typ": "hrad"
+    },
+    {
+        "nazev": "Střekov",
+        "kraj": "Ústecký",
+        "lat": 50.63913333,
+        "lon": 14.05079167,
+        "foto": "http://commons.wikimedia.org/wiki/Special:FilePath/Hrad%20St%C5%99ekov%2C%20St%C5%99ekov%2C%20okres%20%C3%9Ast%C3%AD%20nad%20Labem.jpg",
+        "auto": 0,
+        "kocarek": 0,
+        "typ": "zricenina"
+    },
+    {
+        "nazev": "Svojanov",
+        "kraj": "Pardubický",
+        "lat": 49.62747778,
+        "lon": 16.40844167,
+        "foto": "http://commons.wikimedia.org/wiki/Special:FilePath/Svojanov%20%28F%C3%BCrstenstein%29%20-%20by%20Pudelek.JPG",
+        "auto": 1,
+        "kocarek": 0,
+        "typ": "hrad"
+    },
+    {
+        "nazev": "Tepenec",
+        "kraj": "Olomoucký",
+        "lat": 49.70277778,
+        "lon": 17.36083333,
+        "foto": "",
+        "auto": 1,
+        "kocarek": 0,
+        "typ": "hrad"
+    },
+    {
+        "nazev": "Točník",
+        "kraj": "Středočeský",
+        "lat": 49.890594,
+        "lon": 13.88741,
+        "foto": "http://commons.wikimedia.org/wiki/Special:FilePath/Hrad%20To%C4%8Dn%C3%ADk%20052.JPG",
+        "auto": 1,
+        "kocarek": 0,
+        "typ": "hrad"
+    },
+    {
+        "nazev": "Trmačov",
+        "kraj": "Vysočina",
+        "lat": 49.37666667,
+        "lon": 16.5125,
+        "foto": "http://commons.wikimedia.org/wiki/Special:FilePath/Hlubok%C3%A9%20Dvory%20-%20hrad%20Trma%C4%8Dov%2C%202026-03%2C%20obr08.jpg",
+        "auto": 1,
+        "kocarek": 0,
+        "typ": "hrad"
+    },
+    {
+        "nazev": "Týřov",
+        "kraj": "Středočeský",
+        "lat": 49.97333333,
+        "lon": 13.78972222,
+        "foto": "http://commons.wikimedia.org/wiki/Special:FilePath/T%C3%BD%C5%99ov%20.JPG",
+        "auto": 1,
+        "kocarek": 0,
+        "typ": "hrad"
+    },
+    {
+        "nazev": "Varta",
+        "kraj": "Ústecký",
+        "lat": 50.65805556,
+        "lon": 14.12277778,
+        "foto": "http://commons.wikimedia.org/wiki/Special:FilePath/Hrad%20Varta%20-%20celkov%C3%BD%20pohled.jpg",
+        "auto": 1,
+        "kocarek": 0,
+        "typ": "hrad"
+    },
+    {
+        "nazev": "Valdštejn",
+        "kraj": "Liberecký",
+        "lat": 50.5625,
+        "lon": 15.16694444,
+        "foto": "http://commons.wikimedia.org/wiki/Special:FilePath/Hrad%20Vald%C5%A1tejn%2C%20leteck%C3%BD%20sn%C3%ADmek%20crop.jpg",
+        "auto": 0,
+        "kocarek": 0,
+        "typ": "zricenina"
+    },
+    {
+        "nazev": "hrad Velhartice",
+        "kraj": "Jihočeský",
+        "lat": 49.262951,
+        "lon": 13.399546,
+        "foto": "http://commons.wikimedia.org/wiki/Special:FilePath/Burg%20Velhartice%2007.JPG",
+        "auto": 1,
+        "kocarek": 0,
+        "typ": "hrad"
+    },
+    {
+        "nazev": "Vildštejn",
+        "kraj": "Plzeňský",
+        "lat": 50.1696762,
+        "lon": 12.36050963,
+        "foto": "http://commons.wikimedia.org/wiki/Special:FilePath/Hrad%20Vild%C5%A1tejn.jpg",
+        "auto": 1,
+        "kocarek": 0,
+        "typ": "hrad"
+    },
+    {
+        "nazev": "Vlčtejn",
+        "kraj": "Středočeský",
+        "lat": 49.61326944,
+        "lon": 13.49718056,
+        "foto": "http://commons.wikimedia.org/wiki/Special:FilePath/22%20Vl%C4%8Dtejn.jpg",
+        "auto": 1,
+        "kocarek": 0,
+        "typ": "hrad"
+    },
+    {
+        "nazev": "Zbirohy",
+        "kraj": "Liberecký",
+        "lat": 50.6237,
+        "lon": 15.1907,
+        "foto": "http://commons.wikimedia.org/wiki/Special:FilePath/Zbirohy%20Castle.jpg",
+        "auto": 1,
+        "kocarek": 0,
+        "typ": "hrad"
+    },
+    {
+        "nazev": "Zvířetice",
+        "kraj": "Středočeský",
+        "lat": 50.46811667,
+        "lon": 14.91599167,
+        "foto": "http://commons.wikimedia.org/wiki/Special:FilePath/Zv%C3%AD%C5%99etice%20-%20V%C4%9B%C5%BE%20s%20branou.JPG",
+        "auto": 1,
+        "kocarek": 0,
+        "typ": "hrad"
+    },
+    {
+        "nazev": "Kuglvajt",
+        "kraj": "Jihočeský",
+        "lat": 48.93038889,
+        "lon": 14.18297222,
+        "foto": "http://commons.wikimedia.org/wiki/Special:FilePath/Kuglvajt%20%283%29.JPG",
+        "auto": 1,
+        "kocarek": 0,
+        "typ": "hrad"
+    },
+    {
+        "nazev": "Červená hora",
+        "kraj": "Královéhradecký",
+        "lat": 50.45228863,
+        "lon": 16.05017781,
+        "foto": "http://commons.wikimedia.org/wiki/Special:FilePath/%C4%8Cerven%C3%A1%20Hora%20z%C5%99%C3%ADcenina%20hradu%2001.jpg",
+        "auto": 1,
+        "kocarek": 0,
+        "typ": "hrad"
+    },
+    {
+        "nazev": "hrad Český Šternberk",
+        "kraj": "Středočeský",
+        "lat": 49.808889,
+        "lon": 14.926389,
+        "foto": "http://commons.wikimedia.org/wiki/Special:FilePath/Cesky%20Stemberk%2001.JPG",
+        "auto": 1,
+        "kocarek": 0,
+        "typ": "hrad"
+    },
+    {
+        "nazev": "Ostrý",
+        "kraj": "Ústecký",
+        "lat": 50.72444444,
+        "lon": 14.32305556,
+        "foto": "http://commons.wikimedia.org/wiki/Special:FilePath/Burgruine-Scharfenstein4.jpg",
+        "auto": 0,
+        "kocarek": 0,
+        "typ": "zricenina"
+    },
+    {
+        "nazev": "Hrad Šternberk",
+        "kraj": "Olomoucký",
+        "lat": 49.73305556,
+        "lon": 17.30166667,
+        "foto": "http://commons.wikimedia.org/wiki/Special:FilePath/CZ%20Sternberg%20-%20Castle%203.jpg",
+        "auto": 1,
+        "kocarek": 0,
+        "typ": "hrad"
+    },
+    {
+        "nazev": "Žampach",
+        "kraj": "Královéhradecký",
+        "lat": 50.04083333,
+        "lon": 16.42805556,
+        "foto": "http://commons.wikimedia.org/wiki/Special:FilePath/Z%C5%99%C3%ADcenina%20hradu%20%C5%BDampach2.jpg",
+        "auto": 1,
+        "kocarek": 0,
+        "typ": "hrad"
+    },
+    {
+        "nazev": "Šumburk",
+        "kraj": "Středočeský",
+        "lat": 50.3726,
+        "lon": 13.1471,
+        "foto": "http://commons.wikimedia.org/wiki/Special:FilePath/%C5%A0umburk%20-br%C3%A1na.jpg",
+        "auto": 1,
+        "kocarek": 0,
+        "typ": "hrad"
+    },
+    {
+        "nazev": "Štrálek",
+        "kraj": "Olomoucký",
+        "lat": 49.90835611,
+        "lon": 17.2552625,
+        "foto": "http://commons.wikimedia.org/wiki/Special:FilePath/Str%C3%A1lek%20%28%C5%A0tr%C3%A1lek%29%20-%20archeologick%C3%A9%20n%C3%A1lezy%20z%20are%C3%A1lu%20hradu%20vystaven%C3%A9%20v%20r%C3%BDma%C5%99ovsk%C3%A9m%20m%C4%9Bstsk%C3%A9m%20muzeu%20%282%29.jpg",
+        "auto": 1,
+        "kocarek": 0,
+        "typ": "hrad"
+    },
+    {
+        "nazev": "Chřibský hrádek",
+        "kraj": "Ústecký",
+        "lat": 50.8736,
+        "lon": 14.4516,
+        "foto": "http://commons.wikimedia.org/wiki/Special:FilePath/Ch%C5%99ibsk%C3%BD%20hr%C3%A1dek.JPG",
+        "auto": 1,
+        "kocarek": 0,
+        "typ": "hrad"
+    },
+    {
+        "nazev": "Krásný Buk",
+        "kraj": "Ústecký",
+        "lat": 50.92083333,
+        "lon": 14.48333333,
+        "foto": "http://commons.wikimedia.org/wiki/Special:FilePath/Kr%C3%A1sn%C3%BD%20Buk%20-%20sklepen%C3%AD.jpg",
+        "auto": 1,
+        "kocarek": 0,
+        "typ": "hrad"
+    },
+    {
+        "nazev": "Trosky",
+        "kraj": "Liberecký",
+        "lat": 50.51625,
+        "lon": 15.230833,
+        "foto": "http://commons.wikimedia.org/wiki/Special:FilePath/Hrad%20Trosky%2C%20leteck%C3%BD%20sn%C3%ADmek.jpg",
+        "auto": 0,
+        "kocarek": 0,
+        "typ": "zricenina"
+    },
+    {
+        "nazev": "Zámek Račice",
+        "kraj": "Jihomoravský",
+        "lat": 49.27518028,
+        "lon": 16.86920444,
+        "foto": "http://commons.wikimedia.org/wiki/Special:FilePath/Ra%C4%8Dick%C3%BD%20z%C3%A1mek%20detail.jpg",
+        "auto": 1,
+        "kocarek": 1,
+        "typ": "zamek"
+    },
+    {
+        "nazev": "Kamýk",
+        "kraj": "Ústecký",
+        "lat": 50.5575,
+        "lon": 14.08083333,
+        "foto": "http://commons.wikimedia.org/wiki/Special:FilePath/Kamyk%20LT%20CZ%20castle%20ruin%20127.jpg",
+        "auto": 0,
+        "kocarek": 0,
+        "typ": "zricenina"
+    },
+    {
+        "nazev": "Oltářík",
+        "kraj": "Středočeský",
+        "lat": 50.49,
+        "lon": 13.92333333,
+        "foto": "http://commons.wikimedia.org/wiki/Special:FilePath/Oltarik.JPG",
+        "auto": 1,
+        "kocarek": 0,
+        "typ": "hrad"
+    },
+    {
+        "nazev": "Grabštejn",
+        "kraj": "Česko",
+        "lat": 50.846125,
+        "lon": 14.876189,
+        "foto": "http://commons.wikimedia.org/wiki/Special:FilePath/Grabstejnlod.jpg",
+        "auto": 1,
+        "kocarek": 0,
+        "typ": "hrad"
+    },
+    {
+        "nazev": "Templštejn",
+        "kraj": "Vysočina",
+        "lat": 49.30542194,
+        "lon": 16.03877,
+        "foto": "http://commons.wikimedia.org/wiki/Special:FilePath/Templstejn%20Zdar.jpg",
+        "auto": 1,
+        "kocarek": 0,
+        "typ": "hrad"
+    },
+    {
+        "nazev": "Dalečín",
+        "kraj": "Pardubický",
+        "lat": 49.5925,
+        "lon": 16.24388889,
+        "foto": "http://commons.wikimedia.org/wiki/Special:FilePath/Dale%C4%8D%C3%ADn%20-%20hrad5.jpg",
+        "auto": 1,
+        "kocarek": 0,
+        "typ": "hrad"
+    },
+    {
+        "nazev": "Sion",
+        "kraj": "Středočeský",
+        "lat": 49.8888,
+        "lon": 15.2105,
+        "foto": "http://commons.wikimedia.org/wiki/Special:FilePath/Sion2013h2.jpg",
+        "auto": 1,
+        "kocarek": 0,
+        "typ": "hrad"
+    },
+    {
+        "nazev": "Pernštejn",
+        "kraj": "Vysočina",
+        "lat": 49.450833333,
+        "lon": 16.318888888,
+        "foto": "http://commons.wikimedia.org/wiki/Special:FilePath/Burg%20Pernstein.JPG",
+        "auto": 1,
+        "kocarek": 0,
+        "typ": "hrad"
+    },
+    {
+        "nazev": "Žebrák",
+        "kraj": "Středočeský",
+        "lat": 49.8868211,
+        "lon": 13.8815606,
+        "foto": "http://commons.wikimedia.org/wiki/Special:FilePath/069%20To%C4%8Dn%C3%ADk%20od%20n%C3%A1m%C4%9Bst%C3%AD%20hrad%20%C5%BDebr%C3%A1k%20S.jpg",
+        "auto": 1,
+        "kocarek": 0,
+        "typ": "hrad"
+    },
+    {
+        "nazev": "Seeberg",
+        "kraj": "Plzeňský",
+        "lat": 50.1319,
+        "lon": 12.2823,
+        "foto": "http://commons.wikimedia.org/wiki/Special:FilePath/Hrad%20Seeberg%20duben%202019%20%281%29.jpg",
+        "auto": 1,
+        "kocarek": 0,
+        "typ": "hrad"
+    },
+    {
+        "nazev": "zámek Konopiště",
+        "kraj": "Středočeský",
+        "lat": 49.77944444,
+        "lon": 14.65666667,
+        "foto": "http://commons.wikimedia.org/wiki/Special:FilePath/Konopiste%20CZ%2002.jpg",
+        "auto": 1,
+        "kocarek": 1,
+        "typ": "zamek"
+    },
+    {
+        "nazev": "Radyně",
+        "kraj": "Středočeský",
+        "lat": 49.68104722,
+        "lon": 13.46455278,
+        "foto": "http://commons.wikimedia.org/wiki/Special:FilePath/Radyne%20uvnitr.jpg",
+        "auto": 1,
+        "kocarek": 0,
+        "typ": "hrad"
+    },
+    {
+        "nazev": "Zvíkov",
+        "kraj": "Středočeský",
+        "lat": 49.4388756,
+        "lon": 14.1924053,
+        "foto": "http://commons.wikimedia.org/wiki/Special:FilePath/Zv%C3%ADkov%20Castle%20from%20Kopaniny%20%284%29%20%28cropped%29.JPG",
+        "auto": 1,
+        "kocarek": 0,
+        "typ": "hrad"
+    },
+    {
+        "nazev": "Rožmberk",
+        "kraj": "Jihočeský",
+        "lat": 48.6560047,
+        "lon": 14.3651133,
+        "foto": "http://commons.wikimedia.org/wiki/Special:FilePath/Hrad%20rozmberk%202.JPG",
+        "auto": 1,
+        "kocarek": 0,
+        "typ": "hrad"
+    },
+    {
+        "nazev": "Starý Jičín",
+        "kraj": "Olomoucký",
+        "lat": 49.58275556,
+        "lon": 17.96335833,
+        "foto": "http://commons.wikimedia.org/wiki/Special:FilePath/Stary%20Jicin%20Castle03.JPG",
+        "auto": 1,
+        "kocarek": 0,
+        "typ": "hrad"
+    },
+    {
+        "nazev": "Šostýn",
+        "kraj": "Olomoucký",
+        "lat": 49.58636667,
+        "lon": 18.15731389,
+        "foto": "http://commons.wikimedia.org/wiki/Special:FilePath/Sostyn07a.jpg",
+        "auto": 1,
+        "kocarek": 0,
+        "typ": "hrad"
+    },
+    {
+        "nazev": "Cimburk",
+        "kraj": "Jihomoravský",
+        "lat": 49.1037,
+        "lon": 17.2162,
+        "foto": "http://commons.wikimedia.org/wiki/Special:FilePath/Castle%20Cimburk%20near%20Kory%C4%8Dany.jpg",
+        "auto": 1,
+        "kocarek": 0,
+        "typ": "hrad"
+    },
+    {
+        "nazev": "Veveří",
+        "kraj": "Vysočina",
+        "lat": 49.256667,
+        "lon": 16.461667,
+        "foto": "http://commons.wikimedia.org/wiki/Special:FilePath/Hrad%20Veve%C5%99%C3%AD%20-%20panorama.JPG",
+        "auto": 0,
+        "kocarek": 0,
+        "typ": "zricenina"
+    },
+    {
+        "nazev": "Vartnov",
+        "kraj": "Olomoucký",
+        "lat": 50.0331444,
+        "lon": 17.7125056,
+        "foto": "http://commons.wikimedia.org/wiki/Special:FilePath/Vartnov01.JPG",
+        "auto": 1,
+        "kocarek": 0,
+        "typ": "hrad"
+    },
+    {
+        "nazev": "Andělská Hora",
+        "kraj": "Česko",
+        "lat": 50.20590278,
+        "lon": 12.9642,
+        "foto": "http://commons.wikimedia.org/wiki/Special:FilePath/And%C4%9Blsk%C3%A1%20Hora%202017-07-21%20Celkov%C3%BD%20pohled.jpg",
+        "auto": 1,
+        "kocarek": 0,
+        "typ": "hrad"
+    },
+    {
+        "nazev": "Edelštejn",
+        "kraj": "Olomoucký",
+        "lat": 50.23555556,
+        "lon": 17.38222222,
+        "foto": "http://commons.wikimedia.org/wiki/Special:FilePath/Z%C5%99%C3%ADcenina%20hradu%20Edel%C5%A1tejn%207.JPG",
+        "auto": 1,
+        "kocarek": 0,
+        "typ": "hrad"
+    },
+    {
+        "nazev": "Helfštýn",
+        "kraj": "Olomoucký",
+        "lat": 49.518123,
+        "lon": 17.628574,
+        "foto": "http://commons.wikimedia.org/wiki/Special:FilePath/Helf%C5%A1t%C3%BDn.jpg",
+        "auto": 0,
+        "kocarek": 0,
+        "typ": "zricenina"
+    },
+    {
+        "nazev": "Kanšperk",
+        "kraj": "Jihomoravský",
+        "lat": 48.90219444,
+        "lon": 17.56142778,
+        "foto": "",
+        "auto": 1,
+        "kocarek": 0,
+        "typ": "hrad"
+    },
+    {
+        "nazev": "Kašperk",
+        "kraj": "Jihočeský",
+        "lat": 49.16611111,
+        "lon": 13.56388889,
+        "foto": "http://commons.wikimedia.org/wiki/Special:FilePath/Podzim%20na%20Ka%C5%A1perku.jpg",
+        "auto": 1,
+        "kocarek": 0,
+        "typ": "hrad"
+    },
+    {
+        "nazev": "Klenová",
+        "kraj": "Plzeňský",
+        "lat": 49.33197222,
+        "lon": 13.22886111,
+        "foto": "http://commons.wikimedia.org/wiki/Special:FilePath/Klenova%20castle%201.JPG",
+        "auto": 1,
+        "kocarek": 0,
+        "typ": "hrad"
+    },
+    {
+        "nazev": "Kraví Hora",
+        "kraj": "Vysočina",
+        "lat": 49.1392,
+        "lon": 16.2297,
+        "foto": "http://commons.wikimedia.org/wiki/Special:FilePath/Central%20part%20of%20Krav%C3%AD%20hora%20castle%20near%20Kuroslepy%2C%20T%C5%99eb%C3%AD%C4%8D%20District.JPG",
+        "auto": 1,
+        "kocarek": 0,
+        "typ": "hrad"
+    },
+    {
+        "nazev": "Lichnice",
+        "kraj": "Středočeský",
+        "lat": 49.879105,
+        "lon": 15.586251,
+        "foto": "http://commons.wikimedia.org/wiki/Special:FilePath/Z%C5%99%C3%ADcenina%20hradu%20Lichnice%20u%20T%C5%99emo%C5%A1nice.jpg",
+        "auto": 1,
+        "kocarek": 0,
+        "typ": "hrad"
+    },
+    {
+        "nazev": "hrad Louka",
+        "kraj": "Pardubický",
+        "lat": 49.53166667,
+        "lon": 16.43166667,
+        "foto": "http://commons.wikimedia.org/wiki/Special:FilePath/Hrad%20Louka%2002.JPG",
+        "auto": 1,
+        "kocarek": 0,
+        "typ": "hrad"
+    },
+    {
+        "nazev": "Neuberg",
+        "kraj": "Karlovarský",
+        "lat": 50.255248,
+        "lon": 12.206677,
+        "foto": "http://commons.wikimedia.org/wiki/Special:FilePath/Podhrad%C3%AD%202008-10-13.JPG",
+        "auto": 1,
+        "kocarek": 0,
+        "typ": "hrad"
+    },
+    {
+        "nazev": "Nový Žeberk",
+        "kraj": "Ústecký",
+        "lat": 50.55094167,
+        "lon": 13.44369139,
+        "foto": "http://commons.wikimedia.org/wiki/Special:FilePath/Nov%C3%BD%20%C5%BDeberk%202015%20-%20fragment%20zdi.jpg",
+        "auto": 1,
+        "kocarek": 0,
+        "typ": "hrad"
+    },
+    {
+        "nazev": "Obřany",
+        "kraj": "Olomoucký",
+        "lat": 49.36661111,
+        "lon": 17.73222222,
+        "foto": "http://commons.wikimedia.org/wiki/Special:FilePath/Ob%C5%99any%20z%C5%99%C3%ADcenina%20u%20Chval%C4%8Dova%201.jpg",
+        "auto": 1,
+        "kocarek": 0,
+        "typ": "hrad"
+    },
+    {
+        "nazev": "Příběnice",
+        "kraj": "Česko",
+        "lat": 49.3929183,
+        "lon": 14.5615411,
+        "foto": "http://commons.wikimedia.org/wiki/Special:FilePath/4.2.2007%20P%C5%99%C3%ADb%C4%9Bnice%20030.jpg",
+        "auto": 1,
+        "kocarek": 0,
+        "typ": "hrad"
+    },
+    {
+        "nazev": "Rýzmberk",
+        "kraj": "Plzeňský",
+        "lat": 49.4063,
+        "lon": 13.03,
+        "foto": "http://commons.wikimedia.org/wiki/Special:FilePath/CZ%20Hrad%20Ryzmberk.jpg",
+        "auto": 1,
+        "kocarek": 0,
+        "typ": "hrad"
+    },
+    {
+        "nazev": "Starý Světlov",
+        "kraj": "Zlínský",
+        "lat": 49.15163972,
+        "lon": 17.76262472,
+        "foto": "http://commons.wikimedia.org/wiki/Special:FilePath/Oldsvetlov4.JPG",
+        "auto": 1,
+        "kocarek": 0,
+        "typ": "hrad"
+    },
+    {
+        "nazev": "Vikštejn",
+        "kraj": "Olomoucký",
+        "lat": 49.805,
+        "lon": 17.77361111,
+        "foto": "http://commons.wikimedia.org/wiki/Special:FilePath/Vikstejn10.JPG",
+        "auto": 1,
+        "kocarek": 0,
+        "typ": "hrad"
+    },
+    {
+        "nazev": "Zubštejn",
+        "kraj": "Pardubický",
+        "lat": 49.53055556,
+        "lon": 16.32638889,
+        "foto": "http://commons.wikimedia.org/wiki/Special:FilePath/Zub%C5%A1tejn.jpg",
+        "auto": 1,
+        "kocarek": 0,
+        "typ": "hrad"
+    },
+    {
+        "nazev": "Šaumburk",
+        "kraj": "Olomoucký",
+        "lat": 49.4125,
+        "lon": 17.79722222,
+        "foto": "http://commons.wikimedia.org/wiki/Special:FilePath/Lokalita-saumburk.jpg",
+        "auto": 1,
+        "kocarek": 0,
+        "typ": "hrad"
+    },
+    {
+        "nazev": "Štamberk",
+        "kraj": "Jihočeský",
+        "lat": 49.2125,
+        "lon": 15.37916667,
+        "foto": "http://commons.wikimedia.org/wiki/Special:FilePath/%C5%A0tamberk%2002.JPG",
+        "auto": 1,
+        "kocarek": 0,
+        "typ": "hrad"
+    },
+    {
+        "nazev": "Nový Hrádek",
+        "kraj": "Česko",
+        "lat": 48.837639,
+        "lon": 15.906667,
+        "foto": "http://commons.wikimedia.org/wiki/Special:FilePath/Nov%C3%BD%20hr%C3%A1dek%201871.gif",
+        "auto": 1,
+        "kocarek": 0,
+        "typ": "hrad"
+    },
+    {
+        "nazev": "Úsov",
+        "kraj": "Olomoucký",
+        "lat": 49.798748,
+        "lon": 17.01444,
+        "foto": "http://commons.wikimedia.org/wiki/Special:FilePath/Z%C3%A1mek%20%C3%9Asov.JPG",
+        "auto": 1,
+        "kocarek": 0,
+        "typ": "hrad"
+    },
+    {
+        "nazev": "Hazmburk",
+        "kraj": "Středočeský",
+        "lat": 50.4341667,
+        "lon": 14.0141667,
+        "foto": "http://commons.wikimedia.org/wiki/Special:FilePath/Haz2020.jpg",
+        "auto": 0,
+        "kocarek": 0,
+        "typ": "zricenina"
+    },
+    {
+        "nazev": "zámek Vrchotovy Janovice",
+        "kraj": "Středočeský",
+        "lat": 49.66926389,
+        "lon": 14.57794722,
+        "foto": "http://commons.wikimedia.org/wiki/Special:FilePath/Vrchotovy%20Janovice%2C%20z%C3%A1mek%2C%20od%20jihov%C3%BDchodu.jpg",
+        "auto": 1,
+        "kocarek": 1,
+        "typ": "zamek"
+    },
+    {
+        "nazev": "Líšno",
+        "kraj": "Středočeský",
+        "lat": 49.73423889,
+        "lon": 14.68868056,
+        "foto": "http://commons.wikimedia.org/wiki/Special:FilePath/Z%C3%A1me%20L%C3%AD%C5%A1no%20p%C5%99edn%C3%AD%20%C4%8Delo%20z%C3%A1mku.JPG",
+        "auto": 1,
+        "kocarek": 0,
+        "typ": "hrad"
     }
 ]

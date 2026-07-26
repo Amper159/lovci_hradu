@@ -1,254 +1,233 @@
 import sqlite3
-from fastapi import FastAPI, Request, Form, Cookie, HTTPException
-from fastapi.responses import HTMLResponse, RedirectResponse
-from fastapi.templating import Jinja2Templates
-from fastapi.staticfiles import StaticFiles
-import hashlib
-import secrets
-from datetime import datetime, timedelta
-import json
+from flask import Flask, render_template, jsonify, request, session, redirect, url_for
+from werkzeug.security import generate_password_hash, check_password_hash
 
-app = FastAPI(title="Lovci Hradů API")
-templates = Jinja2Templates(directory="templates")
+app = Flask(__name__)
+app.secret_key = 'tvojestrasne_tajny_klic'  # Pro práci se session / uživateli
 
-# Funkce pro připojení k databázi
+DATABASE = 'databaze.db'
+
 def get_db_connection():
-    conn = sqlite3.connect("databaze.db")
-    conn.row_factory = sqlite3.Row
+    conn = sqlite3.connect(DATABASE)
+    conn.row_factory = sqlite3.Row  # Pro přístup k sloupcům přes název
     return conn
+def init_db():
+    conn = get_db_connection()  # použij tvou funkci pro připojení k DB
+    cursor = conn.cursor()
 
-# Hash hesla
-def hash_heslo(heslo):
-    return hashlib.sha256(heslo.encode()).hexdigest()
+    # Vytvoření tabulky uživatelů
+    cursor.execute("""
+        CREATE TABLE IF NOT EXISTS users (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            username TEXT UNIQUE NOT NULL,
+            password TEXT NOT NULL
+        )
+    """)
 
-# Generuj token
-def generate_token():
-    return secrets.token_urlsafe(32)
+    # Vytvoření tabulky pro ulovené hrady
+    cursor.execute("""
+        CREATE TABLE IF NOT EXISTS visited_castles (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            user_id INTEGER NOT NULL,
+            castle_id INTEGER NOT NULL,
+            FOREIGN KEY (user_id) REFERENCES users (id),
+            FOREIGN KEY (castle_id) REFERENCES pamatky (id)
+        )
+    """)
 
-# Ověř session
-def get_current_user(session_token: str = Cookie(None)):
-    if not session_token:
-        return None
-    
-    conn = get_db_connection()
-    user = conn.execute("""
-        SELECT u.* FROM uzivatele u
-        JOIN sessions s ON u.id = s.uzivatel_id
-        WHERE s.token = ? AND (s.vyprsela IS NULL OR s.vyprsela > datetime('now'))
-    """, (session_token,)).fetchone()
+    conn.commit()
     conn.close()
-    
-    return user
 
-# 1. HLAVNÍ STRÁNKA
-@app.get("/", response_class=HTMLResponse)
-async def read_root(request: Request, session_token: str = Cookie(None)):
-    current_user = get_current_user(session_token)
-    
+
+# Zavolej tuto funkci hned při startu aplikace (před app.run)
+init_db()
+# Inicializace tabulky navštívených hradů (pokud ještě neexistuje)
+def init_visited_db():
     conn = get_db_connection()
-    hrady_z_db = conn.execute("SELECT * FROM pamatky ORDER BY nazev ASC").fetchall()
-    
-    # Pokud je přihlášený, načti jeho navštívené památky
-    navstivene = []
-    if current_user:
-        navstivene_rows = conn.execute("""
-            SELECT pamatka_id FROM navstivene_pamatky WHERE uzivatel_id = ?
-        """, (current_user['id'],)).fetchall()
-        navstivene = [row['pamatka_id'] for row in navstivene_rows]
-    
+    conn.execute('''
+        CREATE TABLE IF NOT EXISTS visited_castles (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            user_id INTEGER NOT NULL,
+            castle_id INTEGER NOT NULL,
+            visited_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+            FOREIGN KEY (user_id) REFERENCES users (id),
+            FOREIGN KEY (castle_id) REFERENCES hrady (id),
+            UNIQUE(user_id, castle_id)
+        );
+    ''')
+    conn.commit()
     conn.close()
+
+# Zavoláme při startu aplikace
+init_visited_db()
+
+
+@app.route('/')
+def index():
+    return render_template('index.html')
+
+
+# --- API ENDPOINTY ---
+@app.route('/api/castles', methods=['GET'])
+def get_castles():
+    user_id = session.get('user_id')
+    conn = get_db_connection()
     
-    return templates.TemplateResponse(request, "index.html", {
-        "hrady": hrady_z_db,
-        "current_user": current_user,
-        "navstivene": json.dumps(navstivene)
+    if user_id:
+        query = '''
+            SELECT h.*, 
+                   CASE WHEN vc.id IS NOT NULL THEN 1 ELSE 0 END as is_visited
+            FROM pamatky h
+            LEFT JOIN visited_castles vc 
+                   ON h.id = vc.castle_id AND vc.user_id = ?
+        '''
+        castles = conn.execute(query, (user_id,)).fetchall()
+    else:
+        # Změněno z "FROM hrady" na "FROM pamatky"
+        query = 'SELECT h.*, 0 as is_visited FROM pamatky h'
+        castles = conn.execute(query).fetchall()
+        
+    conn.close()
+
+    castles_list = [dict(castle) for castle in castles]
+    return jsonify(castles_list)
+
+@app.route('/api/user/visited', methods=['GET'])
+def get_user_visited():
+    if 'user_id' not in session:
+        return jsonify({'error': 'Nejste přihlášeni'}), 401
+
+    conn = get_db_connection()
+    cursor = conn.cursor()
+
+    # Načteme ulovené památky pro přihlášeného uživatele
+    cursor.execute(
+        '''
+        SELECT p.id, p.nazev, p.typ, p.kraj, p.lat, p.lon, p.foto
+        FROM pamatky p
+        JOIN visited_castles v ON p.id = v.castle_id
+        WHERE v.user_id = ?
+    ''',
+        (session['user_id'],),
+    )
+
+    visited = cursor.fetchall()
+    conn.close()
+
+    # Převedeme řádky z databáze na seznam slovníků
+    result = []
+    for row in visited:
+        result.append({
+            'id': row['id'],
+            'nazev': row['nazev'],
+            'typ': row['typ'],
+            'kraj': row['kraj'],
+            'lat': row['lat'],
+            'lon': row['lon'],
+            'foto': row['foto'],
+        })
+
+    return jsonify(result)
+# --- AUTENTIZACE ENDPOINTY ---
+
+@app.route('/api/register', methods=['POST'])
+def register():
+    data = request.get_json()
+    username = data.get('username')
+    password = data.get('password')
+
+    if not username or not password:
+        return jsonify({'error': 'Chybí uživatelské jméno nebo heslo'}), 400
+
+    conn = get_db_connection()
+    # Zkontrolujeme, zda uživatel již neexistuje
+    user = conn.execute('SELECT id FROM users WHERE username = ?', (username,)).fetchone()
+    if user:
+        conn.close()
+        return jsonify({'error': 'Uživatel s tímto jménem již existuje'}), 400
+
+    hashed_password = generate_password_hash(password)
+    conn.execute('INSERT INTO users (username, password) VALUES (?, ?)', (username, hashed_password))
+    conn.commit()
+    conn.close()
+
+    return jsonify({'success': True, 'message': 'Registrace byla úspěšná! Nyní se můžete přihlásit.'})
+
+
+@app.route('/api/login', methods=['POST'])
+def login():
+    data = request.get_json()
+    username = data.get('username')
+    password = data.get('password')
+
+    conn = get_db_connection()
+    user = conn.execute('SELECT * FROM users WHERE username = ?', (username,)).fetchone()
+    conn.close()
+
+    if user and check_password_hash(user['password'], password):
+        session['user_id'] = user['id']
+        session['username'] = user['username']
+        return jsonify({'success': True, 'username': user['username']})
+    
+    return jsonify({'error': 'Nesprávné uživatelské jméno nebo heslo'}), 401
+
+
+@app.route('/api/logout', methods=['POST'])
+def logout():
+    session.clear()
+    return jsonify({'success': True})
+
+
+@app.route('/api/user-status', methods=['GET'])
+def user_status():
+    if 'user_id' in session:
+        return jsonify({'logged_in': True, 'username': session.get('username')})
+    return jsonify({'logged_in': False})
+
+@app.route('/api/castle/<int:castle_id>/visit', methods=['POST'])
+def toggle_visit(castle_id):
+    """
+    Přepne stav hradu (uloven / neuloven) pro přihlášeného uživatele.
+    """
+    user_id = session.get('user_id')
+    if not user_id:
+        return jsonify({'error': 'Uživatel není přihlášen'}), 401
+
+    conn = get_db_connection()
+    
+    # Zjistíme, zda už je hrad ulovený
+    existing = conn.execute(
+        'SELECT id FROM visited_castles WHERE user_id = ? AND castle_id = ?',
+        (user_id, castle_id)
+    ).fetchone()
+
+    if existing:
+        # Pokud už je navštíven, odstraníme ho (odznačit)
+        conn.execute(
+            'DELETE FROM visited_castles WHERE user_id = ? AND castle_id = ?',
+            (user_id, castle_id)
+        )
+        is_visited = False
+        message = 'Hrad byl odebrán z ulovených.'
+    else:
+        # Jinak ho přidáme do navštívených
+        conn.execute(
+            'INSERT INTO visited_castles (user_id, castle_id) VALUES (?, ?)',
+            (user_id, castle_id)
+        )
+        is_visited = True
+        message = 'Hrad byl úspěšně uloven!'
+
+    conn.commit()
+    conn.close()
+
+    return jsonify({
+        'success': True,
+        'castle_id': castle_id,
+        'is_visited': is_visited,
+        'message': message
     })
 
-# 2. REGISTRACE
-@app.post("/registruj")
-async def registruj(
-    jmeno: str = Form(...),
-    email: str = Form(...),
-    heslo: str = Form(...),
-    heslo2: str = Form(...)
-):
-    if heslo != heslo2:
-        return {"error": "Hesla se neshodují"}
-    
-    if len(heslo) < 6:
-        return {"error": "Heslo musí mít alespoň 6 znaků"}
-    
-    conn = get_db_connection()
-    
-    # Zkontroluj jestli email už existuje
-    existing = conn.execute("SELECT id FROM uzivatele WHERE email = ?", (email,)).fetchone()
-    if existing:
-        conn.close()
-        return {"error": "Tento email je již registrován"}
-    
-    # Vytvoř uživatele
-    heslo_hashed = hash_heslo(heslo)
-    conn.execute("""
-        INSERT INTO uzivatele (email, heslo, jmeno)
-        VALUES (?, ?, ?)
-    """, (email, heslo_hashed, jmeno))
-    conn.commit()
-    conn.close()
-    
-    return RedirectResponse(url="/prihlaseni", status_code=303)
 
-# 3. PŘIHLÁŠENÍ
-@app.get("/prihlaseni", response_class=HTMLResponse)
-async def get_prihlaseni(request: Request):
-    return templates.TemplateResponse(request, "login.html", {})
-
-@app.post("/prihlaseni")
-async def prihlaseni(
-    email: str = Form(...),
-    heslo: str = Form(...)
-):
-    conn = get_db_connection()
-    heslo_hashed = hash_heslo(heslo)
-    
-    user = conn.execute("""
-        SELECT * FROM uzivatele WHERE email = ? AND heslo = ?
-    """, (email, heslo_hashed)).fetchone()
-    
-    if not user:
-        conn.close()
-        return {"error": "Špatný email nebo heslo"}
-    
-    # Vytvoř session token
-    token = generate_token()
-    vyprsela = datetime.now() + timedelta(days=30)
-    
-    conn.execute("""
-        INSERT INTO sessions (uzivatel_id, token, vyprsela)
-        VALUES (?, ?, ?)
-    """, (user['id'], token, vyprsela))
-    conn.commit()
-    conn.close()
-    
-    response = RedirectResponse(url="/", status_code=303)
-    response.set_cookie("session_token", token, max_age=30*24*60*60, httponly=True)
-    return response
-
-# 4. ODHLÁŠENÍ
-@app.get("/odhlasit")
-async def odhlasit(session_token: str = Cookie(None)):
-    if session_token:
-        conn = get_db_connection()
-        conn.execute("DELETE FROM sessions WHERE token = ?", (session_token,))
-        conn.commit()
-        conn.close()
-    
-    response = RedirectResponse(url="/", status_code=303)
-    response.delete_cookie("session_token")
-    return response
-
-# 5. FORMULÁŘ - Ukládá nová místa do databáze
-@app.post("/pridat")
-async def pridat_misto(
-    nazev: str = Form(...),
-    kraj: str = Form(...),
-    typ: str = Form(...),
-    popis: str = Form(...),
-    lat: float = Form(...),
-    lng: float = Form(...),
-    foto_url: str = Form(None),
-    dostupny_auto: bool = Form(False),
-    dostupny_kocárek: bool = Form(False)
-):
-    if not foto_url:
-        foto_url = "https://images.unsplash.com/photo-1500835556837-99ac94a94552?w=500&q=80"
-        
-    conn = get_db_connection()
-    conn.execute("""
-        INSERT INTO pamatky (nazev, typ, kraj, popis, lat, lng, foto_url, dostupny_auto, dostupny_kocárek)
-        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
-    """, (nazev, typ, kraj, popis, lat, lng, foto_url, dostupny_auto, dostupny_kocárek))
-    conn.commit()
-    conn.close()
-    
-    return RedirectResponse(url="/", status_code=303)
-
-# 6. API - Vrací data s filtrováním
-@app.get("/api/hrady")
-async def get_hrady_api(
-    kraj: str = None,
-    dostupny_auto: bool = None,
-    dostupny_kocárek: bool = None
-):
-    conn = get_db_connection()
-    
-    query = "SELECT * FROM pamatky WHERE 1=1"
-    params = []
-    
-    if kraj and kraj != "Česko":
-        query += " AND kraj = ?"
-        params.append(kraj)
-    
-    if dostupny_auto:
-        query += " AND dostupny_auto = 1"
-    
-    if dostupny_kocárek:
-        query += " AND dostupny_kocárek = 1"
-    
-    query += " ORDER BY nazev ASC"
-    
-    hrady_z_db = conn.execute(query, params).fetchall()
-    conn.close()
-    
-    return [{key: row[key] for key in row.keys()} for row in hrady_z_db]
-
-# 7. API - Označit místo jako navštívené
-@app.post("/api/navstivit/{pamatka_id}")
-async def navstivit(pamatka_id: int, session_token: str = Cookie(None)):
-    user = get_current_user(session_token)
-    if not user:
-        raise HTTPException(status_code=401, detail="Není přihlášený")
-    
-    conn = get_db_connection()
-    try:
-        conn.execute("""
-            INSERT INTO navstivene_pamatky (uzivatel_id, pamatka_id)
-            VALUES (?, ?)
-        """, (user['id'], pamatka_id))
-        conn.commit()
-    except sqlite3.IntegrityError:
-        pass  # Už je označeno
-    finally:
-        conn.close()
-    
-    return {"success": True}
-
-# 8. API - Odebrat značku návštěvy
-@app.post("/api/nenavstivit/{pamatka_id}")
-async def nenavstivit(pamatka_id: int, session_token: str = Cookie(None)):
-    user = get_current_user(session_token)
-    if not user:
-        raise HTTPException(status_code=401, detail="Není přihlášený")
-    
-    conn = get_db_connection()
-    conn.execute("""
-        DELETE FROM navstivene_pamatky WHERE uzivatel_id = ? AND pamatka_id = ?
-    """, (user['id'], pamatka_id))
-    conn.commit()
-    conn.close()
-    
-    return {"success": True}
-
-# 9. API - Vrátí navštívené památky uživatele
-@app.get("/api/moje-navstivene")
-async def get_moje_navstivene(session_token: str = Cookie(None)):
-    user = get_current_user(session_token)
-    if not user:
-        return []
-    
-    conn = get_db_connection()
-    navstivene = conn.execute("""
-        SELECT pamatka_id FROM navstivene_pamatky WHERE uzivatel_id = ?
-    """, (user['id'],)).fetchall()
-    conn.close()
-    
-    return [row['pamatka_id'] for row in navstivene]
+if __name__ == '__main__':
+    app.run(debug=True)

@@ -3,57 +3,278 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🏰 Lovci Hradů - Objevuj památky Česka</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Lovci Hradů - Průvodce po památkách</title>
+
+    <!-- Google Fonts & FontAwesome ikony -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Leaflet CSS -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+
     <style>
-        #map { height: 500px; }
-        /* Plynulé scrollování a schování scrollbaru */
-        .no-scrollbar::-webkit-scrollbar { display: none; }
-        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        :root {
+            --primary: #1e293b;
+            --accent: #3b82f6;
+            --accent-hover: #2563eb;
+            --success: #10b981;
+            --purple: #8b5cf6;
+            --purple-hover: #7c3aed;
+            --bg-sidebar: #ffffff;
+            --text-main: #0f172a;
+            --text-muted: #64748b;
+            --border-color: #e2e8f0;
+        }
+
+        * { box-sizing: border-box; }
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', sans-serif;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            background-color: #f8fafc;
+            color: var(--text-main);
+        }
+
+        header {
+            background-color: var(--primary);
+            color: #ffffff;
+            padding: 12px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+        }
+
+        header h2 {
+            margin: 0;
+            font-size: 1.25rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .auth-buttons button {
+            background: var(--accent);
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            margin-left: 8px;
+            font-weight: 600;
+            font-size: 0.875rem;
+            transition: all 0.2s;
+        }
+        .auth-buttons button:hover { background: var(--accent-hover); }
+        .auth-buttons button.profile { background: var(--purple); }
+        .auth-buttons button.profile:hover { background: var(--purple-hover); }
+        .auth-buttons button.logout { background: #ef4444; }
+
+        .main-container {
+            display: flex;
+            flex-grow: 1;
+            overflow: hidden;
+        }
+
+        /* Boční panel */
+        .sidebar {
+            width: 320px;
+            background-color: var(--bg-sidebar);
+            padding: 24px;
+            border-right: 1px solid var(--border-color);
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            z-index: 500;
+            box-shadow: 2px 0 8px rgba(0,0,0,0.02);
+            overflow-y: auto;
+        }
+
+        .sidebar h3 { 
+            margin: 0; 
+            font-size: 1.1rem; 
+            font-weight: 700; 
+            color: var(--primary); 
+        }
+
+        .filter-section {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .filter-label {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .type-pills {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+        }
+
+        .type-pill {
+            padding: 8px 12px;
+            border: 1px solid var(--border-color);
+            background: #f1f5f9;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            text-align: center;
+            transition: all 0.2s;
+            user-select: none;
+        }
+
+        .type-pill.active {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+
+        select {
+            padding: 10px;
+            border-radius: 6px;
+            border: 1px solid var(--border-color);
+            width: 100%;
+            font-family: inherit;
+            font-size: 0.9rem;
+            background-color: #ffffff;
+            color: var(--text-main);
+        }
+
+        .checkbox-card {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 10px 12px;
+            background: #f8fafc;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+        .checkbox-card input { cursor: pointer; }
+
+        .stats-badge {
+            margin-top: auto;
+            padding: 12px;
+            background: #eff6ff;
+            border: 1px solid #bfdbfe;
+            border-radius: 8px;
+            color: #1e40af;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-align: center;
+        }
+
+        #map { flex-grow: 1; height: 100%; }
+
+        /* Popup okna */
+        .castle-popup { text-align: center; max-width: 240px; font-family: 'Inter', sans-serif; }
+        .castle-popup img { width: 100%; height: 120px; object-fit: cover; border-radius: 6px; margin-bottom: 8px; }
+        .castle-popup h3 { margin: 4px 0; font-size: 1rem; font-weight: 700; color: var(--primary); }
+        .castle-popup .badge { display: inline-block; padding: 2px 8px; background: #e2e8f0; font-size: 0.75rem; border-radius: 12px; font-weight: 600; margin-bottom: 8px; }
+        
+        .popup-links {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            margin: 10px 0;
+        }
+
+        .popup-link-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            text-decoration: none;
+            padding: 8px 10px;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #ffffff !important;
+            transition: opacity 0.2s;
+        }
+        .popup-link-btn i { color: #ffffff !important; }
+        .popup-link-btn:hover { opacity: 0.9; }
+
+        .btn-food { background-color: #d97706 !important; }
+        .btn-web { background-color: #1e293b !important; }
+
+        .btn-hunt {
+            background-color: #ef4444; color: white; border: none;
+            padding: 9px; border-radius: 6px; cursor: pointer; width: 100%;
+            font-weight: 600; font-size: 0.85rem; transition: background 0.2s;
+        }
+        .btn-hunt.visited { background-color: var(--success); }
+
+        /* Modální okna */
+        .modal {
+            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(15, 23, 42, 0.6); backdrop-filter: blur(4px); z-index: 2000;
+            justify-content: center; align-items: center;
+        }
+        .modal-content {
+            background: white; padding: 28px; border-radius: 12px; width: 340px;
+            display: flex; flex-direction: column; gap: 12px; box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1);
+        }
+        .modal-content input { padding: 10px; border: 1px solid var(--border-color); border-radius: 6px; font-family: inherit; }
+        .modal-content button { background: var(--success); color: white; border: none; padding: 10px; border-radius: 6px; cursor: pointer; font-weight: 600; }
+        .close-btn { background: #94a3b8 !important; }
+
+        .profile-item {
+            display: flex; align-items: center; gap: 12px; padding: 10px;
+            border: 1px solid var(--border-color); border-radius: 8px;
+            background: #f8fafc; cursor: pointer; transition: all 0.2s;
+        }
+        .profile-item:hover {
+            background: #f1f5f9; border-color: var(--accent); transform: translateY(-1px);
+        }
     </style>
 </head>
-<body class="bg-gray-50 text-gray-900 font-sans antialiased">
+<body>
 
-    <header class="bg-gray-900 text-white px-6 py-4 flex justify-between items-center shadow-md">
-        <div class="text-xl font-bold text-amber-400 tracking-wide flex items-center gap-2">
-            <span>🏰</span> LOVCI HRADŮ
+    <header>
+        <h2><i class="fa-solid fa-chess-rook"></i> Lovci Hradů</h2>
+        <div id="auth-section" class="auth-buttons">
+            <span id="user-info" style="margin-right: 10px; font-size: 0.9rem;"></span>
+            <button id="profile-btn" class="profile" style="display:none;" onclick="openProfile()"><i class="fa-solid fa-user-check"></i> Můj profil</button>
+            <button id="login-btn" onclick="openModal('login-modal')"><i class="fa-solid fa-right-to-bracket"></i> Přihlásit</button>
+            <button id="register-btn" onclick="openModal('register-modal')"><i class="fa-solid fa-user-plus"></i> Registrovat</button>
+            <button id="logout-btn" class="logout" style="display:none;" onclick="logout()"><i class="fa-solid fa-right-from-bracket"></i> Odhlásit</button>
         </div>
-        <nav class="hidden md:flex gap-6 text-sm font-medium">
-            <a href="#" class="text-white border-b-2 border-amber-400 pb-1">Mapa památek</a>
-            <a href="#formular" class="text-gray-400 hover:text-white transition">Přidat místo ➕</a>
-        </nav>
     </header>
 
-    <section class="bg-gray-950 text-white text-center py-12 px-4 shadow-inner">
-        <h1 class="text-3xl md:text-4xl font-extrabold mb-3 tracking-tight">Objevuj skrytá tajemství českých zřícenin</h1>
-        <p class="text-gray-400 max-w-xl mx-auto text-sm mb-6">Najdi hrady a zámky ve svém okolí, sbírej odznáčky a staň se králem lovců.</p>
-        
-        <div class="max-w-md mx-auto relative z-30">
-            <input type="text" id="search-input" oninput="obsluhujNaseptavac(); aplikujFiltry();" autocomplete="off" placeholder="🔍 Zadej název hradu, město nebo kraj..." class="w-full bg-gray-800 text-white border border-gray-700 rounded-lg px-4 py-2.5 text-sm outline-none focus:ring-2 focus:ring-amber-400 focus:border-transparent placeholder-gray-500 shadow-md">
-            
-            <div id="autocomplete-results" class="absolute left-0 right-0 mt-1 bg-white border border-gray-200 rounded-lg shadow-xl hidden overflow-hidden text-left text-gray-900 text-sm">
+    <div class="main-container">
+        <!-- Boční filtr -->
+        <div class="sidebar">
+            <h3>Filtrovat památky</h3>
+
+            <!-- Typ památky -->
+            <div class="filter-section">
+                <span class="filter-label">Typ objektu</span>
+                <div class="type-pills">
+                    <div class="type-pill active" onclick="setTypeFilter('all', this)">Vše</div>
+                    <div class="type-pill" onclick="setTypeFilter('hrad', this)">🏰 Hrady</div>
+                    <div class="type-pill" onclick="setTypeFilter('zamek', this)">🏛️ Zámky</div>
+                    <div class="type-pill" onclick="setTypeFilter('zricenina', this)">🧱 Zříceniny</div>
+                </div>
             </div>
-        </div>
-    </section>
 
-    <!-- FILTRY -->
-    <div class="max-w-7xl mx-auto px-6 mt-8">
-        <!-- Rychlé filtry typu -->
-        <div class="flex flex-wrap gap-2 items-center justify-center lg:justify-start mb-4">
-            <span class="text-xs font-bold text-gray-400 uppercase tracking-wide mr-2">Typ:</span>
-            <button onclick="zmenTypFiltru('vse')" id="btn-vse" class="bg-amber-500 text-gray-950 text-xs font-bold px-4 py-2 rounded-full shadow transition">Všechny 🌐</button>
-            <button onclick="zmenTypFiltru('hrad')" id="btn-hrad" class="bg-white hover:bg-gray-100 text-gray-700 text-xs font-bold px-4 py-2 rounded-full shadow border border-gray-200 transition">Hrady 🏰</button>
-            <button onclick="zmenTypFiltru('zamek')" id="btn-zamek" class="bg-white hover:bg-gray-100 text-gray-700 text-xs font-bold px-4 py-2 rounded-full shadow border border-gray-200 transition">Zámky 👑</button>
-            <button onclick="zmenTypFiltru('zricenina')" id="btn-zricenina" class="bg-white hover:bg-gray-100 text-gray-700 text-xs font-bold px-4 py-2 rounded-full shadow border border-gray-200 transition">Zříceniny 🌲</button>
-        </div>
-
-        <!-- Filtry kraj, dostupnost -->
-        <div class="flex flex-wrap gap-4 items-center justify-center lg:justify-start bg-white p-4 rounded-lg border border-gray-200 shadow-sm">
-            <!-- Výběr Kraju -->
-            <div class="flex items-center gap-2">
-                <label class="text-xs font-bold text-gray-600 uppercase">📍 Kraj:</label>
-                <select id="kraj-select" onchange="aplikujFiltry()" class="bg-gray-50 border border-gray-300 rounded-lg px-3 py-2 text-sm outline-none focus:border-amber-400">
+            <!-- Kraj -->
+            <div class="filter-section">
+                <span class="filter-label">Kraj</span>
+                <select id="filter-kraj" onchange="applyFilters()">
                     <option value="">Všechny kraje</option>
                     <option value="Jihočeský">Jihočeský</option>
                     <option value="Jihomoravský">Jihomoravský</option>
@@ -72,429 +293,274 @@
                 </select>
             </div>
 
-            <!-- Dostupnost Autem -->
-            <div class="flex items-center gap-2">
-                <input type="checkbox" id="auto-checkbox" onchange="aplikujFiltry()" class="w-4 h-4 text-amber-500 rounded cursor-pointer">
-                <label for="auto-checkbox" class="text-xs font-bold text-gray-600 uppercase cursor-pointer">🚗 Autem</label>
+            <!-- Vlastnosti -->
+            <div class="filter-section">
+                <span class="filter-label">Dostupnost</span>
+                <label class="checkbox-card">
+                    <input type="checkbox" id="filter-auto" onchange="applyFilters()">
+                    <span>🚗 Parkování v blízkosti</span>
+                </label>
+                <label class="checkbox-card">
+                    <input type="checkbox" id="filter-kocarek" onchange="applyFilters()">
+                    <span>👶 Vhodné pro kočárek</span>
+                </label>
             </div>
 
-            <!-- Dostupnost s Kočárkem -->
-            <div class="flex items-center gap-2">
-                <input type="checkbox" id="kocárek-checkbox" onchange="aplikujFiltry()" class="w-4 h-4 text-amber-500 rounded cursor-pointer">
-                <label for="kocárek-checkbox" class="text-xs font-bold text-gray-600 uppercase cursor-pointer">👶 Kočárek</label>
+            <div id="stats-badge" class="stats-badge">
+                Zobrazeno 0 památek
             </div>
+        </div>
 
-            <!-- Reset Filtrů -->
-            <button onclick="resetFiltry()" class="bg-gray-300 hover:bg-gray-400 text-gray-900 text-xs font-bold px-3 py-2 rounded transition ml-auto">🔄 Resetovat</button>
+        <!-- Mapa -->
+        <div id="map"></div>
+    </div>
+
+    <!-- Modální okno: Přihlášení -->
+    <div id="login-modal" class="modal">
+        <div class="modal-content">
+            <h3>Přihlášení</h3>
+            <input type="text" id="login-user" placeholder="Uživatelské jméno">
+            <input type="password" id="login-pass" placeholder="Heslo">
+            <button onclick="login()">Přihlásit se</button>
+            <button class="close-btn" onclick="closeModal('login-modal')">Zavřít</button>
         </div>
     </div>
 
-    <main class="max-w-7xl mx-auto px-4 lg:px-6 grid grid-cols-1 lg:grid-cols-3 gap-6 my-6">
-        
-        <div class="lg:col-span-2 bg-white p-4 rounded-xl shadow-sm border border-gray-200">
-            <h2 class="text-xs font-bold text-gray-400 uppercase tracking-wide mb-3">Interaktivní mapa Česka</h2>
-            <div id="map" class="rounded-lg border border-gray-200 z-10"></div>
-        </div>
-
-        <div class="bg-white p-4 rounded-xl shadow-sm border border-gray-200 flex flex-col min-w-0">
-            <h2 class="text-xs font-bold text-gray-400 uppercase tracking-wide mb-3">Památky v databázi (<span id="stats-counter">0</span>)</h2>
-            
-            <div class="overflow-y-auto max-h-[440px] pr-2 space-y-3" id="hrady-list">
-                {% for hrad in hrady %}
-                <div class="flex items-center gap-4 p-3 border border-gray-100 rounded-xl bg-gray-50 hover:bg-amber-50/40 hover:border-amber-200 transition duration-200 cursor-pointer hrad-karta"
-                     data-nazev="{{ hrad.nazev|lower }}" 
-                     data-typ="{{ hrad.typ }}"
-                     data-kraj="{{ hrad.kraj if hrad.kraj else 'Česko' }}"
-                     data-auto="{{ hrad.dostupny_auto }}"
-                     data-kocárek="{{ hrad.dostupny_kocárek }}"
-                     onclick="focusOnMap({{ hrad.lat }}, {{ hrad.lng }}, '{{ hrad.nazev }}')">
-                    
-                    <div class="w-14 h-14 rounded-full overflow-hidden flex-shrink-0 border border-gray-200 shadow-inner group relative"
-                         onclick="event.stopPropagation(); otevriGalerii('{{ hrad.nazev|replace('\'', '\\\'') }}', '{{ hrad.foto_url }}', this.closest('.hrad-karta').querySelector('p').innerText)">
-                        <img src="{{ hrad.foto_url if hrad.foto_url else 'https://images.unsplash.com/photo-1500835556837-99ac94a94552?w=150&q=80' }}" 
-                             alt="{{ hrad.nazev }}" 
-                             class="w-full h-full object-cover group-hover:scale-110 transition">
-                        <div class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 flex items-center justify-center text-white text-[10px] font-bold transition">👁️</div>
-                    </div>
-                    
-                    <div class="flex-1 min-w-0">
-                        <h3 class="font-bold text-gray-900 text-sm truncate">{{ hrad.nazev }}</h3>
-                        <p class="hidden">{{ hrad.popis }}</p> 
-                        <div class="flex gap-1.5 mt-1 flex-wrap">
-                            <span class="bg-gray-200 text-gray-700 text-[9px] font-extrabold px-1.5 py-0.5 rounded uppercase tracking-wider">{{ hrad.typ }}</span>
-                            <span class="bg-amber-100 text-amber-800 text-[9px] font-extrabold px-1.5 py-0.5 rounded truncate">{{ hrad.kraj if hrad.kraj else 'Česko' }}</span>
-                            {% if hrad.dostupny_auto %}
-                            <span class="bg-blue-100 text-blue-800 text-[9px] font-extrabold px-1.5 py-0.5 rounded">🚗</span>
-                            {% endif %}
-                            {% if hrad.dostupny_kocárek %}
-                            <span class="bg-pink-100 text-pink-800 text-[9px] font-extrabold px-1.5 py-0.5 rounded">👶</span>
-                            {% endif %}
-                        </div>
-                    </div>
-                </div>  
-                {% endfor %}
-            </div>
-        </div>
-    </main>
-
-    <div id="gallery-modal" class="fixed inset-0 bg-black/80 hidden z-50 flex items-center justify-center p-4 backdrop-blur-sm">
-        <div class="bg-white rounded-2xl max-w-2xl w-full overflow-hidden shadow-2xl relative animate-in fade-in zoom-in duration-200">
-            <button onclick="zavriGalerii()" class="absolute top-4 right-4 bg-black/60 hover:bg-black text-white rounded-full w-8 h-8 flex items-center justify-center text-lg font-bold transition">✕</button>
-            
-            <div class="w-full h-64 md:h-80 bg-gray-950 relative">
-                <img id="modal-main-img" src="" class="w-full h-full object-cover" alt="Detail památky">
-                <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end p-6">
-                    <h2 id="modal-title" class="text-xl md:text-2xl font-extrabold text-white tracking-tight">Název hradu</h2>
-                </div>
-            </div>
-            
-            <div class="p-6">
-                <p id="modal-desc" class="text-gray-600 text-sm leading-relaxed mb-4">Popis místa...</p>
-                <h4 class="text-xs font-bold text-gray-400 uppercase tracking-wider mb-2">Obrázky z okolí památky</h4>
-                <div id="modal-thumbnails" class="flex gap-2 overflow-x-auto pb-1 no-scrollbar"></div>
-            </div>
+    <!-- Modální okno: Registrace -->
+    <div id="register-modal" class="modal">
+        <div class="modal-content">
+            <h3>Registrace</h3>
+            <input type="text" id="reg-user" placeholder="Uživatelské jméno">
+            <input type="password" id="reg-pass" placeholder="Heslo">
+            <button onclick="register()">Vytvořit účet</button>
+            <button class="close-btn" onclick="closeModal('register-modal')">Zavřít</button>
         </div>
     </div>
 
-    <section id="formular" class="max-w-3xl mx-auto px-4 my-12">
-        <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-200">
-            <h2 class="text-xl font-bold text-gray-900 mb-1">Chybí nám tu vaše oblíbené místo? 🗺️</h2>
-            <p class="text-sm text-gray-500 mb-6">Vyplňte formulář níže a přidejte hrad nebo zámek do mapy.</p>
+    <!-- Modální okno: Profil uživatele -->
+    <div id="profile-modal" class="modal">
+        <div class="modal-content" style="width: 440px; max-height: 80vh;">
+            <h3>🏆 Moje ulovené památky</h3>
+            <div id="profile-stats" style="font-weight: 600; color: #475569; font-size: 0.9rem;"></div>
             
-            <form action="/pridat" method="post" class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div>
-                    <label class="block text-xs font-bold text-gray-700 uppercase mb-1">Název památky</label>
-                    <input type="text" name="nazev" required placeholder="Např. Hrad Bouzov" class="w-full bg-gray-50 border border-gray-300 rounded-lg px-3 py-2 text-sm outline-none focus:border-amber-400 focus:bg-white transition">
-                </div>
-                <div>
-                    <label class="block text-xs font-bold text-gray-700 uppercase mb-1">Kraj</label>
-                    <input type="text" name="kraj" required placeholder="Např. Olomoucký" class="w-full bg-gray-50 border border-gray-300 rounded-lg px-3 py-2 text-sm outline-none focus:border-amber-400 focus:bg-white transition">
-                </div>
-                <div>
-                    <label class="block text-xs font-bold text-gray-700 uppercase mb-1">URL adresa fotografie (nepovinné)</label>
-                    <input type="url" name="foto_url" placeholder="https://odkaz-na-obrazek.cz/foto.jpg" class="w-full bg-gray-50 border border-gray-300 rounded-lg px-3 py-2 text-sm outline-none focus:border-amber-400 focus:bg-white transition md:col-span-2">
-                </div>
-                <div>
-                    <label class="block text-xs font-bold text-gray-700 uppercase mb-1">Typ</label>
-                    <select name="typ" class="w-full bg-gray-50 border border-gray-300 rounded-lg px-3 py-2 text-sm outline-none focus:border-amber-400 focus:bg-white transition">
-                        <option value="hrad">Hrad</option>
-                        <option value="zamek">Zámek</option>
-                        <option value="zricenina">Zřícenina</option>
-                    </select>
-                </div>
-                <div class="grid grid-cols-2 gap-2">
-                    <div>
-                        <label class="block text-xs font-bold text-gray-700 uppercase mb-1">Zeměpisná šířka (Lat)</label>
-                        <input type="number" step="any" name="lat" required placeholder="49.7049" class="w-full bg-gray-50 border border-gray-300 rounded-lg px-3 py-2 text-sm outline-none focus:border-amber-400 focus:bg-white transition">
-                    </div>
-                    <div>
-                        <label class="block text-xs font-bold text-gray-700 uppercase mb-1">Zeměpisná délka (Lng)</label>
-                        <input type="number" step="any" name="lng" required placeholder="16.8893" class="w-full bg-gray-50 border border-gray-300 rounded-lg px-3 py-2 text-sm outline-none focus:border-amber-400 focus:bg-white transition">
-                    </div>
-                </div>
-                <div class="md:col-span-2">
-                    <label class="block text-xs font-bold text-gray-700 uppercase mb-1">Krátký popis</label>
-                    <textarea name="popis" rows="3" required placeholder="Napište pár vět o historii..." class="w-full bg-gray-50 border border-gray-300 rounded-lg px-3 py-2 text-sm outline-none focus:border-amber-400 focus:bg-white transition resize-none"></textarea>
-                </div>
-                
-                <!-- Checkboxy pro dostupnost -->
-                <div class="md:col-span-2 flex gap-6 items-center">
-                    <label class="flex items-center gap-2 cursor-pointer">
-                        <input type="checkbox" name="dostupny_auto" class="w-4 h-4 text-amber-500 rounded cursor-pointer">
-                        <span class="text-sm font-bold text-gray-700 uppercase">🚗 Dostupný autem</span>
-                    </label>
-                    <label class="flex items-center gap-2 cursor-pointer">
-                        <input type="checkbox" name="dostupny_kocárek" class="w-4 h-4 text-amber-500 rounded cursor-pointer">
-                        <span class="text-sm font-bold text-gray-700 uppercase">👶 Dostupný s kočárkem</span>
-                    </label>
-                </div>
+            <div id="profile-visited-list" style="display: flex; flex-direction: column; gap: 8px; max-height: 360px; overflow-y: auto; padding-right: 4px;">
+                <!-- Sem se načtou kartičky -->
+            </div>
 
-                <div class="md:col-span-2 mt-2">
-                    <button type="submit" class="w-full bg-amber-500 hover:bg-amber-600 text-gray-950 font-bold py-2.5 rounded-lg text-sm shadow-md transition">Odeslat a přidat do mapy 🚀</button>
-                </div>
-            </form>
+            <button class="close-btn" style="margin-top: 10px;" onclick="closeModal('profile-modal')">Zavřít</button>
         </div>
-    </section>
+    </div>
 
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script>
-        const map = L.map('map').setView([49.8175, 15.4730], 7);
+        const map = L.map('map').setView([49.8175, 15.4730], 8);
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { attribution: '© OpenStreetMap' }).addTo(map);
 
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            attribution: '© OpenStreetMap'
-        }).addTo(map);
+        let allCastles = [];
+        let markersMap = {};
+        let selectedType = 'all';
+        let markersGroup = L.layerGroup().addTo(map);
 
-        let aktivniMarkery = [];
-        let aktualniTypFiltru = 'vse';
-
-        // Seznam upravený přesně podle dat v databázi
-        const ceskeKraje = [
-            "Jihočeský",
-            "Jihomoravský",
-            "Karlovarský",
-            "Královéhradecký",
-            "Liberecký",
-            "Moravskoslezský",
-            "Olomoucký",
-            "Pardubický",
-            "Plzeňský",
-            "Praha",
-            "Středočeský",
-            "Ústecký",
-            "Vysočina",
-            "Zlínský"
-        ];
-
-        const hradyData = [];
-        {% for hrad in hrady %}
-        hradyData.push({
-            id: {{ hrad.id }},
-            nazev: "{{ hrad.nazev }}",
-            typ: "{{ hrad.typ }}",
-            kraj: "{{ hrad.kraj if hrad.kraj else 'Česko' }}",
-            foto_url: "{{ hrad.foto_url if hrad.foto_url else 'https://images.unsplash.com/photo-1500835556837-99ac94a94552?w=500&q=80' }}",
-            lat: {{ hrad.lat }},
-            lng: {{ hrad.lng }},
-            dostupny_auto: {{ hrad.dostupny_auto|default(0)|int }},
-            dostupny_kocárek: {{ hrad.dostupny_kocárek|default(0)|int }}
+        const redIcon = new L.Icon({
+            iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-red.png',
+            shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+            iconSize: [25, 41], iconAnchor: [12, 41], popupAnchor: [1, -34], shadowSize: [41, 41]
         });
-        {% endfor %}
 
-        function obsluhujNaseptavac() {
-            const input = document.getElementById('search-input');
-            const container = document.getElementById('autocomplete-results');
-            const text = input.value.toLowerCase().trim();
+        const greenIcon = new L.Icon({
+            iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-green.png',
+            shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+            iconSize: [25, 41], iconAnchor: [12, 41], popupAnchor: [1, -34], shadowSize: [41, 41]
+        });
 
-            if (text.length < 1) {
-                container.classList.add('hidden');
-                return;
-            }
-
-            const nalezeneKraje = ceskeKraje.filter(kraj => kraj.toLowerCase().includes(text));
-
-            if (nalezeneKraje.length > 0) {
-                container.innerHTML = '';
-                
-                nalezeneKraje.forEach(kraj => {
-                    const radek = document.createElement('div');
-                    radek.className = "px-4 py-2 hover:bg-amber-100 cursor-pointer transition flex justify-between items-center";
-                    radek.innerHTML = `<span>📍 <b>${kraj}</b></span> <span class="text-[10px] text-gray-400 font-bold uppercase tracking-wider">Kraj</span>`;
-                    
-                    radek.onclick = function() {
-                        input.value = kraj;
-                        container.classList.add('hidden');
-                        aplikujFiltry();
-                    };
-                    
-                    container.appendChild(radek);
-                });
-                
-                container.classList.remove('hidden');
-            } else {
-                container.classList.add('hidden');
-            }
+        async function loadCastles() {
+            try {
+                const response = await fetch('/api/castles');
+                allCastles = await response.json();
+                applyFilters();
+            } catch (e) { console.error('Chyba načítání dat:', e); }
         }
 
-        document.addEventListener('click', function(e) {
-            const container = document.getElementById('autocomplete-results');
-            const input = document.getElementById('search-input');
-            if (e.target !== container && e.target !== input) {
-                container.classList.add('hidden');
-            }
-        });
+        function setTypeFilter(type, element) {
+            selectedType = type;
+            document.querySelectorAll('.type-pill').forEach(el => el.classList.remove('active'));
+            element.classList.add('active');
+            applyFilters();
+        }
 
-        function aplikujFiltry() {
-            let vyhledavanyText = document.getElementById('search-input').value.toLowerCase().trim();
-            vyhledavanyText = vyhledavanyText.replace(" kraj", "").trim();
-            
-            const vybranyKraj = document.getElementById('kraj-select').value;
-            const filtrAutoem = document.getElementById('auto-checkbox').checked;
-            const filtrKocárek = document.getElementById('kocárek-checkbox').checked;
-            
-            const karty = document.getElementsByClassName('hrad-karta');
-            
-            aktivniMarkery.forEach(marker => map.removeLayer(marker));
-            aktivniMarkery = [];
+        function applyFilters() {
+            markersGroup.clearLayers();
+            markersMap = {};
 
-            let viditelnePamatkyPocet = 0;
+            const selectedKraj = document.getElementById('filter-kraj').value.toLowerCase().trim();
+            const autoOnly = document.getElementById('filter-auto').checked;
+            const kocarekOnly = document.getElementById('filter-kocarek').checked;
 
-            hradyData.forEach((hrad, index) => {
-                const odpovidaTypu = (aktualniTypFiltru === 'vse' || hrad.typ === aktualniTypFiltru);
+            const filtered = allCastles.filter(c => {
+                const fullText = `${c.kraj || ''} ${c.nazev || ''}`.toLowerCase();
                 
-                const odpovidaNazvu = hrad.nazev.toLowerCase().includes(vyhledavanyText);
-                const odpovidaKraji = hrad.kraj.toLowerCase().includes(vyhledavanyText);
-                const odpovidaTextu = odpovidaNazvu || odpovidaKraji;
+                const matchType = selectedType === 'all' || (c.typ && (c.typ === selectedType || c.typ.includes(selectedType)));
+                const matchKraj = !selectedKraj || fullText.includes(selectedKraj);
+                const matchAuto = !autoOnly || (c.auto === 1 || c.auto === true);
+                const matchKocarek = !kocarekOnly || (c.kocarek === 1 || c.kocarek === true);
 
-                // Filtrování podle vybraného kraju
-                const odpovidaVybranyCraj = !vybranyKraj || hrad.kraj === vybranyKraj;
+                return matchType && matchKraj && matchAuto && matchKocarek;
+            });
 
-                // Filtrování podle dostupnosti
-                const dostupnyAutoem = !filtrAutoem || hrad.dostupny_auto === 1;
-                const dostupnyKocárek = !filtrKocárek || hrad.dostupny_kocárek === 1;
+            document.getElementById('stats-badge').innerText = `Zobrazeno ${filtered.length} památek`;
 
-                if (odpovidaTypu && odpovidaTextu && odpovidaVybranyCraj && dostupnyAutoem && dostupnyKocárek) {
-                    karty[index].style.display = "flex";
-                    viditelnePamatkyPocet++;
+            filtered.forEach(c => {
+                const lat = c.lat || c.latitude;
+                const lon = c.lon || c.lng || c.longitude;
+                if (!lat || !lon) return;
 
-                    const realnyPopis = karty[index].querySelector('p') ? karty[index].querySelector('p').innerText : '';
-                    const bezpecnyPopis = realnyPopis.replace(/'/g, "\\'").replace(/"/g, '\\"');
+                const marker = L.marker([lat, lon], { icon: c.is_visited ? greenIcon : redIcon });
+                const img = c.foto ? `<img src="${c.foto}" alt="${c.nazev}">` : '';
+                const typNazev = c.typ === 'zamek' ? 'Zámek' : (c.typ === 'zricenina' ? 'Zřícenina' : 'Hrad');
 
-                    const popupObsah = `
-                        <div class="p-1 max-w-[200px]">
-                            <b class="text-sm text-gray-900">${hrad.nazev}</b>
-                            <p class="text-gray-500 text-[11px] my-1 uppercase font-bold">${hrad.typ}</p>
-                            <button onclick="otevriGalerii('${hrad.nazev.replace(/'/g, "\\'")}', '${hrad.foto_url}', '${bezpecnyPopis}')" 
-                                    class="mt-1 w-full bg-amber-500 hover:bg-amber-600 text-gray-950 text-[10px] font-bold py-1 px-2 rounded transition cursor-pointer">
-                                🖼️ Otevřít galerii
-                            </button>
+                // Dynamické odkazy
+                const restaurantUrl = `https://mapy.cz/turisticka?q=restaurace&x=${lon}&y=${lat}&z=14`;
+                const infoUrl = `https://cs.wikipedia.org/wiki/${encodeURIComponent(c.nazev || c.name)}`;
+
+                marker.bindPopup(`
+                    <div class="castle-popup">
+                        ${img}
+                        <h3>${c.nazev || c.name}</h3>
+                        <span class="badge">${typNazev} • ${c.kraj || ''}</span>
+                        
+                        <div class="popup-links">
+                            <a href="${restaurantUrl}" target="_blank" class="popup-link-btn btn-food">
+                                <i class="fa-solid fa-utensils"></i> Restaurace v okolí
+                            </a>
+                            <a href="${infoUrl}" target="_blank" class="popup-link-btn btn-web">
+                                <i class="fa-solid fa-circle-info"></i> Otvírací doba & Info
+                            </a>
                         </div>
-                    `;
 
-                    const m = L.marker([hrad.lat, hrad.lng]).addTo(map).bindPopup(popupObsah);
-                    aktivniMarkery.push(m);
+                        <button class="btn-hunt ${c.is_visited ? 'visited' : ''}" onclick="toggleVisit(${c.id})">
+                            ${c.is_visited ? '✓ Uloveno' : 'Ulovit hrad!'}
+                        </button>
+                    </div>
+                `);
+                markersGroup.addLayer(marker);
+                markersMap[c.id] = marker;
+            });
+        }
+
+        function openModal(id) { document.getElementById(id).style.display = 'flex'; }
+        function closeModal(id) { document.getElementById(id).style.display = 'none'; }
+
+        async function checkAuthStatus() {
+            try {
+                const res = await fetch('/api/user-status');
+                const data = await res.json();
+                if (data.logged_in) {
+                    document.getElementById('user-info').innerText = `👤 ${data.username}`;
+                    document.getElementById('login-btn').style.display = 'none';
+                    document.getElementById('register-btn').style.display = 'none';
+                    document.getElementById('profile-btn').style.display = 'inline-block';
+                    document.getElementById('logout-btn').style.display = 'inline-block';
                 } else {
-                    karty[index].style.display = "none";
+                    document.getElementById('user-info').innerText = '';
+                    document.getElementById('login-btn').style.display = 'inline-block';
+                    document.getElementById('register-btn').style.display = 'inline-block';
+                    document.getElementById('profile-btn').style.display = 'none';
+                    document.getElementById('logout-btn').style.display = 'none';
                 }
-            });
-
-            document.getElementById('stats-counter').innerText = viditelnePamatkyPocet;
+            } catch(e) { console.error('Chyba kontroly přihlášení:', e); }
         }
 
-        function resetFiltry() {
-            document.getElementById('search-input').value = '';
-            document.getElementById('kraj-select').value = '';
-            document.getElementById('auto-checkbox').checked = false;
-            document.getElementById('kocárek-checkbox').checked = false;
-            aktualniTypFiltru = 'vse';
-            zmenTypFiltru('vse');
-            aplikujFiltry();
-        }
-
-        let docasnyFormMarker = null;
-
-        function zrusVyberNovehoMista() {
-            if (docasnyFormMarker) {
-                map.removeLayer(docasnyFormMarker);
-                docasnyFormMarker = null;
-            }
-            document.querySelector('input[name="lat"]').value = '';
-            document.querySelector('input[name="lng"]').value = '';
-        }
-
-        map.on('click', function(e) {
-            const lat = e.latlng.lat;
-            const lng = e.latlng.lng;
-
-            document.querySelector('input[name="lat"]').value = lat.toFixed(6);
-            document.querySelector('input[name="lng"]').value = lng.toFixed(6);
-
-            if (docasnyFormMarker) {
-                map.removeLayer(docasnyFormMarker);
-            }
-
-            const popupObsah = `
-                <div class="p-1 text-center">
-                    <b class="text-sm text-red-600">Vybrané místo!</b>
-                    <p class="text-gray-500 text-[10px] my-1">Souřadnice jsou ve formuláři.</p>
-                    <button onclick="zrusVyberNovehoMista()" 
-                            class="mt-1 w-full bg-red-500 hover:bg-red-600 text-white text-[10px] font-bold py-1 px-2 rounded transition cursor-pointer">
-                        🗑️ Zrušit špendlík
-                    </button>
-                </div>
-            `;
-
-            docasnyFormMarker = L.marker([lat, lng], {
-                icon: L.icon({
-                    iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-red.png',
-                    shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
-                    iconSize: [25, 41],
-                    iconAnchor: [12, 41],
-                    popupAnchor: [1, -34],
-                    shadowSize: [41, 41]
-                })
-            }).addTo(map).bindPopup(popupObsah).openPopup();
-
-            docasnyFormMarker.on('dblclick', function() {
-                zrusVyberNovehoMista();
-            });
-
-            document.getElementById('formular').scrollIntoView({ behavior: 'smooth' });
-        });
-
-        function zmenTypFiltru(novyTyp) {
-            aktualniTypFiltru = novyTyp;
-            ['vse', 'hrad', 'zamek', 'zricenina'].forEach(t => {
-                const btn = document.getElementById(`btn-${t}`);
-                btn.className = t === novyTyp 
-                    ? "bg-amber-500 text-gray-950 text-xs font-bold px-4 py-2 rounded-full shadow transition"
-                    : "bg-white hover:bg-gray-100 text-gray-700 text-xs font-bold px-4 py-2 rounded-full shadow border border-gray-200 transition";
-            });
-            aplikujFiltry();
-        }
-
-        function focusOnMap(lat, lng, nazev) {
-            map.setView([lat, lng], 14);
-            aktivniMarkery.forEach(m => {
-                if (m.getLatLng().lat === lat && m.getLatLng().lng === lng) {
-                    m.openPopup();
-                }
-            });
-        }
-
-        function otevriGalerii(nazev, hlavniFoto, popis) {
-            document.getElementById('modal-title').innerText = nazev;
-            document.getElementById('modal-desc').innerText = popis;
+        async function openProfile() {
+            const res = await fetch('/api/user/visited');
+            if (!res.ok) return alert('Chyba při načítání profilu.');
             
-            const mainImg = document.getElementById('modal-main-img');
-            mainImg.src = hlavniFoto;
+            const visited = await res.json();
+            const listContainer = document.getElementById('profile-visited-list');
+            const statsContainer = document.getElementById('profile-stats');
 
-            const thumbContainer = document.getElementById('modal-thumbnails');
-            thumbContainer.innerHTML = '<span class="text-xs text-gray-400">Načítám další snímky z okolí...</span>';
+            statsContainer.innerText = `Celkem uloveno: ${visited.length} památek`;
+            listContainer.innerHTML = '';
 
-            document.getElementById('gallery-modal').classList.remove('hidden');
+            if (visited.length === 0) {
+                listContainer.innerHTML = '<p style="text-align:center; color: #94a3b8; padding: 20px 0;">Zatím nemáš ulovené žádné památky.</p>';
+            } else {
+                visited.forEach(c => {
+                    const item = document.createElement('div');
+                    item.className = 'profile-item';
+                    item.onclick = () => focusCastleOnMap(c);
 
-            const searchUrl = `https://commons.wikimedia.org/w/api.php?action=query&format=json&origin=*&prop=pageimages&generator=search&gsrsearch=${encodeURIComponent(nazev)}&gsrnamespace=6&pithumbsize=100`;
+                    const img = c.foto ? `<img src="${c.foto}" style="width: 48px; height: 48px; object-fit: cover; border-radius: 6px;">` : '<span style="font-size:1.5rem;">🏰</span>';
+                    const typNazev = c.typ === 'zamek' ? 'Zámek' : (c.typ === 'zricenina' ? 'Zřícenina' : 'Hrad');
 
-            fetch(searchUrl)
-                .then(res => res.json())
-                .then(data => {
-                    thumbContainer.innerHTML = '';
-                    vytvorNahled(hlavniFoto, mainImg);
-
-                    if (data.query && data.query.pages) {
-                        Object.values(data.query.pages).forEach(page => {
-                            if (page.thumbnail && page.thumbnail.source && page.thumbnail.source !== hlavniFoto) {
-                                vytvorNahled(page.thumbnail.source, mainImg);
-                            }
-                        });
-                    }
-                })
-                .catch(() => {
-                    thumbContainer.innerHTML = '<span class="text-xs text-red-400">Nepodařilo se načíst další snímky.</span>';
+                    item.innerHTML = `
+                        ${img}
+                        <div style="flex-grow: 1;">
+                            <strong style="display:block; font-size: 0.95rem; color: #1e293b;">${c.nazev}</strong>
+                            <small style="color: #64748b;">${typNazev} • ${c.kraj}</small>
+                        </div>
+                        <i class="fa-solid fa-location-crosshairs" style="color: #3b82f6;"></i>
+                    `;
+                    listContainer.appendChild(item);
                 });
-        }
-
-        function vytvorNahled(src, mainImgTarget) {
-            const thumbContainer = document.getElementById('modal-thumbnails');
-            const imgBtn = document.createElement('img');
-            imgBtn.src = src;
-            imgBtn.className = "w-16 h-16 rounded-lg object-cover border-2 border-transparent hover:border-amber-400 cursor-pointer flex-shrink-0 transition";
-            imgBtn.onclick = () => mainImgTarget.src = src;
-            thumbContainer.appendChild(imgBtn);
-        }
-
-        function zavriGalerii() {
-            document.getElementById('gallery-modal').classList.add('hidden');
-        }
-
-        window.onclick = function(event) {
-            const modal = document.getElementById('gallery-modal');
-            if (event.target === modal) {
-                zavriGalerii();
             }
+
+            openModal('profile-modal');
         }
 
-        aplikujFiltry();
+        function focusCastleOnMap(castle) {
+            closeModal('profile-modal');
+            const lat = castle.lat || castle.latitude;
+            const lon = castle.lon || castle.lng || castle.longitude;
+
+            map.flyTo([lat, lon], 14, { duration: 1.5 });
+
+            setTimeout(() => {
+                if (markersMap[castle.id]) {
+                    markersMap[castle.id].openPopup();
+                }
+            }, 1600);
+        }
+
+        async function login() {
+            const username = document.getElementById('login-user').value;
+            const password = document.getElementById('login-pass').value;
+            const res = await fetch('/api/login', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({username, password})
+            });
+            const data = await res.json();
+            if (res.ok) { closeModal('login-modal'); checkAuthStatus(); loadCastles(); } 
+            else alert(data.error);
+        }
+
+        async function register() {
+            const username = document.getElementById('reg-user').value;
+            const password = document.getElementById('reg-pass').value;
+            const res = await fetch('/api/register', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({username, password})
+            });
+            const data = await res.json();
+            if (res.ok) { alert(data.message); closeModal('register-modal'); openModal('login-modal'); } 
+            else alert(data.error);
+        }
+
+        async function logout() {
+            await fetch('/api/logout', {method: 'POST'});
+            checkAuthStatus();
+            loadCastles();
+        }
+
+        async function toggleVisit(id) {
+            const res = await fetch(`/api/castle/${id}/visit`, {method: 'POST'});
+            if (res.status === 401) return alert('Nejdříve se přihlaste!');
+            loadCastles();
+        }
+
+        checkAuthStatus();
+        loadCastles();
     </script>
 </body>
 </html>
