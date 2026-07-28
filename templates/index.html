@@ -121,7 +121,7 @@
             letter-spacing: 0.5px;
         }
 
-        /* Styly pro našeptávač */
+        /* Našeptávač */
         .autocomplete-results {
             display: none;
             position: absolute;
@@ -176,7 +176,7 @@
             border-color: var(--primary);
         }
 
-        select {
+        select, input[type="date"], textarea {
             padding: 10px;
             border-radius: 6px;
             border: 1px solid var(--border-color);
@@ -186,6 +186,23 @@
             background-color: #ffffff;
             color: var(--text-main);
         }
+
+        .btn-gps {
+            background: #0284c7;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 0.88rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            transition: background 0.2s;
+        }
+        .btn-gps:hover { background: #0369a1; }
 
         .checkbox-card {
             display: flex;
@@ -215,7 +232,7 @@
         #map { flex-grow: 1; height: 100%; }
 
         /* Popup okna */
-        .castle-popup { text-align: center; max-width: 240px; font-family: 'Inter', sans-serif; }
+        .castle-popup { text-align: center; max-width: 260px; font-family: 'Inter', sans-serif; }
         .castle-popup img { width: 100%; height: 120px; object-fit: cover; border-radius: 6px; margin-bottom: 8px; }
         .castle-popup h3 { margin: 4px 0; font-size: 1rem; font-weight: 700; color: var(--primary); }
         .castle-popup .badge { display: inline-block; padding: 2px 8px; background: #e2e8f0; font-size: 0.75rem; border-radius: 12px; font-weight: 600; margin-bottom: 8px; }
@@ -260,10 +277,10 @@
             justify-content: center; align-items: center;
         }
         .modal-content {
-            background: white; padding: 28px; border-radius: 12px; width: 340px;
+            background: white; padding: 28px; border-radius: 12px; width: 360px;
             display: flex; flex-direction: column; gap: 12px; box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1);
         }
-        .modal-content input { padding: 10px; border: 1px solid var(--border-color); border-radius: 6px; font-family: inherit; }
+        .modal-content input, .modal-content textarea { padding: 10px; border: 1px solid var(--border-color); border-radius: 6px; font-family: inherit; }
         .modal-content button { background: var(--success); color: white; border: none; padding: 10px; border-radius: 6px; cursor: pointer; font-weight: 600; }
         .close-btn { background: #94a3b8 !important; }
 
@@ -277,7 +294,6 @@
             background: #f1f5f9; border-color: var(--accent); transform: translateY(-1px);
         }
 
-        /* Styly pro Žebříček */
         .rank-badge {
             width: 32px; height: 32px; display: flex; align-items: center; justify-content: center;
             border-radius: 50%; font-weight: 700; font-size: 0.9rem; background: #e2e8f0; color: #475569;
@@ -285,6 +301,18 @@
         .rank-1 { background: #fef08a; color: #854d0e; border: 1px solid #fde047; }
         .rank-2 { background: #e2e8f0; color: #334155; border: 1px solid #cbd5e1; }
         .rank-3 { background: #ffedd5; color: #9a3412; border: 1px solid #fed7aa; }
+
+        .star-rating {
+            display: flex;
+            gap: 8px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #cbd5e1;
+            justify-content: center;
+        }
+        .star-rating .fa-star.active {
+            color: #f59e0b;
+        }
     </style>
 </head>
 <body>
@@ -302,6 +330,19 @@
     </header>
 
     <div class="main-container">
+        <!-- Plovoucí karta s informacemi o trase -->
+<div id="route-info-box" style="display: none; position: absolute; bottom: 24px; right: 24px; z-index: 1000; background: white; padding: 16px 20px; border-radius: 12px; box-shadow: 0 10px 25px -5px rgba(0,0,0,0.2); border: 1px solid var(--border-color); width: 300px; font-family: 'Inter', sans-serif;">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+        <strong id="route-title" style="font-size: 1rem; color: var(--primary);">📍 Náhled trasy</strong>
+        <i class="fa-solid fa-xmark" onclick="clearRoute()" style="cursor: pointer; color: var(--text-muted); font-size: 1.1rem;"></i>
+    </div>
+    
+    <div id="route-details" style="font-size: 0.9rem; color: #475569; margin-bottom: 14px;"></div>
+    
+    <button id="route-start-btn" style="width: 100%; background: #2563eb; color: white; border: none; padding: 10px; border-radius: 6px; font-weight: 600; cursor: pointer; font-size: 0.88rem; display: flex; align-items: center; justify-content: center; gap: 8px;">
+        <i class="fa-solid fa-location-arrow"></i> Spustit navigaci
+    </button>
+</div>
         <!-- Boční filtr -->
         <div class="sidebar">
             <h3>Filtrovat památky</h3>
@@ -316,6 +357,20 @@
                     
                     <div id="autocomplete-box" class="autocomplete-results"></div>
                 </div>
+            </div>
+
+            <!-- GPS Vyhledávání v okolí -->
+            <div class="filter-section">
+                <span class="filter-label">Památky v mé blízkosti</span>
+                <button class="btn-gps" onclick="getUserLocation()">
+                    <i class="fa-solid fa-location-crosshairs"></i> Najít mou polohu
+                </button>
+                <select id="filter-radius" onchange="applyFilters()" style="display: none; margin-top: 5px;">
+                    <option value="9999">Všechny vzdálenosti</option>
+                    <option value="15">Okolí do 15 km</option>
+                    <option value="30" selected>Okolí do 30 km</option>
+                    <option value="50">Okolí do 50 km</option>
+                </select>
             </div>
 
             <!-- Typ památky -->
@@ -373,7 +428,7 @@
         <div id="map"></div>
     </div>
 
-    <!-- Modální okno: Přihlášení -->
+    <!-- Modály -->
     <div id="login-modal" class="modal">
         <div class="modal-content">
             <h3>Přihlášení</h3>
@@ -384,7 +439,6 @@
         </div>
     </div>
 
-    <!-- Modální okno: Registrace -->
     <div id="register-modal" class="modal">
         <div class="modal-content">
             <h3>Registrace</h3>
@@ -395,7 +449,31 @@
         </div>
     </div>
 
-    <!-- Modální okno: Profil uživatele -->
+    <div id="hunt-modal" class="modal">
+        <div class="modal-content" style="width: 380px;">
+            <h3 id="hunt-modal-title">🏰 Ulovit památku</h3>
+            
+            <label style="font-size: 0.85rem; font-weight: 600; color: var(--text-muted);">Datum návštěvy:</label>
+            <input type="date" id="hunt-date">
+
+            <label style="font-size: 0.85rem; font-weight: 600; color: var(--text-muted); text-align: center;">Hodnocení:</label>
+            <div class="star-rating" id="star-container">
+                <i class="fa-solid fa-star" onclick="setRating(1)"></i>
+                <i class="fa-solid fa-star" onclick="setRating(2)"></i>
+                <i class="fa-solid fa-star" onclick="setRating(3)"></i>
+                <i class="fa-solid fa-star" onclick="setRating(4)"></i>
+                <i class="fa-solid fa-star" onclick="setRating(5)"></i>
+            </div>
+
+            <label style="font-size: 0.85rem; font-weight: 600; color: var(--text-muted);">Poznámka z výletu:</label>
+            <textarea id="hunt-note" rows="3" placeholder="Jak se ti tu líbilo? Nějaké tipy na cestu..."></textarea>
+
+            <button onclick="submitVisit()"><i class="fa-solid fa-floppy-disk"></i> Uložit úlovek</button>
+            <button id="delete-visit-btn" style="background: #ef4444; display: none;" onclick="deleteVisit()"><i class="fa-solid fa-trash"></i> Zrušit ulovení</button>
+            <button class="close-btn" onclick="closeModal('hunt-modal')">Zavřít</button>
+        </div>
+    </div>
+
     <div id="profile-modal" class="modal">
         <div class="modal-content" style="width: 440px; max-height: 80vh;">
             <h3>🏆 Moje ulovené památky</h3>
@@ -409,7 +487,6 @@
         </div>
     </div>
 
-    <!-- Modální okno: Žebříček Lovců -->
     <div id="leaderboard-modal" class="modal">
         <div class="modal-content" style="width: 400px; max-height: 80vh;">
             <h3>🏆 Žebříček nejlepších lovců</h3>
@@ -429,6 +506,15 @@
         let markersMap = {};
         let selectedType = 'all';
         let markersGroup = L.layerGroup().addTo(map);
+        let routeLayer = null; // Vrstva pro vykreslení trasy
+
+        let currentHuntCastleId = null;
+        let selectedRating = 0;
+        let isLoggedIn = false;
+
+        let userLat = null;
+        let userLon = null;
+        let userLocationMarker = null;
 
         const redIcon = new L.Icon({
             iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-red.png',
@@ -442,12 +528,142 @@
             iconSize: [25, 41], iconAnchor: [12, 41], popupAnchor: [1, -34], shadowSize: [41, 41]
         });
 
+        const blueIcon = new L.Icon({
+            iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-blue.png',
+            shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+            iconSize: [25, 41], iconAnchor: [12, 41], popupAnchor: [1, -34], shadowSize: [41, 41]
+        });
+
         async function loadCastles() {
             try {
                 const response = await fetch('/api/castles');
                 allCastles = await response.json();
                 applyFilters();
             } catch (e) { console.error('Chyba načítání dat:', e); }
+        }
+
+        // Funkce pro smazání trasy z mapy
+function clearRoute() {
+    if (routeLayer) {
+        map.removeLayer(routeLayer);
+        routeLayer = null;
+    }
+    document.getElementById('route-info-box').style.display = 'none';
+}
+
+async function showRouteOnMap(toLat, toLon, profile) {
+    if (!userLat || !userLon) {
+        return alert('Nejdříve klikni na "Najít mou polohu" v sidebaru!');
+    }
+
+    clearRoute(); // Vyčistíme případnou předchozí trasu
+
+    let url = '';
+    if (profile === 'car') {
+        url = `https://router.project-osrm.org/route/v1/driving/${userLon},${userLat};${toLon},${toLat}?overview=full&geometries=geojson`;
+    } else {
+        url = `https://routing.openstreetmap.de/routed-foot/route/v1/driving/${userLon},${userLat};${toLon},${toLat}?overview=full&geometries=geojson`;
+    }
+
+    try {
+        const response = await fetch(url);
+        const data = await response.json();
+
+        if (!data.routes || data.routes.length === 0) {
+            return alert('Trasu se nepodařilo spočítat.');
+        }
+
+        const route = data.routes[0];
+        const coordinates = route.geometry.coordinates.map(coord => [coord[1], coord[0]]);
+        const distanceKm = (route.distance / 1000).toFixed(1);
+
+        let durationMin = 0;
+        if (profile === 'car') {
+            durationMin = Math.round(route.duration / 60);
+        } else {
+            durationMin = Math.round((distanceKm / 4.2) * 60);
+        }
+
+        const hours = Math.floor(durationMin / 60);
+        const mins = durationMin % 60;
+        const timeText = hours > 0 ? `${hours} hod ${mins} min` : `${mins} min`;
+
+        // Vykreslení čáry na tvé mapě
+        if (profile === 'car') {
+            routeLayer = L.polyline(coordinates, { 
+                color: '#2563eb', 
+                weight: 6, 
+                opacity: 0.8 
+            }).addTo(map);
+        } else {
+            routeLayer = L.polyline(coordinates, { 
+                color: '#16a34a', 
+                weight: 5, 
+                opacity: 0.9,
+                dashArray: '6, 10'
+            }).addTo(map);
+        }
+
+        map.fitBounds(routeLayer.getBounds(), { padding: [60, 60] });
+
+        // Příprava dat pro plovoucí panel
+        const modeText = profile === 'car' ? '🚗 Autem' : '🥾 Pěšky';
+        const travelMode = profile === 'car' ? 'driving' : 'walking';
+        const externalNavUrl = `https://www.google.com/maps/dir/?api=1&origin=${userLat},${userLon}&destination=${toLat},${toLon}&travelmode=${travelMode}`;
+
+        // Naplnění a zobrazení karty v rohu mapy
+        document.getElementById('route-title').innerText = `📍 Trasa (${modeText})`;
+        document.getElementById('route-details').innerHTML = `
+            <div><strong>Vzdálenost:</strong> ${distanceKm} km</div>
+            <div><strong>Předpokládaný čas:</strong> ${timeText}</div>
+        `;
+        
+        const startBtn = document.getElementById('route-start-btn');
+        startBtn.onclick = () => window.open(externalNavUrl, '_blank');
+
+        document.getElementById('route-info-box').style.display = 'block';
+
+    } catch (e) {
+        console.error('Chyba při načítání trasy:', e);
+        alert('Nepodařilo se načíst trasu.');
+    }
+}
+        function getDistanceFromLatLonInKm(lat1, lon1, lat2, lon2) {
+            const R = 6371;
+            const dLat = (lat2 - lat1) * (Math.PI / 180);
+            const dLon = (lon2 - lon1) * (Math.PI / 180);
+            const a = 
+                Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+                Math.cos(lat1 * (Math.PI / 180)) * Math.cos(lat2 * (Math.PI / 180)) * 
+                Math.sin(dLon / 2) * Math.sin(dLon / 2); 
+            const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a)); 
+            return R * c;
+        }
+
+        function getUserLocation() {
+            if (!navigator.geolocation) {
+                return alert('Váš prohlížeč nepodporuje geolokaci.');
+            }
+
+            navigator.geolocation.getCurrentPosition(
+                (position) => {
+                    userLat = position.coords.latitude;
+                    userLon = position.coords.longitude;
+
+                    if (userLocationMarker) map.removeLayer(userLocationMarker);
+
+                    userLocationMarker = L.marker([userLat, userLon], { icon: blueIcon }).addTo(map);
+                    userLocationMarker.bindPopup('<b>📍 Tvoje aktuální poloha</b>').openPopup();
+
+                    map.flyTo([userLat, userLon], 10, { duration: 1.5 });
+                    document.getElementById('filter-radius').style.display = 'block';
+
+                    applyFilters();
+                },
+                () => {
+                    alert('Nepodařilo se získat vaši polohu. Povolte přístup k poloze v prohlížeči.');
+                }
+            );
         }
 
         function setTypeFilter(type, element) {
@@ -515,8 +731,13 @@
             const selectedKraj = document.getElementById('filter-kraj').value.toLowerCase().trim();
             const autoOnly = document.getElementById('filter-auto').checked;
             const kocarekOnly = document.getElementById('filter-kocarek').checked;
+            const maxRadius = parseFloat(document.getElementById('filter-radius').value);
 
             const filtered = allCastles.filter(c => {
+                const lat = c.lat || c.latitude;
+                const lon = c.lon || c.lng || c.longitude;
+                if (!lat || !lon) return false;
+
                 const castleName = (c.nazev || c.name || '').toLowerCase();
                 const fullText = `${c.kraj || ''} ${castleName}`.toLowerCase();
                 
@@ -526,7 +747,14 @@
                 const matchAuto = !autoOnly || (c.auto === 1 || c.auto === true);
                 const matchKocarek = !kocarekOnly || (c.kocarek === 1 || c.kocarek === true);
 
-                return matchSearch && matchType && matchKraj && matchAuto && matchKocarek;
+                let matchDistance = true;
+                if (userLat && userLon && maxRadius < 9000) {
+                    const dist = getDistanceFromLatLonInKm(userLat, userLon, lat, lon);
+                    c.distance = dist;
+                    matchDistance = dist <= maxRadius;
+                }
+
+                return matchSearch && matchType && matchKraj && matchAuto && matchKocarek && matchDistance;
             });
 
             document.getElementById('stats-badge').innerText = `Zobrazeno ${filtered.length} památek`;
@@ -534,7 +762,6 @@
             filtered.forEach(c => {
                 const lat = c.lat || c.latitude;
                 const lon = c.lon || c.lng || c.longitude;
-                if (!lat || !lon) return;
 
                 const marker = L.marker([lat, lon], { icon: c.is_visited ? greenIcon : redIcon });
                 const img = c.foto ? `<img src="${c.foto}" alt="${c.nazev}">` : '';
@@ -543,12 +770,54 @@
                 const restaurantUrl = `https://mapy.cz/turisticka?q=restaurace&x=${lon}&y=${lat}&z=14`;
                 const infoUrl = `https://cs.wikipedia.org/wiki/${encodeURIComponent(c.nazev || c.name)}`;
 
+                let visitMetaHtml = '';
+                if (c.is_visited) {
+                    const stars = '⭐'.repeat(c.rating || 0);
+                    const dateFormatted = c.visited_at ? new Date(c.visited_at).toLocaleDateString('cs-CZ') : '';
+                    visitMetaHtml = `
+                        <div style="font-size: 0.8rem; background: #f1f5f9; padding: 6px; border-radius: 6px; margin: 6px 0; color: #475569;">
+                            ${stars ? `<div>${stars}</div>` : ''}
+                            ${dateFormatted ? `<div>🗓️ ${dateFormatted}</div>` : ''}
+                            ${c.note ? `<div style="font-style: italic; margin-top: 2px;">"${c.note}"</div>` : ''}
+                        </div>
+                    `;
+                }
+
+                const distHtml = c.distance ? `<div style="font-size: 0.8rem; font-weight: 600; color: #0284c7; margin-bottom: 4px;">📍 Vzdálenost: ${c.distance.toFixed(1)} km</div>` : '';
+
+                // Dynamická tlačítka pro navigaci
+                let navHtml = '';
+if (userLat && userLon) {
+    navHtml = `
+        <div style="display: flex; gap: 6px; margin-bottom: 8px;">
+            <button onclick="showRouteOnMap(${lat}, ${lon}, 'car')" class="popup-link-btn" style="background: #2563eb; flex: 1; border: none; cursor: pointer;">
+                🚗 Autem
+            </button>
+            <button onclick="showRouteOnMap(${lat}, ${lon}, 'foot')" class="popup-link-btn" style="background: #16a34a; flex: 1; border: none; cursor: pointer;">
+                🥾 Pěšky
+            </button>
+        </div>
+    `;
+} else {
+                    const gmapsUrl = `https://www.google.com/maps/dir/?api=1&destination=${lat},${lon}`;
+                    navHtml = `
+                        <a href="${gmapsUrl}" target="_blank" class="popup-link-btn" style="background: #2563eb; margin-bottom: 8px; font-size: 0.8rem;">
+                            🗺️ Trasa v Google Maps
+                        </a>
+                    `;
+                }
+
                 marker.bindPopup(`
                     <div class="castle-popup">
                         ${img}
                         <h3>${c.nazev || c.name}</h3>
                         <span class="badge">${typNazev} • ${c.kraj || ''}</span>
+                        ${distHtml}
                         
+                        ${visitMetaHtml}
+
+                        ${navHtml}
+
                         <div class="popup-links">
                             <a href="${restaurantUrl}" target="_blank" class="popup-link-btn btn-food">
                                 <i class="fa-solid fa-utensils"></i> Restaurace v okolí
@@ -558,8 +827,8 @@
                             </a>
                         </div>
 
-                        <button class="btn-hunt ${c.is_visited ? 'visited' : ''}" onclick="toggleVisit(${c.id})">
-                            ${c.is_visited ? '✓ Uloveno' : 'Ulovit hrad!'}
+                        <button class="btn-hunt ${c.is_visited ? 'visited' : ''}" onclick="openHuntModal(${c.id})">
+                            ${c.is_visited ? '✓ Uloveno (Upravit)' : 'Ulovit hrad!'}
                         </button>
                     </div>
                 `);
@@ -571,10 +840,84 @@
         function openModal(id) { document.getElementById(id).style.display = 'flex'; }
         function closeModal(id) { document.getElementById(id).style.display = 'none'; }
 
+        function setRating(stars) {
+            selectedRating = stars;
+            const starIcons = document.querySelectorAll('#star-container .fa-star');
+            starIcons.forEach((star, index) => {
+                if (index < stars) {
+                    star.classList.add('active');
+                } else {
+                    star.classList.remove('active');
+                }
+            });
+        }
+
+        function openHuntModal(castleId) {
+            if (!isLoggedIn) return alert('Nejdříve se přihlaste!');
+            
+            const castle = allCastles.find(c => c.id === castleId);
+            if (!castle) return;
+
+            currentHuntCastleId = castleId;
+            document.getElementById('hunt-modal-title').innerText = `🏰 ${castle.nazev}`;
+
+            const today = new Date().toISOString().split('T')[0];
+            document.getElementById('hunt-date').value = castle.visited_at || today;
+            document.getElementById('hunt-note').value = castle.note || '';
+            setRating(castle.rating || 0);
+
+            document.getElementById('delete-visit-btn').style.display = castle.is_visited ? 'block' : 'none';
+
+            openModal('hunt-modal');
+        }
+
+        async function submitVisit() {
+            if (!currentHuntCastleId) return;
+
+            const visited_at = document.getElementById('hunt-date').value;
+            const note = document.getElementById('hunt-note').value;
+
+            const res = await fetch(`/api/castle/${currentHuntCastleId}/visit`, {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({
+                    visited_at: visited_at,
+                    rating: selectedRating,
+                    note: note
+                })
+            });
+
+            if (res.ok) {
+                closeModal('hunt-modal');
+                loadCastles();
+            } else {
+                alert('Chyba při ukládání úlovku.');
+            }
+        }
+
+        async function deleteVisit() {
+            if (!currentHuntCastleId || !confirm('Opravdu chceš tuto památku odebrat z ulovených?')) return;
+
+            const res = await fetch(`/api/castle/${currentHuntCastleId}/visit`, {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({ action: 'delete' })
+            });
+
+            if (res.ok) {
+                closeModal('hunt-modal');
+                loadCastles();
+            } else {
+                alert('Chyba při odstraňování.');
+            }
+        }
+
         async function checkAuthStatus() {
             try {
                 const res = await fetch('/api/user-status');
                 const data = await res.json();
+                isLoggedIn = data.logged_in;
+                
                 if (data.logged_in) {
                     document.getElementById('user-info').innerText = `👤 ${data.username}`;
                     document.getElementById('login-btn').style.display = 'none';
@@ -610,14 +953,19 @@
                     item.className = 'profile-item';
                     item.onclick = () => focusCastleOnMap(c);
 
-                    const img = c.foto ? `<img src="${c.foto}" style="width: 48px; height: 48px; object-fit: cover; border-radius: 6px;">` : '<span style="font-size:1.5rem;">🏰</span>';
+                    const img = c.foto ? `<img src="${c.foto}" style="width: 52px; height: 52px; object-fit: cover; border-radius: 6px;">` : '<span style="font-size:1.5rem;">🏰</span>';
                     const typNazev = c.typ === 'zamek' ? 'Zámek' : (c.typ === 'zricenina' ? 'Zřícenina' : 'Hrad');
+                    
+                    const stars = c.rating ? '⭐'.repeat(c.rating) : '';
+                    const dateFormatted = c.visited_at ? new Date(c.visited_at).toLocaleDateString('cs-CZ') : '';
 
                     item.innerHTML = `
                         ${img}
                         <div style="flex-grow: 1;">
                             <strong style="display:block; font-size: 0.95rem; color: #1e293b;">${c.nazev}</strong>
                             <small style="color: #64748b;">${typNazev} • ${c.kraj}</small>
+                            ${dateFormatted ? `<small style="display:block; color: #3b82f6; font-size: 0.75rem;">🗓️ ${dateFormatted} ${stars}</small>` : ''}
+                            ${c.note ? `<div style="font-size: 0.75rem; font-style: italic; color: #475569; margin-top:2px;">"${c.note}"</div>` : ''}
                         </div>
                         <i class="fa-solid fa-location-crosshairs" style="color: #3b82f6;"></i>
                     `;
@@ -628,7 +976,6 @@
             openModal('profile-modal');
         }
 
-        // Načtení Žebříčku Lovců
         async function openLeaderboard() {
             const res = await fetch('/api/leaderboard');
             if (!res.ok) return alert('Chyba při načítání žebříčku.');
@@ -708,12 +1055,6 @@
         async function logout() {
             await fetch('/api/logout', {method: 'POST'});
             checkAuthStatus();
-            loadCastles();
-        }
-
-        async function toggleVisit(id) {
-            const res = await fetch(`/api/castle/${id}/visit`, {method: 'POST'});
-            if (res.status === 401) return alert('Nejdříve se přihlaste!');
             loadCastles();
         }
 

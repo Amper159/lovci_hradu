@@ -12,28 +12,45 @@ def get_db_connection():
     conn.row_factory = sqlite3.Row  # Pro přístup k sloupcům přes název
     return conn
 def init_db():
-    conn = get_db_connection()  # použij tvou funkci pro připojení k DB
+    conn = get_db_connection()
     cursor = conn.cursor()
 
-    # Vytvoření tabulky uživatelů
-    cursor.execute("""
+    cursor.execute('''
         CREATE TABLE IF NOT EXISTS users (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             username TEXT UNIQUE NOT NULL,
             password TEXT NOT NULL
         )
-    """)
+    ''')
 
-    # Vytvoření tabulky pro ulovené hrady
-    cursor.execute("""
+    cursor.execute('''
         CREATE TABLE IF NOT EXISTS visited_castles (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             user_id INTEGER NOT NULL,
             castle_id INTEGER NOT NULL,
+            visited_at TEXT,
+            rating INTEGER DEFAULT 0,
+            note TEXT,
             FOREIGN KEY (user_id) REFERENCES users (id),
             FOREIGN KEY (castle_id) REFERENCES pamatky (id)
         )
-    """)
+    ''')
+
+    # Pojistka pro doplnění sloupců, pokud tabulka již existovala
+    try:
+        cursor.execute("ALTER TABLE visited_castles ADD COLUMN visited_at TEXT")
+    except Exception:
+        pass
+    try:
+        cursor.execute(
+            "ALTER TABLE visited_castles ADD COLUMN rating INTEGER DEFAULT 0"
+        )
+    except Exception:
+        pass
+    try:
+        cursor.execute("ALTER TABLE visited_castles ADD COLUMN note TEXT")
+    except Exception:
+        pass
 
     conn.commit()
     conn.close()
@@ -71,26 +88,31 @@ def index():
 @app.route('/api/castles', methods=['GET'])
 def get_castles():
     user_id = session.get('user_id')
+
     conn = get_db_connection()
-    
+    cursor = conn.cursor()
+
     if user_id:
-        query = '''
-            SELECT h.*, 
-                   CASE WHEN vc.id IS NOT NULL THEN 1 ELSE 0 END as is_visited
-            FROM pamatky h
-            LEFT JOIN visited_castles vc 
-                   ON h.id = vc.castle_id AND vc.user_id = ?
-        '''
-        castles = conn.execute(query, (user_id,)).fetchall()
+        cursor.execute(
+            '''
+            SELECT p.*, 
+                   CASE WHEN v.castle_id IS NOT NULL THEN 1 ELSE 0 END as is_visited,
+                   v.visited_at, v.rating, v.note
+            FROM pamatky p
+            LEFT JOIN visited_castles v ON p.id = v.castle_id AND v.user_id = ?
+        ''',
+            (user_id,),
+        )
     else:
-        # Změněno z "FROM hrady" na "FROM pamatky"
-        query = 'SELECT h.*, 0 as is_visited FROM pamatky h'
-        castles = conn.execute(query).fetchall()
-        
+        cursor.execute(
+            'SELECT p.*, 0 as is_visited, NULL as visited_at, 0 as rating, NULL as note FROM pamatky p'
+        )
+
+    castles = cursor.fetchall()
     conn.close()
 
-    castles_list = [dict(castle) for castle in castles]
-    return jsonify(castles_list)
+    result = [dict(row) for row in castles]
+    return jsonify(result)
 
 @app.route('/api/user/visited', methods=['GET'])
 def get_user_visited():
@@ -100,13 +122,14 @@ def get_user_visited():
     conn = get_db_connection()
     cursor = conn.cursor()
 
-    # Načteme ulovené památky pro přihlášeného uživatele
     cursor.execute(
         '''
-        SELECT p.id, p.nazev, p.typ, p.kraj, p.lat, p.lon, p.foto
+        SELECT p.id, p.nazev, p.typ, p.kraj, p.lat, p.lon, p.foto,
+               v.visited_at, v.rating, v.note
         FROM pamatky p
         JOIN visited_castles v ON p.id = v.castle_id
         WHERE v.user_id = ?
+        ORDER BY v.visited_at DESC, p.nazev ASC
     ''',
         (session['user_id'],),
     )
@@ -114,7 +137,6 @@ def get_user_visited():
     visited = cursor.fetchall()
     conn.close()
 
-    # Převedeme řádky z databáze na seznam slovníků
     result = []
     for row in visited:
         result.append({
@@ -125,6 +147,9 @@ def get_user_visited():
             'lat': row['lat'],
             'lon': row['lon'],
             'foto': row['foto'],
+            'visited_at': row['visited_at'],
+            'rating': row['rating'],
+            'note': row['note'],
         })
 
     return jsonify(result)
@@ -206,47 +231,61 @@ def get_leaderboard():
     return jsonify(leaderboard)
 @app.route('/api/castle/<int:castle_id>/visit', methods=['POST'])
 def toggle_visit(castle_id):
-    """
-    Přepne stav hradu (uloven / neuloven) pro přihlášeného uživatele.
-    """
-    user_id = session.get('user_id')
-    if not user_id:
-        return jsonify({'error': 'Uživatel není přihlášen'}), 401
+    if 'user_id' not in session:
+        return jsonify({'error': 'Nejste přihlášeni'}), 401
+
+    user_id = session['user_id']
+    data = request.get_json() or {}
+
+    visited_at = data.get('visited_at')
+    rating = data.get('rating', 0)
+    note = data.get('note', '')
 
     conn = get_db_connection()
-    
-    # Zjistíme, zda už je hrad ulovený
-    existing = conn.execute(
+    cursor = conn.cursor()
+
+    cursor.execute(
         'SELECT id FROM visited_castles WHERE user_id = ? AND castle_id = ?',
-        (user_id, castle_id)
-    ).fetchone()
+        (user_id, castle_id),
+    )
+    existing = cursor.fetchone()
 
     if existing:
-        # Pokud už je navštíven, odstraníme ho (odznačit)
-        conn.execute(
-            'DELETE FROM visited_castles WHERE user_id = ? AND castle_id = ?',
-            (user_id, castle_id)
-        )
-        is_visited = False
-        message = 'Hrad byl odebrán z ulovených.'
+        # Pokud už záznam existuje a posíláme akci 'delete', odebereme ho
+        if data.get('action') == 'delete':
+            cursor.execute(
+                'DELETE FROM visited_castles WHERE user_id = ? AND castle_id = ?',
+                (user_id, castle_id),
+            )
+            message = 'Památka odebrána z ulovených.'
+            visited = False
+        else:
+            # Jinak aktualizujeme poznámku, hodnocení a datum
+            cursor.execute(
+                '''
+                UPDATE visited_castles 
+                SET visited_at = ?, rating = ?, note = ?
+                WHERE user_id = ? AND castle_id = ?
+            ''',
+                (visited_at, rating, note, user_id, castle_id),
+            )
+            message = 'Úlovek aktualizován!'
+            visited = True
     else:
-        # Jinak ho přidáme do navštívených
-        conn.execute(
-            'INSERT INTO visited_castles (user_id, castle_id) VALUES (?, ?)',
-            (user_id, castle_id)
+        # Vložení nového úlovku
+        cursor.execute(
+            '''
+            INSERT INTO visited_castles (user_id, castle_id, visited_at, rating, note)
+            VALUES (?, ?, ?, ?, ?)
+        ''',
+            (user_id, castle_id, visited_at, rating, note),
         )
-        is_visited = True
-        message = 'Hrad byl úspěšně uloven!'
+        message = 'Památka ulovena!'
+        visited = True
 
     conn.commit()
     conn.close()
-
-    return jsonify({
-        'success': True,
-        'castle_id': castle_id,
-        'is_visited': is_visited,
-        'message': message
-    })
+    return jsonify({'message': message, 'visited': visited})
 
 
 if __name__ == '__main__':
