@@ -184,6 +184,26 @@ def user_status():
         return jsonify({'logged_in': True, 'username': session.get('username')})
     return jsonify({'logged_in': False})
 
+@app.route('/api/leaderboard', methods=['GET'])
+def get_leaderboard():
+    conn = get_db_connection()
+    cursor = conn.cursor()
+
+    # Spočítáme ulovené památky pro každého uživatele a seřadíme od největšího po nejmenší
+    cursor.execute('''
+        SELECT u.username, COUNT(v.castle_id) as count
+        FROM users u
+        LEFT JOIN visited_castles v ON u.id = v.user_id
+        GROUP BY u.id
+        ORDER BY count DESC, u.username ASC
+        LIMIT 20
+    ''')
+
+    rows = cursor.fetchall()
+    conn.close()
+
+    leaderboard = [{'username': row['username'], 'count': row['count']} for row in rows]
+    return jsonify(leaderboard)
 @app.route('/api/castle/<int:castle_id>/visit', methods=['POST'])
 def toggle_visit(castle_id):
     """

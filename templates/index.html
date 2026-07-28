@@ -12,7 +12,7 @@
     <!-- Leaflet CSS -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
 
-    <style>
+    <style> 
         :root {
             --primary: #1e293b;
             --accent: #3b82f6;
@@ -20,6 +20,8 @@
             --success: #10b981;
             --purple: #8b5cf6;
             --purple-hover: #7c3aed;
+            --amber: #f59e0b;
+            --amber-hover: #d97706;
             --bg-sidebar: #ffffff;
             --text-main: #0f172a;
             --text-muted: #64748b;
@@ -73,6 +75,8 @@
         .auth-buttons button:hover { background: var(--accent-hover); }
         .auth-buttons button.profile { background: var(--purple); }
         .auth-buttons button.profile:hover { background: var(--purple-hover); }
+        .auth-buttons button.leaderboard { background: var(--amber); }
+        .auth-buttons button.leaderboard:hover { background: var(--amber-hover); }
         .auth-buttons button.logout { background: #ef4444; }
 
         .main-container {
@@ -106,6 +110,7 @@
             display: flex;
             flex-direction: column;
             gap: 8px;
+            position: relative;
         }
 
         .filter-label {
@@ -115,6 +120,36 @@
             text-transform: uppercase;
             letter-spacing: 0.5px;
         }
+
+        /* Styly pro našeptávač */
+        .autocomplete-results {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: #ffffff;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            max-height: 220px;
+            overflow-y: auto;
+            z-index: 1000;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            margin-top: 4px;
+        }
+
+        .autocomplete-item {
+            padding: 10px 12px;
+            cursor: pointer;
+            border-bottom: 1px solid #f1f5f9;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 0.88rem;
+        }
+
+        .autocomplete-item:last-child { border-bottom: none; }
+        .autocomplete-item:hover { background-color: #f8fafc; color: var(--accent); }
 
         .type-pills {
             display: grid;
@@ -232,14 +267,24 @@
         .modal-content button { background: var(--success); color: white; border: none; padding: 10px; border-radius: 6px; cursor: pointer; font-weight: 600; }
         .close-btn { background: #94a3b8 !important; }
 
-        .profile-item {
+        .profile-item, .leaderboard-item {
             display: flex; align-items: center; gap: 12px; padding: 10px;
             border: 1px solid var(--border-color); border-radius: 8px;
-            background: #f8fafc; cursor: pointer; transition: all 0.2s;
+            background: #f8fafc; transition: all 0.2s;
         }
+        .profile-item { cursor: pointer; }
         .profile-item:hover {
             background: #f1f5f9; border-color: var(--accent); transform: translateY(-1px);
         }
+
+        /* Styly pro Žebříček */
+        .rank-badge {
+            width: 32px; height: 32px; display: flex; align-items: center; justify-content: center;
+            border-radius: 50%; font-weight: 700; font-size: 0.9rem; background: #e2e8f0; color: #475569;
+        }
+        .rank-1 { background: #fef08a; color: #854d0e; border: 1px solid #fde047; }
+        .rank-2 { background: #e2e8f0; color: #334155; border: 1px solid #cbd5e1; }
+        .rank-3 { background: #ffedd5; color: #9a3412; border: 1px solid #fed7aa; }
     </style>
 </head>
 <body>
@@ -247,7 +292,8 @@
     <header>
         <h2><i class="fa-solid fa-chess-rook"></i> Lovci Hradů</h2>
         <div id="auth-section" class="auth-buttons">
-            <span id="user-info" style="margin-right: 10px; font-size: 0.9rem;"></span>
+            <button class="leaderboard" onclick="openLeaderboard()"><i class="fa-solid fa-trophy"></i> Žebříček</button>
+            <span id="user-info" style="margin-right: 5px; margin-left: 5px; font-size: 0.9rem;"></span>
             <button id="profile-btn" class="profile" style="display:none;" onclick="openProfile()"><i class="fa-solid fa-user-check"></i> Můj profil</button>
             <button id="login-btn" onclick="openModal('login-modal')"><i class="fa-solid fa-right-to-bracket"></i> Přihlásit</button>
             <button id="register-btn" onclick="openModal('register-modal')"><i class="fa-solid fa-user-plus"></i> Registrovat</button>
@@ -259,6 +305,18 @@
         <!-- Boční filtr -->
         <div class="sidebar">
             <h3>Filtrovat památky</h3>
+
+            <!-- Vyhledávání podle názvu s našeptávačem -->
+            <div class="filter-section">
+                <span class="filter-label">Hledat podle názvu</span>
+                <div style="position: relative;">
+                    <input type="text" id="filter-search" oninput="handleSearchInput()" placeholder="Napiš název (min. 3 znaky)..." autocomplete="off"
+                           style="width: 100%; padding: 10px 35px 10px 10px; border-radius: 6px; border: 1px solid var(--border-color); font-family: inherit; font-size: 0.9rem;">
+                    <i class="fa-solid fa-magnifying-glass" style="position: absolute; right: 12px; top: 50%; transform: translateY(-50%); color: var(--text-muted);"></i>
+                    
+                    <div id="autocomplete-box" class="autocomplete-results"></div>
+                </div>
+            </div>
 
             <!-- Typ památky -->
             <div class="filter-section">
@@ -351,6 +409,17 @@
         </div>
     </div>
 
+    <!-- Modální okno: Žebříček Lovců -->
+    <div id="leaderboard-modal" class="modal">
+        <div class="modal-content" style="width: 400px; max-height: 80vh;">
+            <h3>🏆 Žebříček nejlepších lovců</h3>
+            <div id="leaderboard-list" style="display: flex; flex-direction: column; gap: 8px; max-height: 380px; overflow-y: auto; padding-right: 4px;">
+                <!-- Sem se načte síň slávy -->
+            </div>
+            <button class="close-btn" style="margin-top: 10px;" onclick="closeModal('leaderboard-modal')">Zavřít</button>
+        </div>
+    </div>
+
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script>
         const map = L.map('map').setView([49.8175, 15.4730], 8);
@@ -388,23 +457,76 @@
             applyFilters();
         }
 
+        function handleSearchInput() {
+            const query = document.getElementById('filter-search').value.toLowerCase().trim();
+            const autoBox = document.getElementById('autocomplete-box');
+
+            applyFilters();
+
+            if (query.length < 3) {
+                autoBox.style.display = 'none';
+                return;
+            }
+
+            const matches = allCastles.filter(c => {
+                const name = (c.nazev || c.name || '').toLowerCase();
+                return name.includes(query);
+            }).slice(0, 8);
+
+            if (matches.length === 0) {
+                autoBox.style.display = 'none';
+                return;
+            }
+
+            autoBox.innerHTML = '';
+            matches.forEach(c => {
+                const item = document.createElement('div');
+                item.className = 'autocomplete-item';
+                
+                const typNazev = c.typ === 'zamek' ? '🏛️ Zámek' : (c.typ === 'zricenina' ? '🧱 Zřícenina' : '🏰 Hrad');
+                item.innerHTML = `<strong>${c.nazev}</strong> <small style="color:#64748b;">${typNazev}</small>`;
+                
+                item.onclick = () => {
+                    document.getElementById('filter-search').value = c.nazev;
+                    autoBox.style.display = 'none';
+                    applyFilters();
+                    focusCastleOnMap(c);
+                };
+
+                autoBox.appendChild(item);
+            });
+
+            autoBox.style.display = 'block';
+        }
+
+        document.addEventListener('click', (e) => {
+            const autoBox = document.getElementById('autocomplete-box');
+            const searchInput = document.getElementById('filter-search');
+            if (e.target !== searchInput && e.target !== autoBox) {
+                autoBox.style.display = 'none';
+            }
+        });
+
         function applyFilters() {
             markersGroup.clearLayers();
             markersMap = {};
 
+            const searchQuery = document.getElementById('filter-search').value.toLowerCase().trim();
             const selectedKraj = document.getElementById('filter-kraj').value.toLowerCase().trim();
             const autoOnly = document.getElementById('filter-auto').checked;
             const kocarekOnly = document.getElementById('filter-kocarek').checked;
 
             const filtered = allCastles.filter(c => {
-                const fullText = `${c.kraj || ''} ${c.nazev || ''}`.toLowerCase();
+                const castleName = (c.nazev || c.name || '').toLowerCase();
+                const fullText = `${c.kraj || ''} ${castleName}`.toLowerCase();
                 
+                const matchSearch = !searchQuery || castleName.includes(searchQuery);
                 const matchType = selectedType === 'all' || (c.typ && (c.typ === selectedType || c.typ.includes(selectedType)));
                 const matchKraj = !selectedKraj || fullText.includes(selectedKraj);
                 const matchAuto = !autoOnly || (c.auto === 1 || c.auto === true);
                 const matchKocarek = !kocarekOnly || (c.kocarek === 1 || c.kocarek === true);
 
-                return matchType && matchKraj && matchAuto && matchKocarek;
+                return matchSearch && matchType && matchKraj && matchAuto && matchKocarek;
             });
 
             document.getElementById('stats-badge').innerText = `Zobrazeno ${filtered.length} památek`;
@@ -418,7 +540,6 @@
                 const img = c.foto ? `<img src="${c.foto}" alt="${c.nazev}">` : '';
                 const typNazev = c.typ === 'zamek' ? 'Zámek' : (c.typ === 'zricenina' ? 'Zřícenina' : 'Hrad');
 
-                // Dynamické odkazy
                 const restaurantUrl = `https://mapy.cz/turisticka?q=restaurace&x=${lon}&y=${lat}&z=14`;
                 const infoUrl = `https://cs.wikipedia.org/wiki/${encodeURIComponent(c.nazev || c.name)}`;
 
@@ -505,6 +626,43 @@
             }
 
             openModal('profile-modal');
+        }
+
+        // Načtení Žebříčku Lovců
+        async function openLeaderboard() {
+            const res = await fetch('/api/leaderboard');
+            if (!res.ok) return alert('Chyba při načítání žebříčku.');
+
+            const data = await res.json();
+            const listContainer = document.getElementById('leaderboard-list');
+            listContainer.innerHTML = '';
+
+            if (data.length === 0) {
+                listContainer.innerHTML = '<p style="text-align:center; color: #94a3b8; padding: 20px 0;">Zatím zde nejsou žádní lovci.</p>';
+            } else {
+                data.forEach((user, index) => {
+                    const rank = index + 1;
+                    const item = document.createElement('div');
+                    item.className = 'leaderboard-item';
+
+                    let medal = `#${rank}`;
+                    let rankClass = '';
+                    if (rank === 1) { medal = '🥇'; rankClass = 'rank-1'; }
+                    else if (rank === 2) { medal = '🥈'; rankClass = 'rank-2'; }
+                    else if (rank === 3) { medal = '🥉'; rankClass = 'rank-3'; }
+
+                    item.innerHTML = `
+                        <div class="rank-badge ${rankClass}">${medal}</div>
+                        <div style="flex-grow: 1;">
+                            <strong style="display:block; font-size: 0.95rem; color: #1e293b;">${user.username}</strong>
+                        </div>
+                        <span style="font-weight: 700; color: #3b82f6; font-size: 0.9rem;">${user.count} uloveno</span>
+                    `;
+                    listContainer.appendChild(item);
+                });
+            }
+
+            openModal('leaderboard-modal');
         }
 
         function focusCastleOnMap(castle) {
